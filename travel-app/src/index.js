@@ -1,13 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Map from './Map'
-import { ChakraProvider, theme } from '@chakra-ui/react'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Home from './components/Home';
+import { ChakraProvider, theme } from '@chakra-ui/react';
 
-ReactDOM.render(
+const root = document.getElementById('root');
+
+ReactDOM.createRoot(root).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-      <Map />
+      <Home />
     </ChakraProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
-)
+  </React.StrictMode>
+);
