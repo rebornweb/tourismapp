@@ -166,3 +166,5 @@ Get locations of some type near lat / long
 
 ### Acknowledgements
 Thanks to Barlow Adamson (TripAdvisor)
+
+https://www.npmjs.com/package/@react-google-maps/api
