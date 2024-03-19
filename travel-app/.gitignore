@@ -1,24 +1,33 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Ignore node_modules in all directories
+**/node_modules/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Ignore environment files in all directories
+**/.env
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
 
-# testing
-/coverage
+# Ignore build directories in all directories
+**/build/
+**/dist/
+**/out/
 
-# production
-/build
+# Ignore logs and debugging files in all directories
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/.pnpm-debug.log*
+**/*.log
+**/*.log.*
+**/*.swp
 
-# misc
-.DS_Store
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Ignore Visual Studio Code specific files in all directories
+**/.vscode/
+**/.idea/
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Ignore OS generated files in all directories
+**/.DS_Store
+**/Thumbs.db
+
+# Ignore Yarn spe
