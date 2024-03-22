@@ -12,24 +12,29 @@ const Hotel: React.FC<HotelProps> = ({ location }) => {
   const [hotelsData, setHotelsData] = useState<any>(null); // State to store fetched hotels data
 
   useEffect(() => {
-    // Fetch hotels data based on the provided location
-    const fetchHotels = async () => {
+    // Fetch hotels data from backend server based on the provided location
+    const fetchHotelsFromBackend = async () => {
       try {
-        const response = await fetch(
-          `https://api.content.tripadvisor.com/api/v1/location/nearby_search?latLong=${location.lat},${location.lng}&language=en&key=78A1C7463CF34DD699BB7E39A0E6A156`,
-        );
-        if (response.ok) {
-          const data = await response.json();
-          setHotelsData(data); // Update hotelsData state with fetched data
+        const response = await fetch(`http://localhost:5000/api/nearby/hotels?lat=${location.lat}&lng=${location.lng}`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch hotels: ${response.statusText}`);
+        }
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          const data = await response.json(); // Parse JSON data
+          setHotelsData(data.data); // Update hotelsData state with fetched data from backend
         } else {
-          console.error('Failed to fetch hotels:', response.statusText);
+          const data = await response.text(); // Treat response as text
+          console.log('Response is not in JSON format. Raw data:', data); // Log raw data
+          throw new Error('Response is not in JSON format');
         }
       } catch (error) {
         console.error('Error fetching hotels:', error);
+        // Handle error, e.g., set an error state or display an error message
       }
     };
-
-    fetchHotels(); // Call fetchHotels function when component mounts
+    
+    fetchHotelsFromBackend(); // Call fetchHotelsFromBackend function when component mounts
   }, [location.lat, location.lng]); // Depend on location changes
 
   return (
@@ -38,7 +43,16 @@ const Hotel: React.FC<HotelProps> = ({ location }) => {
       <p>Latitude: {location.lat}</p>
       <p>Longitude: {location.lng}</p>
       <h3>Nearby Hotels Data</h3>
-      <pre>{JSON.stringify(hotelsData, null, 2)}</pre>
+      {/* Check if hotelsData is not null before rendering */}
+      {hotelsData && hotelsData.map((hotel: any) => (
+        <Box key={hotel.location_id} borderWidth="1px" borderRadius="lg" p="2">
+          <Heading as="h3" size="md">{hotel.name}</Heading>
+          <Text>LocationID: {hotel.location_id}</Text>
+          <Text>Distance: {hotel.distance} miles</Text>
+          <Text>Bearing: {hotel.bearing}</Text>
+          <Text>Address: {hotel.address_obj.address_string}</Text>
+        </Box>
+      ))}
     </div>
   );
 };

@@ -52,6 +52,10 @@ const GoogleMaps = ({ onLocationChange }) => {
 
       infowindow.setContent(infowindowContent);
       infowindow.open(map, marker);
+    
+     // Trigger the onLocationChange callback with the new latitude and longitude
+     onLocationChange(place.geometry.location.lat(), place.geometry.location.lng());
+
     });
 
     biasInputElement.addEventListener("change", () => {
