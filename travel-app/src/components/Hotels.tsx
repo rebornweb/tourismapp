@@ -23,7 +23,11 @@ const Hotel: React.FC<HotelProps> = ({ location }) => {
         const contentType = response.headers.get('content-type');
         if (contentType && contentType.includes('application/json')) {
           const data = await response.json(); // Parse JSON data
-          setHotelsData(data.data); // Update hotelsData state with fetched data from backend
+
+          // Sort hotelsData array by distance (assuming 'distance' is the property containing the distance)
+          const sortedData = data.data.sort((a: any, b: any) => a.distance - b.distance);
+
+          setHotelsData(sortedData); // Update hotelsData state with sorted data from backend
         } else {
           const data = await response.text(); // Treat response as text
           console.log('Response is not in JSON format. Raw data:', data); // Log raw data
