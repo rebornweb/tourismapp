@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Heading, Text, Image, Flex } from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
+import Reviews from './sub/Reviews'; // Import the Reviews component
 
 interface HotelProps {
   location: {
@@ -51,6 +52,8 @@ const Hotel: React.FC<HotelProps> = ({ location }) => {
           <Text>Distance: {hotel.distance} miles</Text>
           <Text>Bearing: {hotel.bearing}</Text>
           <Text>Address: {hotel.address_obj.address_string}</Text>
+          {/* Pass location ID as a prop to the Reviews component */}
+          <Reviews locationId={hotel.location_id} />
         </Box>
       ))}
     </div>
@@ -58,3 +61,6 @@ const Hotel: React.FC<HotelProps> = ({ location }) => {
 };
 
 export default Hotel;
+
+//Example call App
+// http://localhost:5000/api/nearby/hotels?lat=37.7749&lng=-122.4194

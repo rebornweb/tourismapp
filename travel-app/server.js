@@ -8,17 +8,35 @@ require('dotenv').config(); // Load environment variables from .env file
 const app = express();
 app.use(cors()); // Enable CORS for all routes
 
+
+const base_url = 'https://api.content.tripadvisor.com/api/v1'
 // Endpoint to fetch hotels data
 app.get('/api/nearby/hotels', async (req, res) => {
   const { lat, lng } = req.query;
   try {
     // Fetch hotels data from the TripAdvisor API
-    const response = await fetch(`https://api.content.tripadvisor.com/api/v1/location/nearby_search?latLong=${lat},${lng}&category=hotels&language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
+    const response = await fetch(`${base_url}/location/nearby_search?latLong=${lat},${lng}&category=hotels&language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
     const data = await response.json();
     res.json(data); // Return the JSON data to the client
     
   } catch (error) {
     console.error('Error fetching hotels:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// --url 'https://api.content.tripadvisor.com/api/v1/location/570101/reviews?language=en&key=' 
+
+app.get('/api/reviews', async (req, res) => {
+  const { location_Id} = req.query;
+  try {
+    // Fetch reviews data from the TripAdvisor API
+    const response = await fetch(`${base_url}/location/${location_Id}/reviews?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
+    const data = await response.json();
+    res.json(data); // Return the JSON data to the client
+    
+  } catch (error) {
+    console.error('Error fetching reviews:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
