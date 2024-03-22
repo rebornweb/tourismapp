@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
+import { Input, Checkbox, CheckboxGroup } from '@chakra-ui/react';
 
-const GoogleMaps = () => {
+const GoogleMaps = ({ onLocationChange }) => {
   const initMap = () => {
     const map = new google.maps.Map(document.getElementById("map")!, {
       center: { lat: 40.749933, lng: -73.98633 },
@@ -76,6 +77,17 @@ const GoogleMaps = () => {
 
       input.value = "";
     });
+
+    // Add click event listener to the map to get latitude and longitude
+    map.addListener("click", (e) => {
+      const lat = e.latLng.lat();
+      const lng = e.latLng.lng();
+      console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+
+            // Call the onLocationChange callback with the new latitude and longitude
+            onLocationChange(lat, lng);
+
+    });
   };
 
   useEffect(() => {
@@ -96,14 +108,14 @@ const GoogleMaps = () => {
 
   return (
     <div>
+      {/* Your existing JSX for Google Maps UI */}
       <div id="pac-card">
         {/* Add card content here */}
       </div>
-      <input id="pac-input" type="text" placeholder="Enter a location" />
-      <input id="use-location-bias" type="checkbox" />
-      <label htmlFor="use-location-bias">Use location bias</label>
-      <input id="use-strict-bounds" type="checkbox" />
-      <label htmlFor="use-strict-bounds">Use strict bounds</label>
+      <Input id="pac-input" type="text" placeholder="Enter a location" />
+      <Checkbox id="use-location-bias" defaultChecked>Use location bias</Checkbox> 
+      <Checkbox id="use-strict-bounds" defaultChecked>Use strict bounds</Checkbox> 
+
       <div id="infowindow-content">
         <span id="place-name"></span><br />
         <span id="place-address"></span>

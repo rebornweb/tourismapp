@@ -9,8 +9,7 @@ const App: React.FC = () => {
     <Router>
       <Routes>
       <Route index element={<Home />} />
-  
-                <Route path="map" element={<Map />} />
+
 
       </Routes>
     </Router>
