@@ -21,7 +21,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <Layout>
+      <div>
       <Box>
         <Heading>Welcome to the Travel App</Heading>
         <Text>Explore the world with our amazing travel recommendations!</Text>
@@ -33,7 +33,7 @@ const Home: React.FC = () => {
       
       {/* Pass the location object as prop to the Hotel component */}
       <Places location={location} />
-    </Layout>
+      </div>
   );
 };
 

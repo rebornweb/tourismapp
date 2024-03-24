@@ -11,7 +11,7 @@ interface placeProps {
 
 const Places: React.FC<placeProps> = ({ location }) => {
   const [placesData, setplacesData] = useState<any>(null); // State to store fetched places data
-  const [category, setCategory] = useState<string>('places'); // State to store selected category
+  const [category, setCategory] = useState<string>('hotels'); // State to store selected category
 
   useEffect(() => {
     // Fetch places data from backend server based on the provided location and category
@@ -33,7 +33,7 @@ const Places: React.FC<placeProps> = ({ location }) => {
           throw new Error('Response is not in JSON format');
         }
       } catch (error) {
-        console.error('Error fetching places:', error);
+        console.error('Need to choose a place or Error fetching places:', error);
         // Handle error, e.g., set an error state or display an error message
       }
     };
@@ -43,7 +43,6 @@ const Places: React.FC<placeProps> = ({ location }) => {
 
   return (
     <div>
-      <h2>place Component</h2>
       <p>Latitude: {location.lat}</p>
       <p>Longitude: {location.lng}</p>
       <Select value={category} onChange={(e) => setCategory(e.target.value)}>
