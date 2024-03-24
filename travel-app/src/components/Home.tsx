@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, Heading, Text } from '@chakra-ui/react';
 import Layout from './Layout';
 import GoogleMaps from './Map'; // Import the GoogleMaps component
-import Hotel from './Hotels'; // Import the Hotel component
+import Places from './Places'; // Import the Hotel component
 
 interface Location {
   lat: number;
@@ -32,7 +32,7 @@ const Home: React.FC = () => {
       {/* The GoogleMaps component will call handleLocationChange when the location changes */}
       
       {/* Pass the location object as prop to the Hotel component */}
-      <Hotel location={location} />
+      <Places location={location} />
     </Layout>
   );
 };

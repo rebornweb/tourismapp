@@ -9,21 +9,22 @@ const app = express();
 app.use(cors()); // Enable CORS for all routes
 
 
-const base_url = 'https://api.content.tripadvisor.com/api/v1'
-// Endpoint to fetch hotels data
-app.get('/api/nearby/hotels', async (req, res) => {
-  const { lat, lng } = req.query;
+const base_url = 'https://api.content.tripadvisor.com/api/v1';
+
+// Endpoint to fetch hotels data with category parameter
+app.get('/api/nearby/places', async (req, res) => {
+  const { lat, lng, category } = req.query;
   try {
-    // Fetch hotels data from the TripAdvisor API
-    const response = await fetch(`${base_url}/location/nearby_search?latLong=${lat},${lng}&category=hotels&language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
+    // Fetch hotels data from the TripAdvisor API with category parameter
+    const response = await fetch(`${base_url}/location/nearby_search?latLong=${lat},${lng}&category=${category}&language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
     const data = await response.json();
     res.json(data); // Return the JSON data to the client
-    
   } catch (error) {
     console.error('Error fetching hotels:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
 
 // --url 'https://api.content.tripadvisor.com/api/v1/location/570101/reviews?language=en&key=' 
 
