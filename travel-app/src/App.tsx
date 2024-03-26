@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './components/Home';
+import Flights from './components/Flights';
 
 const App: React.FC = () => {
   return (
@@ -9,6 +10,7 @@ const App: React.FC = () => {
       <Layout>
       <Routes>
       <Route index element={<Home />} />
+      <Route path='/flights' element={<Flights />} />
 
 
       </Routes>

@@ -6,13 +6,15 @@ interface ReviewsProps {
 }
 
 const Reviews: React.FC<ReviewsProps> = ({ locationId }) => {
+  const localApiUrl = process.env.REACT_APP_LOCAL_API_URL;
+
   const [reviewsData, setReviewsData] = useState<any[]>([]); // State to store fetched reviews data
 
   useEffect(() => {
     // Fetch reviews data from backend server based on the provided location ID
     const fetchReviewsFromBackend = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/reviews?location_Id=${locationId}`);
+        const response = await fetch(`${localApiUrl}/reviews?location_Id=${locationId}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch reviews: ${response.statusText}`);
         }

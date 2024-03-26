@@ -10,6 +10,8 @@ interface placeProps {
 }
 
 const Places: React.FC<placeProps> = ({ location }) => {
+  const localApiUrl = process.env.REACT_APP_LOCAL_API_URL;
+
   const [placesData, setplacesData] = useState<any>(null); // State to store fetched places data
   const [category, setCategory] = useState<string>('hotels'); // State to store selected category
 
@@ -17,7 +19,7 @@ const Places: React.FC<placeProps> = ({ location }) => {
     // Fetch places data from backend server based on the provided location and category
     const fetchplacesFromBackend = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/nearby/places?lat=${location.lat}&lng=${location.lng}&category=${category}`);
+        const response = await fetch(`${localApiUrl}/nearby/places?lat=${location.lat}&lng=${location.lng}&category=${category}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch places: ${response.statusText}`);
         }

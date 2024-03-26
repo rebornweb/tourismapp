@@ -30,9 +30,9 @@ const Navigation: FC = () => {
             About
           </Text>
         </Link>
-        <Link to="/contact">
+        <Link to="/flights">
           <Text color="white" mr={4}>
-            Contact
+            Flights
           </Text>
         </Link>
       </Box>

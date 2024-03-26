@@ -3,6 +3,7 @@ const fetch = require('node-fetch');
 const cors = require('cors');
 const path = require('path'); // Import the path module
 require('dotenv').config(); // Load environment variables from .env file
+const axios = require('axios');
 
 
 const app = express();
@@ -41,6 +42,75 @@ app.get('/api/reviews', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+// POST endpoint to handle incoming requests from React component
+
+// Static post data
+const postData = {
+  data: {
+    cabin_class: 'economy',
+    slices: [
+      {
+        departure_date: '2024-04-09',
+        destination: 'WLG',
+        origin: 'AKL'
+      }
+    ],
+    passengers: [
+      {
+        type: 'adult'
+      }
+    ]
+  }
+};
+
+// Endpoint to handle POST request
+app.post('/api/post-flight-data', async (req, res) => {
+  try {
+    //const postData = req.body;
+    // const postData = {
+    //   data: {
+    //     cabin_class: 'economy',
+    //     slices: [
+    //       {
+    //         departure_date: '2024-04-09',
+    //         destination: 'WLG',
+    //         origin: 'AKL'
+    //       }
+    //     ],
+    //     passengers: [
+    //       {
+    //         type: 'adult'
+    //       }
+    //     ]
+    //   }
+    // };
+    // Check if postData is valid
+    if (!postData) {
+      throw new Error('Invalid POST data');
+    }
+
+    // Forward the POST request to the external API
+    const response = await axios.post('https://api.duffel.com/air/offer_requests', postData, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.DUFFEL_API_KEY_ENV}`,
+        'Accept-Encoding': 'gzip',
+        'Duffel-Version': 'v1'
+      },
+    });
+
+    const responseData = response.data;
+    res.json(responseData);
+  } catch (error) {
+    console.error('Error forwarding request:', error.message);
+    res.status(500).json({ error: 'Error forwarding request' });
+  }
+});
+
+
+
 
 // Serve the React app from the build directory
 app.use(express.static(path.join(__dirname, 'build')));
