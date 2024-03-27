@@ -43,55 +43,18 @@ app.get('/api/reviews', async (req, res) => {
   }
 });
 
-// POST endpoint to handle incoming requests from React component
-
-// Static post data
-const postData = {
-  data: {
-    cabin_class: 'economy',
-    slices: [
-      {
-        departure_date: '2024-04-09',
-        destination: 'WLG',
-        origin: 'AKL'
-      }
-    ],
-    passengers: [
-      {
-        type: 'adult'
-      }
-    ]
-  }
-};
-
-// Endpoint to handle POST request
 app.post('/api/post-flight-data', async (req, res) => {
   try {
-    //const postData = req.body;
-    // const postData = {
-    //   data: {
-    //     cabin_class: 'economy',
-    //     slices: [
-    //       {
-    //         departure_date: '2024-04-09',
-    //         destination: 'WLG',
-    //         origin: 'AKL'
-    //       }
-    //     ],
-    //     passengers: [
-    //       {
-    //         type: 'adult'
-    //       }
-    //     ]
-    //   }
-    // };
+    const postData = req.body; // Extract post data from request body
+
     // Check if postData is valid
     if (!postData) {
       throw new Error('Invalid POST data');
     }
 
-    // Forward the POST request to the external API
-    const response = await axios.post('https://api.duffel.com/air/offer_requests', postData, {
+    // Forward the POST request to the external API using Fetch
+    const response = await fetch('https://api.duffel.com/air/offer_requests', {
+      method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -99,16 +62,16 @@ app.post('/api/post-flight-data', async (req, res) => {
         'Accept-Encoding': 'gzip',
         'Duffel-Version': 'v1'
       },
+      body: JSON.stringify(postData),
     });
 
-    const responseData = response.data;
+    const responseData = await response.json();
     res.json(responseData);
   } catch (error) {
     console.error('Error forwarding request:', error.message);
     res.status(500).json({ error: 'Error forwarding request' });
   }
 });
-
 
 
 
