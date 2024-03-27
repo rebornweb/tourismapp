@@ -178,6 +178,9 @@ https://www.postman.com/duffelhq/workspace/duffel/collection/15754339-f39d0236-5
 Fill these in int .env
 
 REACT_APP_GOOGLE_MAPS_API_KEY=
+
 TRIPADVISOR_API_KEY_ENV=
-DUFFEL_API_KEY_ENV=d
+
+DUFFEL_API_KEY_ENV=
+
 REACT_APP_LOCAL_API_URL=http://localhost:5000/api
