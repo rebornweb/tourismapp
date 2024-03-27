@@ -175,7 +175,7 @@ Do this: https://github.com/googlemaps/extended-component-library/tree/main/exam
 Duffel ref
 https://www.postman.com/duffelhq/workspace/duffel/collection/15754339-f39d0236-5204-479f-91a1-f9832f7c0351
 
-Fill these in int .env
+Fill these in .env
 
 REACT_APP_GOOGLE_MAPS_API_KEY=
 
