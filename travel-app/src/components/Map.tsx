@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Input, Checkbox, CheckboxGroup } from '@chakra-ui/react';
+import { Input, Checkbox } from '@chakra-ui/react';
 
 const GoogleMaps = ({ onLocationChange }) => {
   const initMap = () => {
@@ -9,12 +9,15 @@ const GoogleMaps = ({ onLocationChange }) => {
       mapTypeControl: false,
     });
 
+    
+
     const card = document.getElementById("pac-card")!;
     const input = document.getElementById("pac-input") as HTMLInputElement;
     const biasInputElement = document.getElementById("use-location-bias") as HTMLInputElement;
     const strictBoundsInputElement = document.getElementById("use-strict-bounds") as HTMLInputElement;
     const infowindowContent = document.getElementById("infowindow-content") as HTMLElement;
 
+    
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(card);
 
     const autocomplete = new google.maps.places.Autocomplete(input);
@@ -26,37 +29,48 @@ const GoogleMaps = ({ onLocationChange }) => {
       anchorPoint: new google.maps.Point(0, -29),
     });
 
-    autocomplete.addListener("place_changed", () => {
+    autocomplete.addListener("place_changed", async () => {
       infowindow.close();
       marker.setVisible(false);
-
+    
       const place = autocomplete.getPlace();
-
+    
       if (!place.geometry || !place.geometry.location) {
         window.alert("No details available for input: '" + place.name + "'");
         return;
       }
-
+    
       if (place.geometry.viewport) {
         map.fitBounds(place.geometry.viewport);
       } else {
         map.setCenter(place.geometry.location);
         map.setZoom(17);
       }
-
-      marker.setPosition(place.geometry.location);
-      marker.setVisible(true);
-
+    
+      // Perform null check for place.geometry.location
+      if (place.geometry && place.geometry.location) {
+        marker.setPosition(place.geometry.location);
+        marker.setVisible(true);
+        map.setCenter(place.geometry.location);
+        map.setZoom(17);
+      } else {
+        console.error('No location found for the selected place');
+      }
+    
       infowindowContent.children["place-name"].textContent = place.name || '';
       infowindowContent.children["place-address"].textContent = place.formatted_address || '';
-
+    
       infowindow.setContent(infowindowContent);
       infowindow.open(map, marker);
     
-     // Trigger the onLocationChange callback with the new latitude and longitude
-     onLocationChange(place.geometry.location.lat(), place.geometry.location.lng());
-
-    });
+      // Trigger the onLocationChange callback with the new latitude and longitude
+      onLocationChange(place.geometry.location.lat(), place.geometry.location.lng());
+    
+      
+    
+     });
+    
+    
 
     biasInputElement.addEventListener("change", () => {
       if (biasInputElement.checked) {
@@ -83,14 +97,50 @@ const GoogleMaps = ({ onLocationChange }) => {
     });
 
     // Add click event listener to the map to get latitude and longitude
-    map.addListener("click", (e) => {
-      const lat = e.latLng.lat();
-      const lng = e.latLng.lng();
+    map.addListener("click", async (e) => {
+      const latLng = e.latLng;
+      const lat = latLng.lat();
+      const lng = latLng.lng();
       console.log(`Latitude: ${lat}, Longitude: ${lng}`);
-
-            // Call the onLocationChange callback with the new latitude and longitude
-            onLocationChange(lat, lng);
-
+    
+      // Update marker position
+      marker.setPosition(latLng);
+      marker.setVisible(true);
+    
+      // Reverse geocode to get the address from the clicked coordinates
+      const geocoder = new google.maps.Geocoder();
+      await geocoder.geocode({ location: latLng }, (results, status) => {
+        if (status === "OK") {
+          if (results && results[0]) { // Add null check for 'results' and results[0]
+            const address = results[0].formatted_address;
+            input.value = address; // Update input field with the address
+    
+            // Create a link element with the address as the href
+            const link = document.createElement('a');
+            link.href = `#`;
+            link.textContent = `Go to ${address}`;
+            link.onclick = () => {
+              // Move the map marker to the clicked address coordinates
+              marker.setPosition(latLng);
+              marker.setVisible(true);
+              map.setCenter(latLng);
+              map.setZoom(17);
+              return false; // Prevent default link behavior
+            };
+    
+            // Append the link to a container element (e.g., infowindowContent)
+            infowindowContent.appendChild(link);
+            console.log("Address:", address);
+          } else {
+            console.error("No results found");
+          }
+        } else {
+          console.error("Geocoder failed due to:", status);
+        }
+      });
+    
+      // Call the onLocationChange callback with the new latitude and longitude
+      onLocationChange(lat, lng);
     });
   };
 
