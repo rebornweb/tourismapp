@@ -107,38 +107,6 @@ const GoogleMaps = ({ onLocationChange }) => {
       marker.setPosition(latLng);
       marker.setVisible(true);
     
-      // Reverse geocode to get the address from the clicked coordinates
-      const geocoder = new google.maps.Geocoder();
-      await geocoder.geocode({ location: latLng }, (results, status) => {
-        if (status === "OK") {
-          if (results && results[0]) { // Add null check for 'results' and results[0]
-            const address = results[0].formatted_address;
-            input.value = address; // Update input field with the address
-    
-            // Create a link element with the address as the href
-            const link = document.createElement('a');
-            link.href = `#`;
-            link.textContent = `Go to ${address}`;
-            link.onclick = () => {
-              // Move the map marker to the clicked address coordinates
-              marker.setPosition(latLng);
-              marker.setVisible(true);
-              map.setCenter(latLng);
-              map.setZoom(17);
-              return false; // Prevent default link behavior
-            };
-    
-            // Append the link to a container element (e.g., infowindowContent)
-            infowindowContent.appendChild(link);
-            console.log("Address:", address);
-          } else {
-            console.error("No results found");
-          }
-        } else {
-          console.error("Geocoder failed due to:", status);
-        }
-      });
-    
       // Call the onLocationChange callback with the new latitude and longitude
       onLocationChange(lat, lng);
     });
