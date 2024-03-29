@@ -1,12 +1,41 @@
 import React, { useEffect, useState } from 'react';
+import {
+  Box,
+  IconButton,
+  useBreakpointValue,
+  Stack,
+  Heading,
+  Text,
+  Container,
+} from '@chakra-ui/react'
+
+import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi'
+import Slider from "react-slick";
+
+const settings = {
+  dots: true,
+  arrows: false,
+  infinite: true,
+  autoplay: true,
+  speed: 500,
+  autoplaySpeed: 5000,
+  slidesToShow: 2,
+  slidesToScroll: 2,
+}
 
 interface PhotosProps {
   locationId: number; // Location ID to fetch photos
 }
 
 const Photos: React.FC<PhotosProps> = ({ locationId }) => {
+  const [slider, setSlider] = React.useState<Slider | null>(null)
   const localApiUrl = process.env.REACT_APP_LOCAL_API_URL;
   const [photosData, setPhotosData] = useState<any[]>([]); // State to store fetched photos data
+
+ // These are the breakpoints which changes the position of the
+  // buttons as the screen size changes
+  const top = useBreakpointValue({ base: '90%', md: '50%' })
+  const side = useBreakpointValue({ base: '30%', md: '40px' })
 
   useEffect(() => {
     // Fetch photos data from backend server based on the provided location ID
@@ -27,21 +56,81 @@ const Photos: React.FC<PhotosProps> = ({ locationId }) => {
     fetchPhotosFromBackend(); // Call fetchPhotosFromBackend function when component mounts or when locationId changes
   }, [localApiUrl, locationId]); // Depend on localApiUrl and locationId changes
 
+
   return (
-    <div>
-      {photosData && photosData.length > 0 && (
-        <div>
-          <h3>Photos Data</h3>
-          {photosData.map((photo: any) => (
-            <div key={photo.id}>
-              <img src={photo.images.medium.url} alt={photo.caption} />
-              <p>{photo.caption}</p>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+    <Box position={'relative'} height={'600px'} width={'full'} overflow={'hidden'}>
+      {/* CSS files for react-slick */}
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+      />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+      />
+
+      {/* Left Icon */}
+      <IconButton
+        aria-label="left-arrow"
+        variant="ghost"
+        position="absolute"
+        left={side}
+        top={top}
+        transform={'translate(0%, -50%)'}
+        zIndex={2}
+        onClick={() => slider?.slickPrev()}>
+        <BiLeftArrowAlt size="40px" />
+      </IconButton>
+      {/* Right Icon */}
+      <IconButton
+        aria-label="right-arrow"
+        variant="ghost"
+        position="absolute"
+        right={side}
+        top={top}
+        transform={'translate(0%, -50%)'}
+        zIndex={2}
+        onClick={() => slider?.slickNext()}>
+        <BiRightArrowAlt size="40px" />
+      </IconButton>
+      {/* Slider */}
+      <Slider {...settings}ref={(slider) => setSlider(slider)}>
+        {photosData.map((photo: any) => (
+          <Box
+            key={photo.id}
+            height={'400px'}
+            position="relative"
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat"
+            backgroundSize="cover"
+            backgroundImage={`url(${photo.images.large.url})`}>
+            <Container size="container.lg" height="600px" position="relative">
+              <Stack
+                spacing={6}
+                w={'full'}
+                maxW={'lg'}
+                position="absolute"
+                top="50%"
+                transform="translate(0, -50%)"
+                color="white">
+                <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
+                 
+                </Heading>
+                <Text fontSize={{ base: 'md', lg: 'lg' }} color="GrayText">
+                {photo.caption}
+                </Text>
+              </Stack>
+            </Container>
+          </Box>
+        ))}
+      </Slider>
+    </Box>
   );
 };
 
 export default Photos;
+
+
+//Ref https://chakra-templates.vercel.app/page-sections/carousels
