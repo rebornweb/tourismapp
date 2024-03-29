@@ -10,16 +10,12 @@ const Flights: React.FC = () => {
     try {
       const postData = {
         "data": {
+          "cabin_class": "economy",
           "slices": [
             {
-              "origin": "LHR",
-              "destination": "JFK",
-              "departure_date": "2023-12-24"
-            },
-            {
-              "origin": "JFK",
-              "destination": "LHR",
-              "departure_date": "2023-12-24"
+              "departure_date": "2024-04-09",
+              "destination": "WLG",
+              "origin": "AKL"
             }
           ],
           "passengers": [
@@ -29,6 +25,7 @@ const Flights: React.FC = () => {
           ]
         }
       };
+      
 
       const requestOptions: RequestInit = {
         method: 'POST',
@@ -42,7 +39,7 @@ const Flights: React.FC = () => {
         body: JSON.stringify(postData),
       };
 
-      const response = await fetch('http://localhost:5000/api/post-flight-data', requestOptions);
+      const response = await fetch('http://localhost:5000/api/offer_requests', requestOptions);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
