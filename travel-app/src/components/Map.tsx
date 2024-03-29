@@ -9,15 +9,12 @@ const GoogleMaps = ({ onLocationChange }) => {
       mapTypeControl: false,
     });
 
-    
-
     const card = document.getElementById("pac-card")!;
     const input = document.getElementById("pac-input") as HTMLInputElement;
     const biasInputElement = document.getElementById("use-location-bias") as HTMLInputElement;
     const strictBoundsInputElement = document.getElementById("use-strict-bounds") as HTMLInputElement;
     const infowindowContent = document.getElementById("infowindow-content") as HTMLElement;
 
-    
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(card);
 
     const autocomplete = new google.maps.places.Autocomplete(input);
@@ -114,22 +111,8 @@ const GoogleMaps = ({ onLocationChange }) => {
           if (results && results[0]) { // Add null check for 'results' and results[0]
             const address = results[0].formatted_address;
             input.value = address; // Update input field with the address
-    
-            // Create a link element with the address as the href
-            const link = document.createElement('a');
-            link.href = `#`;
-            link.textContent = `Go to ${address}`;
-            link.onclick = () => {
-              // Move the map marker to the clicked address coordinates
-              marker.setPosition(latLng);
-              marker.setVisible(true);
-              map.setCenter(latLng);
-              map.setZoom(17);
-              return false; // Prevent default link behavior
-            };
-    
-            // Append the link to a container element (e.g., infowindowContent)
-            infowindowContent.appendChild(link);
+  
+  
             console.log("Address:", address);
           } else {
             console.error("No results found");
@@ -142,8 +125,26 @@ const GoogleMaps = ({ onLocationChange }) => {
       // Call the onLocationChange callback with the new latitude and longitude
       onLocationChange(lat, lng);
     });
-  };
 
+       // Automatically center the map on the user's location when the page loads
+       if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const userLocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+            map.setCenter(userLocation);
+            map.setZoom(10); // Adjust zoom level as needed
+          },
+          (error) => {
+            console.error('Error getting user location:', error);
+          }
+        );
+      } else {
+        console.error('Geolocation is not supported by this browser.');
+      }
+  };
   useEffect(() => {
     const script = document.createElement('script');
     script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places`;
