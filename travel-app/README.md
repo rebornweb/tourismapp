@@ -172,8 +172,11 @@ https://www.npmjs.com/package/@react-google-maps/api
 Do this: https://github.com/googlemaps/extended-component-library/tree/main/examples/react_sample_app
 
 
+
 Duffel ref
+https://duffel.com/docs/api/overview/key-concepts
 https://www.postman.com/duffelhq/workspace/duffel/collection/15754339-f39d0236-5204-479f-91a1-f9832f7c0351
+https://duffel.com/docs/api/overview/test-mode/duffel-airways
 
 Fill these in .env
 
@@ -184,3 +187,70 @@ TRIPADVISOR_API_KEY_ENV=
 DUFFEL_API_KEY_ENV=
 
 REACT_APP_LOCAL_API_URL=http://localhost:5000/api
+
+
+//Duffel sample
+import { Duffel } from '@duffel/api'
+
+const duffel = new Duffel({
+  token: YOUR_ACCESS_TOKEN
+})
+
+duffel.offerRequests.create({
+  "return_offers": false,
+  "supplier_timeout": 10000,
+  "slices": [
+    {
+      "origin": "LHR",
+      "destination": "JFK",
+      "departure_time": {
+        "to": "17:00",
+        "from": "09:45"
+      },
+      "departure_date": "2020-04-24",
+      "arrival_time": {
+        "to": "17:00",
+        "from": "09:45"
+      }
+    }
+  ],
+  "private_fares": {
+    "QF": [
+      {
+        "corporate_code": "FLX53",
+        "tracking_reference": "ABN:2345678"
+      }
+    ],
+    "UA": [
+      {
+        "corporate_code": "1234",
+        "tour_code": "578DFL"
+      }
+    ]
+  },
+  "passengers": [
+    {
+      "family_name": "Earhart",
+      "given_name": "Amelia",
+      "loyalty_programme_accounts": [
+        {
+          "account_number": "12901014",
+          "airline_iata_code": "BA"
+        }
+      ],
+      "type": "adult"
+    },
+    {
+      "age": 14
+    },
+    {
+      "fare_type": "student"
+    },
+    {
+      "age": 5,
+      "fare_type": "contract_bulk_child"
+    }
+  ],
+  "max_connections": 0,
+  "cabin_class": "economy"
+})

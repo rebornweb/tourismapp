@@ -6,22 +6,23 @@ import Places from './Places'; // Import the Hotel component
 
 interface Location {
   lat: number;
-  lng: number; // Corrected property name to match usage in state and function
+  lng: number;
+  locationId: number; // Add locationId to the Location interface
 }
 
 const Home: React.FC = () => {
-  // State to hold latitude and longitude
-  const [location, setLocation] = useState<Location>({ lat: 0, lng: 0 }); // Corrected type annotation
+  // State to hold latitude, longitude, and locationId
+  const [location, setLocation] = useState<Location>({ lat: 0, lng: 0, locationId: 0 }); // Initialize locationId
 
   // Function to handle location change
-  const handleLocationChange = (lat: number, lng: number) => { // Corrected parameter type annotation
+  const handleLocationChange = (lat: number, lng: number) => {
     // Update the location state when the location changes in GoogleMaps
-    setLocation({ lat, lng });
-    console.log('Uplifted Location from Googlemaps to home:', { lat, lng });
+    setLocation({ lat, lng, locationId: 1234 }); // Provide a sample locationId value
+    console.log('Updated Location:', { lat, lng });
   };
 
   return (
-      <div>
+    <div>
       <Box>
         <Heading>Welcome to the Travel App</Heading>
         <Text>Explore the world with our amazing travel recommendations!</Text>
@@ -31,9 +32,9 @@ const Home: React.FC = () => {
       <GoogleMaps onLocationChange={handleLocationChange} />
       {/* The GoogleMaps component will call handleLocationChange when the location changes */}
       
-      {/* Pass the location object as prop to the Hotel component */}
+      {/* Pass the location object as prop to the Places component */}
       <Places location={location} />
-      </div>
+    </div>
   );
 };
 

@@ -1,9 +1,11 @@
 const express = require('express');
 const fetch = require('node-fetch');
 const cors = require('cors');
-const path = require('path'); // Import the path module
-require('dotenv').config(); // Load environment variables from .env file
+const path = require('path');
+require('dotenv').config();
 const axios = require('axios');
+const { Duffel } = require('@duffel/api');
+
 
 
 const app = express();
@@ -35,6 +37,21 @@ app.get('/api/reviews', async (req, res) => {
     // Fetch reviews data from the TripAdvisor API
     const response = await fetch(`${base_url}/location/${location_Id}/reviews?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
     const data = await response.json();
+    res.json(data); // Return the JSON data to the client
+    
+  } catch (error) {
+    console.error('Error fetching reviews:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.get('/api/photos', async (req, res) => {
+  const { location_Id} = req.query;
+  try {
+    // Fetch reviews data from the TripAdvisor API
+    const response = await fetch(`${base_url}/location/${location_Id}/photos?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
+    const data = await response.json();
+    console.log('Photos data: ' + data);
     res.json(data); // Return the JSON data to the client
     
   } catch (error) {
