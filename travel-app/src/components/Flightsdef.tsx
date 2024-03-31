@@ -5,28 +5,33 @@ const Flights: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   
+  const [cabinClass, setCabinClass] = useState<string>('economy');
+  const [departureDate, setDepartureDate] = useState<string>('2024-04-09');
+  const [destination, setDestination] = useState<string>('WLG');
+  const [origin, setOrigin] = useState<string>('AKL');
+  const [passengerType, setPassengerType] = useState<string>('adult');
+  
   const handlePostRequest = async () => {
     setLoading(true);
     try {
       const postData = {
         "data": {
-          "cabin_class": "economy",
+          "cabin_class": cabinClass,
           "slices": [
             {
-              "departure_date": "2024-04-09",
-              "destination": "WLG",
-              "origin": "AKL"
+              "departure_date": departureDate,
+              "destination": destination,
+              "origin": origin
             }
           ],
           "passengers": [
             {
-              "type": "adult"
+              "type": passengerType
             }
           ]
         }
       };
       
-
       const requestOptions: RequestInit = {
         method: 'POST',
         headers: {
@@ -46,7 +51,7 @@ const Flights: React.FC = () => {
       
       const responseData = await response.json();
       setResponse(responseData);
-    } catch (error: unknown) { // Explicitly specify the type of error as unknown
+    } catch (error: unknown) {
       if (error instanceof Error) {
         setError('Error posting flight data: ' + error.message);
       } else {
@@ -59,6 +64,26 @@ const Flights: React.FC = () => {
 
   return (
     <div>
+      <div>
+        <label>Cabin Class:</label>
+        <input type="text" value={cabinClass} onChange={(e) => setCabinClass(e.target.value)} />
+      </div>
+      <div>
+        <label>Departure Date:</label>
+        <input type="text" value={departureDate} onChange={(e) => setDepartureDate(e.target.value)} />
+      </div>
+      <div>
+        <label>Destination:</label>
+        <input type="text" value={destination} onChange={(e) => setDestination(e.target.value)} />
+      </div>
+      <div>
+        <label>Origin:</label>
+        <input type="text" value={origin} onChange={(e) => setOrigin(e.target.value)} />
+      </div>
+      <div>
+        <label>Passenger Type:</label>
+        <input type="text" value={passengerType} onChange={(e) => setPassengerType(e.target.value)} />
+      </div>
       <button onClick={handlePostRequest}>Send POST Request</button>
       {loading && <div>Loading...</div>}
       {error && <div>Error: {error}</div>}

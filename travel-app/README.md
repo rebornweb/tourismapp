@@ -178,6 +178,18 @@ https://duffel.com/docs/api/overview/key-concepts
 https://www.postman.com/duffelhq/workspace/duffel/collection/15754339-f39d0236-5204-479f-91a1-f9832f7c0351
 https://duffel.com/docs/api/overview/test-mode/duffel-airways
 
+OAG
+https://developers.oag.com/
+
+https://rapidapi.com/oag-oag-default/api/flight-info-api
+
+https://developers.oag.com/api-details#api=flight-info-v2&operation=GetFlights
+
+https://www.oag.com/knowledge/flight-info-api-response-layout-descriptions
+
+Free Flight API
+https://rapidapi.com/Travelpayouts/api/flight-data/
+
 Fill these in .env
 
 REACT_APP_GOOGLE_MAPS_API_KEY=

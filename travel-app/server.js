@@ -112,6 +112,97 @@ app.post('/api/offer_requests', async (req, res) => {
 
 
 
+// Endpoint to handle RAPID API
+// app.get('/api/flights', async (req, res) => {
+//   try {
+//     const { 
+//       DepartureDateTime 
+//       //ArrivalDateTime 
+//       // DepartureAirport,
+//       // ArrivalAirport,
+//       // FlightType,.
+//       //FlightType,
+//       //Limit
+//      } = req.query;
+
+//     // Construct query parameters for the external API
+//     const queryParams = new URLSearchParams({
+//       DepartureDateTime
+//       //ArrivalDateTime
+//       // DepartureAirport,
+//       // ArrivalAirport,
+//       //FlightType,
+//       //Limit
+//     }).toString();
+
+//     // Forward the GET request to the external API using fetch
+//     const version = 'v2';
+//     const url = `https://flight-info-api.p.rapidapi.com/schedules?${queryParams}&version=${version}`;
+//     const response = await fetch(url, {
+//       headers: {
+//         'X-RapidAPI-Key': process.env.RAPID_API_KEY_ENV, // Your RapidAPI key
+//         'X-RapidAPI-Host': 'flight-info-api.p.rapidapi.com'
+//       }
+//     });
+
+//     if (!response.ok) {
+//       throw new Error('Error forwarding request');
+//     }
+
+//     const responseData = await response.json();
+//     res.json(responseData);
+//   } catch (error) {
+//     console.error('Error forwarding request:', error.message);
+//     res.status(500).json({ error: 'Error forwarding request' });
+//   }
+// });
+
+
+
+// app.get('/api/flights/oag', async (req, res) => {
+//   try {
+//     const { 
+//       DepartureDateTime, 
+//       ArrivalDateTime, 
+//       DepartureAirport,
+//       ArrivalAirport,
+//       FlightType,
+//       Limit
+//      } = req.query;
+
+//     // Construct query parameters for the external API
+//     const queryParams = new URLSearchParams({
+//       DepartureDateTime,
+//       ArrivalDateTime,
+//       DepartureAirport,
+//       ArrivalAirport,
+//       FlightType,
+//       Limit
+//     }).toString();
+
+//     // Forward the GET request to the external API using fetch
+//     const version = 'v2';
+//     const url = `https://flight-info-api.p.rapidapi.com/schedules?${queryParams}&version=${version}`;
+//     const response = await fetch(url, {
+//       headers: {
+//         'X-RapidAPI-Key': process.env.OAG_API_KEY_ENV, // Your RapidAPI key
+//         'X-RapidAPI-Host': 'flight-info-api.p.rapidapi.com'
+//       }
+//     });
+
+//     if (!response.ok) {
+//       throw new Error('Error forwarding request');
+//     }
+
+//     const responseData = await response.json();
+//     res.json(responseData);
+//   } catch (error) {
+//     console.error('Error forwarding request:', error.message);
+//     res.status(500).json({ error: 'Error forwarding request' });
+//   }
+// });
+
+
 // Serve the React app from the build directory
 app.use(express.static(path.join(__dirname, 'build')));
 
