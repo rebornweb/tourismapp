@@ -5,33 +5,27 @@ const Flights: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   
-  const [cabinClass, setCabinClass] = useState<string>('economy');
-  const [departureDate, setDepartureDate] = useState<string>('2024-04-09');
-  const [destination, setDestination] = useState<string>('WLG');
-  const [origin, setOrigin] = useState<string>('AKL');
-  const [passengerType, setPassengerType] = useState<string>('adult');
+  const [postData, setPostData] = useState<any>({
+    data: {
+      cabin_class: 'economy',
+      slices: [
+        {
+          departure_date: '2024-04-09',
+          destination: 'WLG',
+          origin: 'AKL'
+        }
+      ],
+      passengers: [
+        {
+          type: 'adult'
+        }
+      ]
+    }
+  });
   
   const handlePostRequest = async () => {
     setLoading(true);
     try {
-      const postData = {
-        "data": {
-          "cabin_class": cabinClass,
-          "slices": [
-            {
-              "departure_date": departureDate,
-              "destination": destination,
-              "origin": origin
-            }
-          ],
-          "passengers": [
-            {
-              "type": passengerType
-            }
-          ]
-        }
-      };
-      
       const requestOptions: RequestInit = {
         method: 'POST',
         headers: {
@@ -62,27 +56,38 @@ const Flights: React.FC = () => {
     }
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setPostData(prevData => ({
+      ...prevData,
+      data: {
+        ...prevData.data,
+        [name]: value
+      }
+    }));
+  };
+
   return (
     <div>
       <div>
         <label>Cabin Class:</label>
-        <input type="text" value={cabinClass} onChange={(e) => setCabinClass(e.target.value)} />
+        <input type="text" name="cabin_class" value={postData.data.cabin_class} onChange={handleChange} />
       </div>
       <div>
         <label>Departure Date:</label>
-        <input type="text" value={departureDate} onChange={(e) => setDepartureDate(e.target.value)} />
+        <input type="text" name="departure_date" value={postData.data.slices[0].departure_date} onChange={handleChange} />
       </div>
       <div>
         <label>Destination:</label>
-        <input type="text" value={destination} onChange={(e) => setDestination(e.target.value)} />
+        <input type="text" name="destination" value={postData.data.slices[0].destination} onChange={handleChange} />
       </div>
       <div>
         <label>Origin:</label>
-        <input type="text" value={origin} onChange={(e) => setOrigin(e.target.value)} />
+        <input type="text" name="origin" value={postData.data.slices[0].origin} onChange={handleChange} />
       </div>
       <div>
         <label>Passenger Type:</label>
-        <input type="text" value={passengerType} onChange={(e) => setPassengerType(e.target.value)} />
+        <input type="text" name="type" value={postData.data.passengers[0].type} onChange={handleChange} />
       </div>
       <button onClick={handlePostRequest}>Send POST Request</button>
       {loading && <div>Loading...</div>}

@@ -6,11 +6,9 @@ require('dotenv').config();
 const axios = require('axios');
 const { Duffel } = require('@duffel/api');
 
-
-
 const app = express();
 app.use(cors()); // Enable CORS for all routes
-
+app.use(express.json()); // Middleware to parse JSON requests
 
 const base_url = 'https://api.content.tripadvisor.com/api/v1';
 
@@ -28,62 +26,10 @@ app.get('/api/nearby/places', async (req, res) => {
   }
 });
 
-
-// --url 'https://api.content.tripadvisor.com/api/v1/location/570101/reviews?language=en&key=' 
-
-app.get('/api/reviews', async (req, res) => {
-  const { location_Id} = req.query;
-  try {
-    // Fetch reviews data from the TripAdvisor API
-    const response = await fetch(`${base_url}/location/${location_Id}/reviews?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
-    const data = await response.json();
-    res.json(data); // Return the JSON data to the client
-    
-  } catch (error) {
-    console.error('Error fetching reviews:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
-app.get('/api/photos', async (req, res) => {
-  const { location_Id} = req.query;
-  try {
-    // Fetch reviews data from the TripAdvisor API
-    const response = await fetch(`${base_url}/location/${location_Id}/photos?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
-    const data = await response.json();
-    console.log('Photos data: ' + data);
-    res.json(data); // Return the JSON data to the client
-    
-  } catch (error) {
-    console.error('Error fetching reviews:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
-// POST endpoint to handle incoming requests from React component
-
-// Static post data
-const postData = {
-  data: {
-    cabin_class: 'economy',
-    slices: [
-      {
-        departure_date: '2024-04-09',
-        destination: 'WLG',
-        origin: 'AKL'
-      }
-    ],
-    passengers: [
-      {
-        type: 'adult'
-      }
-    ]
-  }
-};
-
-// Endpoint to handle POST request
+// Endpoint to handle POST request from React component
 app.post('/api/offer_requests', async (req, res) => {
   try {
+    const postData = req.body; // Access the data sent from the client
 
     // Check if postData is valid
     if (!postData) {
@@ -108,6 +54,17 @@ app.post('/api/offer_requests', async (req, res) => {
     res.status(500).json({ error: 'Error forwarding request' });
   }
 });
+
+// Serve the React app from the build directory
+app.use(express.static(path.join(__dirname, 'build')));
+
+// All other requests will be served the React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
 
@@ -203,16 +160,6 @@ app.post('/api/offer_requests', async (req, res) => {
 // });
 
 
-// Serve the React app from the build directory
-app.use(express.static(path.join(__dirname, 'build')));
-
-// All other requests will be served the React app
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
 //Example call App
