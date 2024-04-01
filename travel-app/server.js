@@ -36,8 +36,9 @@ app.post('/api/offer_requests', async (req, res) => {
       throw new Error('Invalid POST data');
     }
 
-    // Forward the POST request to the external API
-    const response = await axios.post('https://api.duffel.com/air/offer_requests', postData, {
+    // Forward the POST request to the external API using fetch
+    const response = await fetch('https://api.duffel.com/air/offer_requests', {
+      method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -45,9 +46,14 @@ app.post('/api/offer_requests', async (req, res) => {
         'Accept-Encoding': 'gzip',
         'Duffel-Version': 'v1'
       },
+      body: JSON.stringify(postData)
     });
 
-    const responseData = response.data;
+    if (!response.ok) {
+      throw new Error('Error forwarding request');
+    }
+
+    const responseData = await response.json();
     res.json(responseData);
   } catch (error) {
     console.error('Error forwarding request:', error.message);
