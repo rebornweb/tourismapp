@@ -23,10 +23,7 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <Box>
-        <Heading>Welcome to the Travel App</Heading>
-        <Text>Explore the world with our amazing travel recommendations!</Text>
-      </Box>
+  
       {/* Pass handleLocationChange function as prop to GoogleMaps */}
       {/* This is where the state is lifted up */}
       <GoogleMaps onLocationChange={handleLocationChange} />

@@ -25,11 +25,6 @@ const Navigation: FC = () => {
             Map
           </Text>
         </Link>
-        <Link to="/about">
-          <Text color="white" mr={4}>
-            About
-          </Text>
-        </Link>
         <Link to="/flights">
           <Text color="white" mr={4}>
             Flights

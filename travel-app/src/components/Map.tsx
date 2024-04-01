@@ -169,6 +169,7 @@ const GoogleMaps = ({ onLocationChange }) => {
       </div>
       <Input id="pac-input" type="text" placeholder="Enter a location" />
       <Checkbox id="use-location-bias" defaultChecked>Use location bias</Checkbox> 
+      <br></br>
       <Checkbox id="use-strict-bounds" defaultChecked>Use strict bounds</Checkbox> 
 
       <div id="infowindow-content">
