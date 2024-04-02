@@ -38,21 +38,32 @@ const Photos: React.FC<PhotosProps> = ({ locationId }) => {
   const side = useBreakpointValue({ base: '30%', md: '40px' })
 
   useEffect(() => {
-    // Fetch photos data from backend server based on the provided location ID
     const fetchPhotosFromBackend = async () => {
       try {
-        const photosResponse = await fetch(`${localApiUrl}/photos?location_Id=${locationId}`);
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+  
+        const photosResponse = await fetch(`${localApiUrl}/photos?location_Id=${locationId}`, {
+          method: 'GET',
+          headers: headers,
+        });
+  
         if (!photosResponse.ok) {
           throw new Error(`Failed to fetch photos: ${photosResponse.statusText}`);
         }
-        const photosData = await photosResponse.json(); // Parse JSON data
-        setPhotosData(photosData.data); // Update photosData state with fetched data from backend
+  
+        const contentType = photosResponse.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+          throw new Error('Response is not in JSON format');
+        }
+  
+        const photosData = await photosResponse.json();
+        setPhotosData(photosData.data);
       } catch (error) {
         console.error('Error fetching photos:', error);
         // Handle error, e.g., set an error state or display an error message
       }
     };
-
     fetchPhotosFromBackend(); // Call fetchPhotosFromBackend function when component mounts or when locationId changes
   }, [localApiUrl, locationId]); // Depend on localApiUrl and locationId changes
 
