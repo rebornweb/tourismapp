@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Box, Heading, Text, Image, Stack } from '@chakra-ui/react';
 
 const Flights: React.FC = () => {
   const [response, setResponse] = useState<any>(null);
@@ -65,11 +66,25 @@ const Flights: React.FC = () => {
       ...prevData,
       data: {
         ...prevData.data,
-        [name]: value
+        slices: [
+          {
+            ...prevData.data.slices[0],
+            [name]: value
+          }
+        ]
       }
     }));
   };
+  
+  
+  const { slices } = responseData?.data || {};
+const slicedata = slices?.[0];
+const destination = slices?.[0]?.destination;
+const origin = slices?.[0]?.origin;
 
+//Offers
+//const { offers } = responseData?.data || {};
+//const offersOwners = offers?.owner;
   return (
     <div>
       <div>
@@ -98,23 +113,37 @@ const Flights: React.FC = () => {
       {responseData && responseData.data ? (
           <div>
           <h1>Flight Details</h1>
-          <p>Departure Date: {responseData.data.slices[0]?.departure_date}</p>
-          <p>Destination: {responseData.data.slices[0]?.destination?.city_name}</p>
-          <p>Origin: {responseData.data.slices[0]?.origin?.city_name}</p>
-          <p>Airline: Jetstar Airways</p>
-          <p>Cabin Class: Economy</p>
-          <p>Baggage: 1 Carry-on</p>
-          <p>Total Amount: AUD 53.86</p>
-          {/* Add more flight details as needed */}
-        </div>
-      ) : (
-        <div>No flight details available</div>
-      )}
-    </div>
-  );
-};
+          <p>Departure Date: {slicedata?.departure_date}</p>
+          <p>Destination: {destination?.name}</p>
+          <p>Airport Destination: Long and Lat: {}</p>
+          <p>Origin: {origin?.name}</p>
+          <p>
+            Airport Origin Long and Lat: {destination?.longitude} {destination?.latitude}  
+          </p>
+          <h3>Offers</h3>
+          {responseData.data.offers.slice(0, 5).map((offer, index) => (
+      <div key={index}>
+        <p>Airline: {offer.owner.name}</p>
+        <Image src={offer?.owner.logo_symbol_url} borderRadius='full' boxSize='150px' />
+        <p>Cabin Class: {responseData?.data.cabin_class}</p>
+        <p>Baggage: 1 Carry-on</p>
+        <p>Total Amount: {offer?.base_currency} {offer?.base_amount}</p>
+        {/* Add more flight details as needed */}
+      </div>
+    ))}
+  </div>
+    ) : (
+      <div>No flight details available</div>
+    )}
+      </div>
+      );
+    };
 
 export default Flights;
+
+
+
+
 
 /*
 
