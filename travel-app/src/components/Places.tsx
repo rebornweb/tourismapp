@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Heading, Text, Select } from '@chakra-ui/react';
+import Details from './sub/Details';
 import Reviews from './sub/Reviews'; // Import the Reviews component
 import Photos from './sub/Photos';
 interface placeProps {
@@ -72,6 +73,7 @@ const Places: React.FC<placeProps> = ({ location }) => {
           <Text>Distance: {place.distance} miles</Text>
           <Text>Bearing: {place.bearing}</Text>
           <Text>Address: {place.address_obj.address_string}</Text>
+          <Details locationId={place.location_id}/>
           <Photos locationId={place.location_id}/>
           <Reviews locationId={place.location_id} />
         </Box>

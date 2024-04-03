@@ -12,7 +12,7 @@ app.use(express.json()); // Middleware to parse JSON requests
 
 const base_url = 'https://api.content.tripadvisor.com/api/v1';
 
-// Endpoint to fetch hotels data with category parameter
+// Endpoint to fetch places data with category parameter
 app.get('/api/nearby/places', async (req, res) => {
   const { lat, lng, category } = req.query;
   try {
@@ -22,6 +22,35 @@ app.get('/api/nearby/places', async (req, res) => {
     res.json(data); // Return the JSON data to the client
   } catch (error) {
     console.error('Error fetching hotels:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.get('/api/location/details', async (req, res) => {
+  const { location_Id } = req.query;
+  try {
+    // Fetch details data from the specified endpoint
+    const response = await fetch(`${base_url}/location/${location_Id}/details?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
+    const data = await response.json();
+    res.json(data); // Return the JSON data to the client
+    console.log('Server details:' + data);
+  } catch (error) {
+    console.error('Error fetching details:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
+app.get('/api/reviews', async (req, res) => {
+  const { location_Id } = req.query;
+  try {
+    // Fetch reviews data from the TripAdvisor API
+    const response = await fetch(`${base_url}/location/${location_Id}/reviews?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
+    const data = await response.json();
+    res.json(data); // Return the JSON data to the client
+
+  } catch (error) {
+    console.error('Error fetching reviews:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
@@ -61,19 +90,6 @@ app.post('/api/offer_requests', async (req, res) => {
   }
 });
 
-app.get('/api/reviews', async (req, res) => {
-  const { location_Id} = req.query;
-  try {
-    // Fetch reviews data from the TripAdvisor API
-    const response = await fetch(`${base_url}/location/${location_Id}/reviews?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
-    const data = await response.json();
-    res.json(data); // Return the JSON data to the client
-
-  } catch (error) {
-    console.error('Error fetching reviews:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
 
 app.get('/api/photos', async (req, res) => {
   const { location_Id} = req.query;
