@@ -37,9 +37,10 @@ const Details: React.FC<DetailsProps> = ({ locationId }) => {
   return (
     <div>
       <Heading as="h3" size="md">{detailsData.name}</Heading>
-      <Text>Description: {detailsData.description}</Text>
+      <Text>Address: {detailsData.address_obj.address_string}</Text>
       <Text>Rating: {detailsData.rating}</Text>
-      <Text>Address: {detailsData.address_string}</Text>
+      <Text>Description: {detailsData.description}</Text>
+           
       {/* Add more details as needed */}
     </div>
   );

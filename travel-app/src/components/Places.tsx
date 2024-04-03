@@ -68,11 +68,7 @@ const Places: React.FC<placeProps> = ({ location }) => {
       )}
       {placesData && placesData.length > 0 && placesData.map((place: any) => (
         <Box key={place.location_id} borderWidth="1px" borderRadius="lg" p="2">
-          <Heading as="h3" size="md">{place.name}</Heading>
-          <Text>LocationID: {place.location_id}</Text>
-          <Text>Distance: {place.distance} miles</Text>
-          <Text>Bearing: {place.bearing}</Text>
-          <Text>Address: {place.address_obj.address_string}</Text>
+
           <Details locationId={place.location_id}/>
           <Photos locationId={place.location_id}/>
           <Reviews locationId={place.location_id} />

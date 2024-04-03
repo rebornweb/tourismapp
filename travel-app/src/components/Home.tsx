@@ -26,6 +26,7 @@ const Home: React.FC = () => {
   
       {/* Pass handleLocationChange function as prop to GoogleMaps */}
       {/* This is where the state is lifted up */}
+      <Heading as='h4' size='md'>Plan Your Adventure</Heading>
       <GoogleMaps onLocationChange={handleLocationChange} />
       {/* The GoogleMaps component will call handleLocationChange when the location changes */}
       
