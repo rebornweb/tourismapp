@@ -31,8 +31,9 @@ const Photos: React.FC<PhotosProps> = ({ locationId }) => {
   const [slider, setSlider] = React.useState<Slider | null>(null)
   const localApiUrl = process.env.REACT_APP_LOCAL_API_URL;
   const [photosData, setPhotosData] = useState<any[]>([]); // State to store fetched photos data
+  const [isLoading, setIsLoading] = useState<boolean>(true); // State to track loading status
 
- // These are the breakpoints which changes the position of the
+  // These are the breakpoints which changes the position of the
   // buttons as the screen size changes
   const top = useBreakpointValue({ base: '90%', md: '50%' })
   const side = useBreakpointValue({ base: '30%', md: '40px' })
@@ -59,14 +60,31 @@ const Photos: React.FC<PhotosProps> = ({ locationId }) => {
   
         const photosData = await photosResponse.json();
         setPhotosData(photosData.data);
+        setIsLoading(false); // Set loading state to false once data is fetched
       } catch (error) {
         console.error('Error fetching photos:', error);
         // Handle error, e.g., set an error state or display an error message
+        setIsLoading(false); // Set loading state to false in case of error
       }
     };
     fetchPhotosFromBackend(); // Call fetchPhotosFromBackend function when component mounts or when locationId changes
   }, [localApiUrl, locationId]); // Depend on localApiUrl and locationId changes
 
+  if (isLoading) {
+    return (
+      <Box>
+        <Text>Loading...</Text>
+      </Box>
+    );
+  }
+
+  if (photosData.length === 0) {
+    return (
+      <Box>
+        <Text>No photos available.</Text>
+      </Box>
+    );
+  }
 
   return (
     <Box position={'relative'} height={'600px'} width={'full'} overflow={'hidden'}>
@@ -107,7 +125,7 @@ const Photos: React.FC<PhotosProps> = ({ locationId }) => {
         <BiRightArrowAlt size="40px" />
       </IconButton>
       {/* Slider */}
-      <Slider {...settings}ref={(slider) => setSlider(slider)}>
+      <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {photosData.map((photo: any) => (
           <Box
             key={photo.id}
@@ -130,7 +148,7 @@ const Photos: React.FC<PhotosProps> = ({ locationId }) => {
                  
                 </Heading>
                 <Text fontSize={{ base: 'md', lg: 'lg' }} color="GrayText">
-                {photo.caption}
+                  {photo.caption}
                 </Text>
               </Stack>
             </Container>
@@ -142,6 +160,3 @@ const Photos: React.FC<PhotosProps> = ({ locationId }) => {
 };
 
 export default Photos;
-
-
-//Ref https://chakra-templates.vercel.app/page-sections/carousels
