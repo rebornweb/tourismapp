@@ -63,7 +63,6 @@ jobs:
           echo "REACT_APP_GOOGLE_MAPS_API_KEY=${{ secrets.REACT_APP_GOOGLE_MAPS_API_KEY }}" >> $GITHUB_ENV
           echo "TRIPADVISOR_API_KEY_ENV=${{ secrets.TRIPADVISOR_API_KEY_ENV }}" >> $GITHUB_ENV
           echo "DUFFEL_API_KEY_ENV=${{ secrets.DUFFEL_API_KEY_ENV }}" >> $GITHUB_ENV
-          echo "RAPID_API_KEY_ENV=${{ secrets.RAPID_API_KEY_ENV }}" >> $GITHUB_ENV
           echo "OAG_API_KEY_ENV=${{ secrets.OAG_API_KEY_ENV }}" >> $GITHUB_ENV
           echo "REACT_APP_LOCAL_API_URL=${{ secrets.REACT_APP_LOCAL_API_URL }}" >> $GITHUB_ENV
 
