@@ -6,6 +6,7 @@ const Flights: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [responseData, setResponseData] = useState<any>(null); // State to store responseData
+  const localApiUrl = process.env.REACT_APP_LOCAL_API_URL;
 
   const [postData, setPostData] = useState<any>({
     data: {
@@ -28,6 +29,7 @@ const Flights: React.FC = () => {
   const handlePostRequest = async () => {
     setLoading(true);
     try {
+      console.log("localApiUrl:", localApiUrl);
       const requestOptions: RequestInit = {
         method: 'POST',
         headers: {
@@ -40,7 +42,7 @@ const Flights: React.FC = () => {
         body: JSON.stringify(postData),
       };
 
-      const response = await fetch('http://localhost:5000/api/offer_requests', requestOptions);
+      const response = await fetch(`${localApiUrl}/offer_requests`, requestOptions);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }

@@ -69,6 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+#Google Map API
 
 https://visgl.github.io/react-google-maps/examples/autocomplete
 
@@ -266,3 +267,5 @@ duffel.offerRequests.create({
   "max_connections": 0,
   "cabin_class": "economy"
 })
+
+#Deploy on App Service Azure, Express JS server has to be defined on top with the same port the App service server is listening to which is by default 8080.
