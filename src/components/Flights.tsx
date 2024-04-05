@@ -29,6 +29,7 @@ const Flights: React.FC = () => {
   const handlePostRequest = async () => {
     setLoading(true);
     try {
+      console.log("localApiUrl:", localApiUrl);
       const requestOptions: RequestInit = {
         method: 'POST',
         headers: {
