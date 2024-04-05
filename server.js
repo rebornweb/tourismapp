@@ -9,6 +9,8 @@ const { Duffel } = require('@duffel/api');
 const app = express();
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json()); // Middleware to parse JSON requests
+const PORT = process.env.PORT || 8080; // Define the port
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 const base_url = 'https://api.content.tripadvisor.com/api/v1';
 
@@ -114,8 +116,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
 
 
