@@ -1,4 +1,7 @@
-name: Build and deploy Node.js app to Azure Web App - slispace
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy Node.js app to Azure Web App - tourismapp
 
 on:
   push:
@@ -51,20 +54,18 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
       
-      - name: Set process.env.CI to false
-        run: echo 'export CI=false' >> $GITHUB_ENV
-
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_47834C86941A4D668D41A5329E6C4B82 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_2614F1D8547347FA80AF62083DD262CC }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_356BA8B2DA554BFFB0F36A137CCB4695 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_849EE681969D46B38024FDDA459F42EE }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_FEC0EE3155C2482DA5152AE90582B05F }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_86B30A8FC7AA43B68B2B924AEBD96748 }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'slispace'
+          app-name: 'tourismapp'
           slot-name: 'Production'
           package: .
+          
