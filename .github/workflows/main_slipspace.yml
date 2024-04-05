@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - tourismapp
+name: Build and deploy Node.js app to Azure Web App - slipspace
 
 on:
   push:
@@ -57,15 +57,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_849EE681969D46B38024FDDA459F42EE }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_FEC0EE3155C2482DA5152AE90582B05F }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_86B30A8FC7AA43B68B2B924AEBD96748 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_8D61FDF6CC7E404A98BC96270945C9F7 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D0F9FEB8912341D0A5A96465DB76B94E }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_4B37E3B0B485419C98F491DEA14A2506 }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'tourismapp'
+          app-name: 'slipspace'
           slot-name: 'Production'
           package: .
           
