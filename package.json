@@ -35,7 +35,6 @@
     "build": "CI=false && react-scripts build",
     "test": "react-scripts test --passWithNoTests",
     "eject": "react-scripts eject",
-    "prepack": "npm-run-all clean build",
     "clean": "rm -rf build"
   },
   "eslintConfig": {
