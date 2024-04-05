@@ -2,11 +2,17 @@ import React, { useEffect } from 'react';
 import { Input, Checkbox } from '@chakra-ui/react';
 
 const GoogleMaps = ({ onLocationChange }) => {
-  const initMap = () => {
+
+
+  const initMap = async () => {
+     const { Map, InfoWindow } = await google.maps.importLibrary("maps") as google.maps.MapsLibrary;
+    const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker") as google.maps.MarkerLibrary;
+
     const map = new google.maps.Map(document.getElementById("map")!, {
       center: { lat: 40.749933, lng: -73.98633 },
       zoom: 17,
       mapTypeControl: false,
+      mapId:'a26138f45e6ccac8',
     });
 
     const card = document.getElementById("pac-card")!;
@@ -41,7 +47,6 @@ const GoogleMaps = ({ onLocationChange }) => {
         map.fitBounds(place.geometry.viewport);
       } else {
         map.setCenter(place.geometry.location);
-        map.setZoom(17);
       }
     
       // Perform null check for place.geometry.location
@@ -49,7 +54,6 @@ const GoogleMaps = ({ onLocationChange }) => {
         marker.setPosition(place.geometry.location);
         marker.setVisible(true);
         map.setCenter(place.geometry.location);
-        map.setZoom(17);
       } else {
         console.error('No location found for the selected place');
       }
@@ -135,7 +139,6 @@ const GoogleMaps = ({ onLocationChange }) => {
               lng: position.coords.longitude,
             };
             map.setCenter(userLocation);
-            map.setZoom(10); // Adjust zoom level as needed
           },
           (error) => {
             console.error('Error getting user location:', error);
