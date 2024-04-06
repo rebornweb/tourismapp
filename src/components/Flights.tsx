@@ -7,6 +7,10 @@ const Flights: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [responseData, setResponseData] = useState<any>(null); // State to store responseData
   const localApiUrl = process.env.REACT_APP_LOCAL_API_URL;
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
   const [postData, setPostData] = useState<any>({
     data: {
       cabin_class: 'economy',
@@ -28,6 +32,7 @@ const Flights: React.FC = () => {
   const handlePostRequest = async () => {
     setLoading(true);
     try {
+      console.log("localApiUrl:", localApiUrl);
       const requestOptions: RequestInit = {
         method: 'POST',
         headers: {
