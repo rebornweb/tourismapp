@@ -5,14 +5,23 @@ const path = require('path');
 require('dotenv').config();
 const axios = require('axios');
 const { Duffel } = require('@duffel/api');
+const bodyParser = require('body-parser');
 
 const app = express();
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json()); // Middleware to parse JSON requests
+app.use(bodyParser.json());
+
 const PORT = process.env.PORT || 8080; // Define the port
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 const base_url = 'https://api.content.tripadvisor.com/api/v1';
+
+
+const duffel = new Duffel({
+  token: process.env.DUFFEL_API_KEY_ENV || '',
+  debug: { verbose: true },
+});
 
 // Endpoint to fetch places data with category parameter
 app.get('/api/nearby/places', async (req, res) => {
@@ -57,7 +66,7 @@ app.get('/api/reviews', async (req, res) => {
   }
 });
 
-// Endpoint to handle POST request from React component
+// This is the Manual way to the direct Endpoint using the default manual file
 app.post('/api/offer_requests', async (req, res) => {
   try {
     const postData = req.body; // Access the data sent from the client
@@ -89,6 +98,28 @@ app.post('/api/offer_requests', async (req, res) => {
   } catch (error) {
     console.error('Error forwarding request:', error.message);
     res.status(500).json({ error: 'Error forwarding request' });
+  }
+});
+
+// Request to retrieve an offer ID using the native Duffel import
+app.post('/api/duffel/offer_requests', async (req, res) => {
+  try {
+    const postData = req.body;
+
+    // Check if postData is valid
+    if (!postData) {
+      throw new Error('Invalid POST data');
+    }
+
+    // Forward the POST request to the Duffel API
+    const offerRequestResponse = await duffel.offerRequests.create(postData);
+
+    console.log('Server duffel response:', offerRequestResponse); // Log the Duffel API response
+
+    res.json(offerRequestResponse.data);
+  } catch (error) {
+    console.error('Error creating offer request:', error); // Log the error
+    res.status(500).json({ error: 'Error creating offer request' });
   }
 });
 
