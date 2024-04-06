@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Heading, Text, Image, Stack } from '@chakra-ui/react';
+import { Box, Heading, Text, Image, Stack, Card, CardHeader, CardBody, CardFooter, SimpleGrid } from '@chakra-ui/react';
 
 const Flights: React.FC = () => {
   const [response, setResponse] = useState<any>(null);
@@ -7,10 +7,8 @@ const Flights: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [responseData, setResponseData] = useState<any>(null); // State to store responseData
   const localApiUrl = process.env.REACT_APP_LOCAL_API_URL;
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/main
+
   const [postData, setPostData] = useState<any>({
     data: {
       cabin_class: 'economy',
@@ -51,7 +49,8 @@ const Flights: React.FC = () => {
       }
 
       const responseData = await response.json();
-      setResponse(responseData);
+      //setResponse(responseData);
+      console.log('Flight Reponse data: ',responseData);
       setResponseData(responseData); // Set responseData state
       console.log(responseData);
     } catch (error: unknown) {
@@ -113,6 +112,7 @@ const origin = slices?.[0]?.origin;
         <input type="text" name="type" value={postData.data.passengers[0].type} onChange={handleChange} />
       </div>
       <button onClick={handlePostRequest}>Send POST Request</button>
+      
       {loading && <div>Loading...</div>}
       {error && <div>Error: {error}</div>}
       {responseData && responseData.data ? (
@@ -126,30 +126,38 @@ const origin = slices?.[0]?.origin;
             Airport Origin Long and Lat: {destination?.longitude} {destination?.latitude}  
           </p>
           <h3>Offers</h3>
+          <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(400px, 1fr))'>
           {responseData.data.offers.slice(0, 5).map((offer, index) => (
-      <div key={index}>
-        <p>Airline: {offer.owner.name}</p>
-        <Image src={offer?.owner.logo_symbol_url} borderRadius='full' boxSize='150px' />
-        <p>Cabin Class: {responseData?.data.cabin_class}</p>
-        <p>Baggage: 1 Carry-on</p>
-        <p>Total Amount: {offer?.base_currency} {offer?.base_amount}</p>
-        {/* Add more flight details as needed */}
-      </div>
+     
+    
+      <Card key={index} variant='elevated'>
+            <CardHeader> Flight</CardHeader>
+            <CardBody>
+          <p>Airline: {offer.owner.name}</p>
+          <Image src={offer?.owner.logo_symbol_url} borderRadius='full' boxSize='150px' />
+          <p>Cabin Class: {responseData?.data.cabin_class}</p>
+          <p>Baggage: 1 Carry-on</p>
+          <p>Total Amount: {offer?.base_currency} {offer?.base_amount}</p>
+          {/* Add more flight details as needed */}
+        </CardBody>
+
+        <CardFooter>Have a nice trip</CardFooter>
+      </Card>
+      
     ))}
+    </SimpleGrid>
   </div>
-    ) : (
-      <div>No flight details available</div>
-    )}
+) : (
+  <div>No flight details available</div>
+)}
+      
+      
       </div>
       );
     };
 
-export default Flights;
 
-
-
-
-
+    export default Flights
 /*
 
 "data": {
@@ -162,7 +170,7 @@ export default Flights;
         "tax_id",
         "known_traveler_number",
         "passenger_redress_number"
-      ],
+      ],  
       "payment_requirements": {
         "requires_instant_payment": true,
         "price_guarantee_expires_at": null,
