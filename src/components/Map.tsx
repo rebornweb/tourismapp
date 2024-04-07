@@ -5,11 +5,9 @@ const GoogleMaps = ({ onLocationChange }) => {
 
 
   const initMap = async () => {
-     const { Map, InfoWindow } = await google.maps.importLibrary("maps") as google.maps.MapsLibrary;
-    const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker") as google.maps.MarkerLibrary;
 
     const map = new google.maps.Map(document.getElementById("map")!, {
-      center: { lat: 40.749933, lng: -73.98633 },
+    
       zoom: 17,
       mapTypeControl: false,
       mapId:'a26138f45e6ccac8',
@@ -163,6 +161,32 @@ const GoogleMaps = ({ onLocationChange }) => {
       }
     };
   }, []);
+
+  useEffect(() => {
+    // Center the map on the user's location when the page loads
+    const centerMapOnUserLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const userLocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+            // Call the onLocationChange callback with the user's location
+            onLocationChange(userLocation.lat, userLocation.lng);
+          },
+          (error) => {
+            console.error('Error getting user location:', error);
+          }
+        );
+      } else {
+        console.error('Geolocation is not supported by this browser.');
+      }
+    };
+
+    centerMapOnUserLocation();
+  }, [onLocationChange]);
+
 
   return (
     <div>

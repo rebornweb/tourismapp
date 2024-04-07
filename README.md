@@ -179,6 +179,12 @@ https://duffel.com/docs/api/overview/key-concepts
 https://www.postman.com/duffelhq/workspace/duffel/collection/15754339-f39d0236-5204-479f-91a1-f9832f7c0351
 https://duffel.com/docs/api/overview/test-mode/duffel-airways
 
+Stays
+https://www.postman.com/duffelhq/workspace/duffel/collection/16830459-f952ceaa-fcd9-425e-90a8-78de803b541d?action=share&creator=16830459
+
+Using Duffel Import 
+https://github.com/duffelhq/duffel-api-javascript/blob/main/README.md
+
 OAG
 https://developers.oag.com/
 

@@ -20,14 +20,14 @@ const Navigation: FC = () => {
             Home
           </Text>
         </Link>
-        <Link to="/map">
-          <Text color="white" mr={4}>
-            Map
-          </Text>
-        </Link>
         <Link to="/flights">
           <Text color="white" mr={4}>
             Flights
+          </Text>
+        </Link>
+        <Link to="/flightsmanual">
+          <Text color="white" mr={4}>
+            Flights Manual
           </Text>
         </Link>
       </Box>
