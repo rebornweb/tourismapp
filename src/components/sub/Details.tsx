@@ -1,22 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Heading, Text, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, IconButton, useBreakpointValue, Stack, Container } from '@chakra-ui/react';
-import Slider from "react-slick";
-import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
+import { Box, Heading, Text, useBreakpointValue, Container, Stack } from '@chakra-ui/react';
 
 interface DetailsProps {
   locationId: string;
-}
-
-
-const settings = {
-  dots: true,
-  arrows: false,
-  infinite: true,
-  autoplay: true,
-  speed: 500,
-  autoplaySpeed: 5000,
-  slidesToShow: 2,
-  slidesToScroll: 2,
 }
 
 const Details: React.FC<DetailsProps> = ({ locationId }) => {
@@ -25,13 +12,9 @@ const Details: React.FC<DetailsProps> = ({ locationId }) => {
   const photosUrl = `${localApiUrl}/photos?location_Id=${locationId}`;
 
   const [detailsData, setDetailsData] = useState<any>(null);
-  const [photosData, setPhotosData] = useState<any[]>([]);
+  const [photoData, setPhotoData] = useState<any | null>(null);
   const [isLoadingDetails, setIsLoadingDetails] = useState<boolean>(true);
-  const [isLoadingPhotos, setIsLoadingPhotos] = useState<boolean>(true);
-  const [slider, setSlider] = useState<Slider | null>(null);
-
-  const top = useBreakpointValue({ base: '90%', md: '50%' });
-  const side = useBreakpointValue({ base: '30%', md: '40px' });
+  const [isLoadingPhoto, setIsLoadingPhoto] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -42,7 +25,6 @@ const Details: React.FC<DetailsProps> = ({ locationId }) => {
         }
         const data = await response.json();
         setDetailsData(data);
-        console.log('Details data:',data);
         setIsLoadingDetails(false);
       } catch (error) {
         console.error('Error fetching Details:', error);
@@ -50,26 +32,28 @@ const Details: React.FC<DetailsProps> = ({ locationId }) => {
       }
     };
 
-    const fetchPhotos = async () => {
+    const fetchPhoto = async () => {
       try {
         const response = await fetch(photosUrl);
         if (!response.ok) {
-          throw new Error(`Failed to fetch photos: ${response.statusText}`);
+          throw new Error(`Failed to fetch photo: ${response.statusText}`);
         }
         const data = await response.json();
-        setPhotosData(data.data);
-        setIsLoadingPhotos(false);
+        if (data.data.length > 0) {
+          setPhotoData(data.data[0]); // Assuming the first photo in the array
+        }
+        setIsLoadingPhoto(false);
       } catch (error) {
-        console.error('Error fetching photos:', error);
-        setIsLoadingPhotos(false);
+        console.error('Error fetching photo:', error);
+        setIsLoadingPhoto(false);
       }
     };
 
     fetchDetails();
-    fetchPhotos();
+    fetchPhoto();
   }, [detailsUrl, photosUrl]);
 
-  if (isLoadingDetails || isLoadingPhotos) {
+  if (isLoadingDetails || isLoadingPhoto || !photoData) {
     return <Text>Loading...</Text>;
   }
 
@@ -82,70 +66,20 @@ const Details: React.FC<DetailsProps> = ({ locationId }) => {
         Description: {detailsData.description && detailsData.description.split('.').length >= 3 ? detailsData.description : 'Not available'}
       </Text>
 
+      {/* Your existing Details component content */}
+      <Link to={`/details/${locationId}`}>View More Details</Link>
 
-      
-      {/* Add more details as needed */}
-
-      <Box position={'relative'} height={'600px'} width={'full'} overflow={'hidden'}>
-        {/* CSS files for react-slick */}
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
-
-        {/* Left Icon */}
-        <IconButton
-          aria-label="left-arrow"
-          variant="ghost"
-          position="absolute"
-          left={side}
-          top={top}
-          transform={'translate(0%, -50%)'}
-          zIndex={2}
-          onClick={() => slider?.slickPrev()}>
-          <BiLeftArrowAlt size="40px" />
-        </IconButton>
-        {/* Right Icon */}
-        <IconButton
-          aria-label="right-arrow"
-          variant="ghost"
-          position="absolute"
-          right={side}
-          top={top}
-          transform={'translate(0%, -50%)'}
-          zIndex={2}
-          onClick={() => slider?.slickNext()}>
-          <BiRightArrowAlt size="40px" />
-        </IconButton>
-        {/* Slider */}
-        <Slider {...settings} ref={(slider) => setSlider(slider)}>
-          {photosData.map((photo: any) => (
-            <Box
-              key={photo.id}
-              height={'400px'}
-              position="relative"
-              backgroundPosition="center"
-              backgroundRepeat="no-repeat"
-              backgroundSize="cover"
-              backgroundImage={`url(${photo.images.large.url})`}>
-              <Container size="container.lg" height="600px" position="relative">
-                <Stack
-                  spacing={6}
-                  w={'full'}
-                  maxW={'lg'}
-                  position="absolute"
-                  top="50%"
-                  transform="translate(0, -50%)"
-                  color="white">
-                  <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-                    {/* Photo Heading */}
-                  </Heading>
-                  <Text fontSize={{ base: 'md', lg: 'lg' }} color="GrayText">
-                    {photo.caption}
-                  </Text>
-                </Stack>
-              </Container>
-            </Box>
-          ))}
-        </Slider>
+      <Box height={'400px'} position="relative" backgroundPosition="center" backgroundRepeat="no-repeat" backgroundSize="cover" backgroundImage={`url(${photoData.images.large.url})`}>
+        <Container size="container.lg" height="600px" position="relative">
+          <Stack spacing={6} w={'full'} maxW={'lg'} position="absolute" top="50%" transform="translate(0, -50%)" color="white">
+            <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
+              {photoData.heading}
+            </Heading>
+            <Text fontSize={{ base: 'md', lg: 'lg' }} color="GrayText">
+              {photoData.caption}
+            </Text>
+          </Stack>
+        </Container>
       </Box>
     </div>
   );
