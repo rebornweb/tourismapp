@@ -1,10 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Heading, Text, useBreakpointValue, Container, Stack } from '@chakra-ui/react';
+import { Box, Heading, Text, IconButton, useBreakpointValue, Container, Stack } from '@chakra-ui/react';
+import Slider from "react-slick";
+import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
 import { useParams } from 'react-router-dom';
 
 interface DetailsMoreProps {
   locationId?: string; // Make locationId optional
 }
+
+const settings = {
+  dots: true,
+  arrows: false,
+  infinite: true,
+  autoplay: true,
+  speed: 500,
+  autoplaySpeed: 5000,
+  slidesToShow: 2,
+  slidesToScroll: 2,
+};
 
 const DetailsMore: React.FC<DetailsMoreProps> = ({ locationId }) => {
   const { locationId: routeLocationId } = useParams<{ locationId: string }>();
@@ -27,7 +40,7 @@ const DetailsMore: React.FC<DetailsMoreProps> = ({ locationId }) => {
         }
         const data = await response.json();
         setDetailsData(data);
-        console.log('Details data:', data);
+        console.log('Details data:',data);
         setIsLoadingDetails(false);
       } catch (error) {
         console.error('Error fetching Details:', error);
@@ -54,16 +67,9 @@ const DetailsMore: React.FC<DetailsMoreProps> = ({ locationId }) => {
     fetchPhotos();
   }, [detailsUrl, photosUrl]);
 
-  useEffect(() => {
-    if (isLoadingDetails) {
-      document.title = 'Loading...'; // Show "Loading..." in the tab title while details are loading
-    } else if (detailsData) {
-      document.title = detailsData.name || 'Details'; // Update tab title with location name or fallback to 'Details'
-    }
-  }, [isLoadingDetails, detailsData]);
 
   if (isLoadingDetails) {
-    return <Text>Loading...</Text>; // Show loading text in the component until details are loaded
+    return <Text>Loading...</Text>;
   }
 
   return (
@@ -71,12 +77,14 @@ const DetailsMore: React.FC<DetailsMoreProps> = ({ locationId }) => {
       <Heading as="h3" size="md">{detailsData.name}</Heading>
       <Text>Address: {detailsData.address_obj.address_string}</Text>
       <Text>Rating: {detailsData.rating}</Text>
-
+            
       <Text>
         Description: {detailsData.description || 'Not available'}
       </Text>
 
-      <Box position={'relative'} height={'600px'} width={'full'} overflow={'hidden'}>
+   {/* Add more details as needed */}
+
+   <Box position={'relative'} height={'600px'} width={'full'} overflow={'hidden'}>
         {photosData.map((photo, index) => (
           <Box
             key={index}
