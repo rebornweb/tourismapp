@@ -270,7 +270,7 @@ app.get('*', (req, res) => {
 
 
 
-//Example call App
+//Example calls
 // http://localhost:5000/api/nearby/hotels?lat=37.7749&lng=-122.4194
 
 // Raw https://api.content.tripadvisor.com/api/v1/location/nearby_search?latLong=40.75886291350166%2C-73.98120403289795&category=hotels&language=en&key=key
