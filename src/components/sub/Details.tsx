@@ -57,17 +57,21 @@ const Details: React.FC<DetailsProps> = ({ locationId }) => {
     return <Text>Loading...</Text>;
   }
 
+
   return (
     <div>
       <Heading as="h3" size="md">{detailsData.name}</Heading>
-      <Text>Address: {detailsData.address_obj?.address_string}</Text>
+      <Text>Address: {detailsData.address_obj.address_string}</Text>
       <Text>Rating: {detailsData.rating}</Text>
       <Text>
         Description: {detailsData.description && detailsData.description.split('.').length >= 3 ? detailsData.description : 'Not available'}
       </Text>
 
-      {/* Your existing Details component content */}
-      <Link to={`/details/${locationId}`}>View More Details</Link>
+      {/* Your existing Details component content Open a new */}
+      <Link to={`/details/${locationId}`} target="_blank" rel="noopener noreferrer">
+        View More Details
+      </Link>
+
 
       <Box height={'400px'} position="relative" backgroundPosition="center" backgroundRepeat="no-repeat" backgroundSize="cover" backgroundImage={`url(${photoData.images.large.url})`}>
         <Container size="container.lg" height="600px" position="relative">
