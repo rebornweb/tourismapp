@@ -162,31 +162,6 @@ const GoogleMaps = ({ onLocationChange }) => {
     };
   }, []);
 
-  useEffect(() => {
-    // Center the map on the user's location when the page loads
-    const centerMapOnUserLocation = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const userLocation = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            };
-            // Call the onLocationChange callback with the user's location
-            onLocationChange(userLocation.lat, userLocation.lng);
-          },
-          (error) => {
-            console.error('Error getting user location:', error);
-          }
-        );
-      } else {
-        console.error('Geolocation is not supported by this browser.');
-      }
-    };
-
-    centerMapOnUserLocation();
-  }, [onLocationChange]);
-
 
   return (
     <div>

@@ -61,7 +61,7 @@ const Details: React.FC<DetailsProps> = ({ locationId }) => {
   return (
     <div>
       <Heading as="h3" size="md">{detailsData.name}</Heading>
-      <Text>Address: {detailsData.address_obj.address_string}</Text>
+      <Text>Address: {detailsData.address_obj?.address_string}</Text>
       <Text>Rating: {detailsData.rating}</Text>
       <Text>
         Description: {detailsData.description && detailsData.description.split('.').length >= 3 ? detailsData.description : 'Not available'}
