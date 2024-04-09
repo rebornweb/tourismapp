@@ -42,6 +42,7 @@ const DetailsMore: React.FC<DetailsMoreProps> = ({ locationId }) => {
           throw new Error(`Failed to fetch photos: ${response.statusText}`);
         }
         const data = await response.json();
+        console.log('Details more Photos data:', data);
         setPhotosData(data.data);
         setIsLoadingPhotos(false);
       } catch (error) {

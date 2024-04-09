@@ -28,23 +28,103 @@ app.get('/api/nearby/places', async (req, res) => {
   const { lat, lng, category } = req.query;
   try {
     // Fetch hotels data from the TripAdvisor API with category parameter
-    const response = await fetch(`${base_url}/location/nearby_search?latLong=${lat},${lng}&category=${category}&language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
-    const data = await response.json();
-    res.json(data); // Return the JSON data to the client
+    // const response = await fetch(`${base_url}/location/nearby_search?latLong=${lat},${lng}&category=${category}&language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
+    // const data = await response.json();
+
+    // Static nearby places data (commented out the previous fetch)
+    const staticData = {
+      "19990197": {
+        location_id: "19990197",
+        name: "sequence MIYASHITA PARK",
+        distance: "0.14113005212864138",
+        bearing: "northwest",
+        address_obj: {
+          street1: "_6-20-10 Jingumae",
+          street2: "MIYASHITA PARK North 4F",
+          city: "Shibuya",
+          state: "Tokyo Prefecture",
+          country: "Japan",
+          postalcode: "150-0001",
+          address_string: "_6-20-10 Jingumae MIYASHITA PARK North 4F, Shibuya 150-0001 Tokyo Prefecture"
+        }
+      },
+      "479494": {
+        location_id: "479494",
+        name: "Shibuya Tokyu REI Hotel",
+        distance: "0.15305531601241826",
+        bearing: "southwest",
+        address_obj: {
+          street1: "1-24-10 Shibuya",
+          street2: "",
+          city: "Shibuya",
+          state: "Tokyo Prefecture",
+          country: "Japan",
+          postalcode: "150-0002",
+          address_string: "1-24-10 Shibuya, Shibuya 150-0002 Tokyo Prefecture"
+        }
+      }
+      // Add more static nearby places as needed
+    };
+    
+    // res.json(data); // Return the fetched JSON data to the client
+    res.json(staticData); // Return the static JSON data to the client
+
+    console.log('Nearby Trip Advisor data:', staticData);
   } catch (error) {
     console.error('Error fetching hotels:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
 
+
 app.get('/api/location/details', async (req, res) => {
   const { location_Id } = req.query;
   try {
     // Fetch details data from the specified endpoint
-    const response = await fetch(`${base_url}/location/${location_Id}/details?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
-    const data = await response.json();
-    res.json(data); // Return the JSON data to the client
-    console.log('Server details:' + data);
+    // const response = await fetch(`${base_url}/location/${location_Id}/details?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
+    // const data = await response.json();
+
+    // Static client details data (commented out the previous fetch)
+    const staticData = {
+      location_id: "12389531",
+      name: "Trunk(Hotel)",
+      description: "TRUNK (HOTEL) is the transmission point of a new style of social contribution called . is \"to live true to yourself, without undue pressure, but with a life-sized social purpose.\" Hotel interior and design.Amenities and minibar in the rooms.Items, which can be purchased at the store, the takeout coffee··· Here exists various schemes that allow you to experience socializing. It is a hotel for all people who are living the “now”, and whose desires are to “be of help to someone” and to “do something for a reason”.",
+      web_url: "https://www.tripadvisor.com/Hotel_Review-g1066456-d12389531-Reviews-Trunk_Hotel-Shibuya_Tokyo_Tokyo_Prefecture_Kanto.html?m=66827",
+      address_obj: {
+        street1: "5-31 Jingumae",
+        city: "Shibuya",
+        state: "Tokyo Prefecture",
+        country: "Japan",
+        postalcode: "150-0001",
+        address_string: "5-31 Jingumae, Shibuya 150-0001 Tokyo Prefecture"
+      },
+      ancestors: [
+        {
+          level: "Municipality",
+          name: "Shibuya",
+          location_id: "1066456"
+        },
+        // Add more ancestors as needed
+      ],
+      latitude: "35.664204",
+      longitude: "139.70392",
+      timezone: "Asia/Tokyo",
+      write_review: "https://www.tripadvisor.com/UserReview-g1066456-d12389531-Trunk_Hotel-Shibuya_Tokyo_Tokyo_Prefecture_Kanto.html?m=66827",
+      ranking_data: {
+        geo_location_id: "1066456",
+        ranking_string: "#23 of 39 hotels in Shibuya",
+        geo_location_name: "Shibuya",
+        ranking_out_of: "39",
+        ranking: "23"
+      },
+      rating: "3.5",
+      // Add more fields as needed
+    };
+
+    // res.json(data); // Return the fetched JSON data to the client
+    res.json(staticData); // Return the static JSON data to the client
+
+    console.log('Server Location Id Trip Advisor details:' + staticData);
   } catch (error) {
     console.error('Error fetching details:', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -52,34 +132,131 @@ app.get('/api/location/details', async (req, res) => {
 });
 
 
+
 app.get('/api/reviews', async (req, res) => {
   const { location_Id } = req.query;
   try {
     // Fetch reviews data from the TripAdvisor API
-    const response = await fetch(`${base_url}/location/${location_Id}/reviews?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
-    const data = await response.json();
-    res.json(data); // Return the JSON data to the client
+    // const response = await fetch(`${base_url}/location/${location_Id}/reviews?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
+    // const data = await response.json();
 
+    // Static reviews data (commented out the previous fetch)
+    const staticData = {
+      data: [
+        {
+          id: 940263107,
+          lang: "en",
+          location_id: 12389531,
+          published_date: "2024-02-29T22:40:02Z",
+          rating: 5,
+          helpful_votes: 0,
+          rating_image_url: "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+          url: "https://www.tripadvisor.com/ShowUserReviews-g1066456-d12389531-r940263107-Reviews-Trunk_Hotel-Shibuya_Tokyo_Tokyo_Prefecture_Kanto.html?m=66827#review940263107",
+          text: "Just love this place. It's so unique.  From the pajamas to the drink's in the fridge.  I also loved the vegan breakfast in the restaurant.  They were also really great to my son when I had to step out for a meeting.  We  will definitely go back.  The location is great too.",
+          title: "Stay here",
+          trip_type: "Family",
+          travel_date: "2023-07-31",
+          user: {
+            username: "BenLookingQC",
+            user_location: {
+              id: "298450",
+              name: "Makati, Metro Manila, Luzon"
+            },
+            avatar: {
+              thumbnail: "https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/e9/60/default-avatar-2020-64.jpg",
+              small: "https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/e9/60/default-avatar-2020-64.jpg",
+              medium: "https://media-cdn.tripadvisor.com/media/photo-f/1a/f6/e9/60/default-avatar-2020-64.jpg",
+              large: "https://media-cdn.tripadvisor.com/media/photo-p/1a/f6/e9/60/default-avatar-2020-64.jpg",
+              original: "https://media-cdn.tripadvisor.com/media/photo-o/1a/f6/e9/60/default-avatar-2020-64.jpg"
+            }
+          },
+          subratings: {
+            "0": {
+              name: "RATE_VALUE",
+              rating_image_url: "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s4.0-66827-5.svg",
+              value: 4,
+              localized_name: "Value"
+            },
+            "1": {
+              name: "RATE_LOCATION",
+              rating_image_url: "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+              value: 5,
+              localized_name: "Location"
+            },
+            "2": {
+              name: "RATE_SERVICE",
+              rating_image_url: "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+              value: 5,
+              localized_name: "Service"
+            }
+          }
+        },
+        // Add more static review data as needed
+      ]
+    };
+
+    // res.json(data); // Return the fetched JSON data to the client
+    res.json(staticData); // Return the static JSON data to the client
+
+    console.log('Server Reviews data', staticData);
   } catch (error) {
     console.error('Error fetching reviews:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
 
 app.get('/api/photos', async (req, res) => {
-  const { location_Id} = req.query;
+  const { location_Id } = req.query;
   try {
-    // Fetch reviews data from the TripAdvisor API
-    const response = await fetch(`${base_url}/location/${location_Id}/photos?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
-    const data = await response.json();
-    console.log('Photos data: ' + data);
-    res.json(data); // Return the JSON data to the client
+    // Simulating fetching data from an API
+       // Fetch reviews data from the TripAdvisor API
+      // const response = await fetch(`${base_url}/location/${location_Id}/photos?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
+      // const data = await response.json();
+    // Static data
+    const staticData = {
+      data: [
+        {
+          id: 123456789,
+          caption: "Static Image 1",
+          images: {
+            thumbnail: {
+              height: 50,
+              width: 50,
+              url: "https://media-cdn.tripadvisor.com/media/photo-t/10/53/64/aa/lobby--v17159715.jpg"
+            },
+            medium: {
+              height: 200,
+              width: 300,
+              url: "https://media-cdn.tripadvisor.com/media/oyster/550/10/53/64/aa/lobby--v17159715.jpg"
+            },
+            original: {
+              height: 800,
+              width: 1200,
+              url: "hhttps://media-cdn.tripadvisor.com/media/oyster/2600/10/53/64/aa/lobby--v17159715.jpg"
+            }
+          },
+          album: "Static Album",
+          source: {
+            name: "Static Source",
+            localized_name: "Static Source"
+          }
+        },
+        // Add more static data objects as needed
+      ]
+    };
+   
+    // res.json(data); // Return the combined JSON data to the client
+
+    // Instead, send only static data as the response
+    res.json(staticData);
 
   } catch (error) {
-    console.error('Error fetching reviews:', error);
+    console.error('Error fetching or combining data:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
 
 // This is the Manual way to the direct Endpoint using the default manual file
 app.post('/api/offer_requests', async (req, res) => {

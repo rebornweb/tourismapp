@@ -24,6 +24,7 @@ const Details: React.FC<DetailsProps> = ({ locationId }) => {
           throw new Error(`Failed to fetch Details: ${response.statusText}`);
         }
         const data = await response.json();
+        console.log('Client Details data:', data);
         setDetailsData(data);
         setIsLoadingDetails(false);
       } catch (error) {

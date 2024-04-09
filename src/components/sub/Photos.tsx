@@ -59,16 +59,16 @@ const Photos: React.FC<PhotosProps> = ({ locationId }) => {
         }
   
         const photosData = await photosResponse.json();
+        console.log('Client Photos data:', photosData); 
         setPhotosData(photosData.data);
         setIsLoading(false); // Set loading state to false once data is fetched
       } catch (error) {
         console.error('Error fetching photos:', error);
-        // Handle error, e.g., set an error state or display an error message
         setIsLoading(false); // Set loading state to false in case of error
       }
     };
-    fetchPhotosFromBackend(); // Call fetchPhotosFromBackend function when component mounts or when locationId changes
-  }, [localApiUrl, locationId]); // Depend on localApiUrl and locationId changes
+    fetchPhotosFromBackend();
+  }, [localApiUrl, locationId]);
 
   if (isLoading) {
     return (

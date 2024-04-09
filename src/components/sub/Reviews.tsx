@@ -19,6 +19,7 @@ const Reviews: React.FC<ReviewsProps> = ({ locationId }) => {
           throw new Error(`Failed to fetch reviews: ${response.statusText}`);
         }
         const data = await response.json(); // Parse JSON data
+        console.log('Client Reviews data:', data);
         setReviewsData(data.data); // Update reviewsData state with fetched data from backend
       } catch (error) {
         console.error('Error fetching reviews:', error);

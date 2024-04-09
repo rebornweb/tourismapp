@@ -29,6 +29,7 @@ const Places: React.FC<placeProps> = ({ location }) => {
         const contentType = response.headers.get('content-type');
         if (contentType && contentType.includes('application/json')) {
           const data = await response.json(); // Parse JSON data
+          console.log('Client Places data:', data);
           if (data.data && data.data.length > 0) {
             const sortedData = data.data.sort((a: any, b: any) => a.distance - b.distance);
             setplacesData(sortedData); // Update placesData state with sorted data from backend

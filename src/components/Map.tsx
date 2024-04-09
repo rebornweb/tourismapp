@@ -100,7 +100,7 @@ const GoogleMaps = ({ onLocationChange }) => {
       const latLng = e.latLng;
       const lat = latLng.lat();
       const lng = latLng.lng();
-      console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+      //console.log(`Latitude: ${lat}, Longitude: ${lng}`);
     
       // Update marker position
       marker.setPosition(latLng);

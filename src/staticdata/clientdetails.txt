@@ -1,0 +1,387 @@
+//Client Details
+
+{
+    "location_id": "12389531",
+    "name": "Trunk(Hotel)",
+    "description": "TRUNK (HOTEL) is the transmission point of a new style of social contribution called . is \"to live true to yourself, without undue pressure, but with a life-sized social purpose.\" Hotel interior and design.Amenities and minibar in the rooms.Items, which can be purchased at the store, the takeout coffee··· Here exists various schemes that allow you to experience socializing. It is a hotel for all people who are living the “now”, and whose desires are to “be of help to someone” and to “do something for a reason”.",
+    "web_url": "https://www.tripadvisor.com/Hotel_Review-g1066456-d12389531-Reviews-Trunk_Hotel-Shibuya_Tokyo_Tokyo_Prefecture_Kanto.html?m=66827",
+    "address_obj": {
+        "street1": "5-31 Jingumae",
+        "city": "Shibuya",
+        "state": "Tokyo Prefecture",
+        "country": "Japan",
+        "postalcode": "150-0001",
+        "address_string": "5-31 Jingumae, Shibuya 150-0001 Tokyo Prefecture"
+    },
+    "ancestors": [
+        {
+            "level": "Municipality",
+            "name": "Shibuya",
+            "location_id": "1066456"
+        },
+        {
+            "level": "Region",
+            "name": "Tokyo",
+            "location_id": "298184"
+        },
+        {
+            "level": "State",
+            "name": "Tokyo Prefecture",
+            "location_id": "1023181"
+        },
+        {
+            "level": "Region",
+            "name": "Kanto",
+            "location_id": "298156"
+        },
+        {
+            "level": "Country",
+            "name": "Japan",
+            "location_id": "294232"
+        }
+    ],
+    "latitude": "35.664204",
+    "longitude": "139.70392",
+    "timezone": "Asia/Tokyo",
+    "write_review": "https://www.tripadvisor.com/UserReview-g1066456-d12389531-Trunk_Hotel-Shibuya_Tokyo_Tokyo_Prefecture_Kanto.html?m=66827",
+    "ranking_data": {
+        "geo_location_id": "1066456",
+        "ranking_string": "#23 of 39 hotels in Shibuya",
+        "geo_location_name": "Shibuya",
+        "ranking_out_of": "39",
+        "ranking": "23"
+    },
+    "rating": "3.5",
+    "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/3.5-66827-5.svg",
+    "num_reviews": "62",
+    "review_rating_count": {
+        "1": "12",
+        "2": "2",
+        "3": "5",
+        "4": "14",
+        "5": "29"
+    },
+    "subratings": {
+        "0": {
+            "name": "rate_location",
+            "localized_name": "Location",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.5.svg",
+            "value": "4.5"
+        },
+        "1": {
+            "name": "rate_sleep",
+            "localized_name": "Sleep Quality",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.5.svg",
+            "value": "4.5"
+        },
+        "2": {
+            "name": "rate_room",
+            "localized_name": "Rooms",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss3.5.svg",
+            "value": "3.5"
+        },
+        "3": {
+            "name": "rate_service",
+            "localized_name": "Service",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.5.svg",
+            "value": "4.5"
+        },
+        "4": {
+            "name": "rate_value",
+            "localized_name": "Value",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.0.svg",
+            "value": "4.0"
+        },
+        "5": {
+            "name": "rate_cleanliness",
+            "localized_name": "Cleanliness",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss3.5.svg",
+            "value": "3.5"
+        }
+    },
+    "photo_count": "164",
+    "see_all_photos": "https://www.tripadvisor.com/Hotel_Review-g1066456-d12389531-m66827-Reviews-Trunk_Hotel-Shibuya_Tokyo_Tokyo_Prefecture_Kanto.html#photos",
+    "price_level": "$$$$",
+    "amenities": [
+        "Internet",
+        "Suites",
+        "Free Internet",
+        "Wheelchair access",
+        "Restaurant",
+        "Bar/Lounge",
+        "Wifi",
+        "Public Wifi",
+        "Free Wifi",
+        "Meeting rooms",
+        "Concierge",
+        "Banquet Room",
+        "Air conditioning",
+        "Family Rooms",
+        "Multilingual Staff",
+        "Conference Facilities",
+        "Safe",
+        "Housekeeping",
+        "Coffee Shop",
+        "Japanese",
+        "Kids Activities",
+        "Room service",
+        "Hot Tub",
+        "Non-smoking rooms",
+        "Laundry Service",
+        "Refrigerator in room",
+        "Minibar",
+        "Non-smoking hotel",
+        "Flatscreen TV",
+        "Private Balcony",
+        "Breakfast Available",
+        "Kids Stay Free",
+        "Air Purifier",
+        "Bath / Shower",
+        "Bathrobes",
+        "Bicycle Rental",
+        "Bottled Water",
+        "24-Hour Check-in",
+        "Clothes Rack",
+        "Complimentary Tea",
+        "Currency Exchange",
+        "Doorperson",
+        "Electric Kettle",
+        "English",
+        "Complimentary Instant Cofffee",
+        "24-Hour Front Desk",
+        "Korean",
+        "Portuguese",
+        "Paid Public Parking Nearby",
+        "Shops",
+        "Sofa",
+        "Taxi Service",
+        "Umbrella",
+        "Yoga Classes"
+    ],
+    "category": {
+        "name": "hotel",
+        "localized_name": "Hotel"
+    },
+    "subcategory": [
+        {
+            "name": "hotel",
+            "localized_name": "Hotel"
+        }
+    ],
+    "styles": [
+        "Trendy",
+        "Charming"
+    ],
+    "neighborhood_info": [
+        {
+            "location_id": "7278771",
+            "name": "Shibuya / Harajuku / Ebisu"
+        }
+    ],
+    "trip_types": [
+        {
+            "name": "business",
+            "localized_name": "Business",
+            "value": "10"
+        },
+        {
+            "name": "couples",
+            "localized_name": "Couples",
+            "value": "10"
+        },
+        {
+            "name": "solo",
+            "localized_name": "Solo travel",
+            "value": "7"
+        },
+        {
+            "name": "family",
+            "localized_name": "Family",
+            "value": "10"
+        },
+        {
+            "name": "friends",
+            "localized_name": "Friends getaway",
+            "value": "15"
+        }
+    ],
+    "awards": []
+}
+
+{
+    "location_id": "19990197",
+    "name": "sequence MIYASHITA PARK",
+    "description": "渋谷の新しいランドマークとなるMIYASHITA PARKに直結する次世代ライフスタイルホテル『sequence MIYASHITA PARK』、「smart」「open」「cultur」をキーワードに自由な時間を過ごせるホテルを目指します。",
+    "web_url": "https://www.tripadvisor.com/Hotel_Review-g1066456-d19990197-Reviews-Sequence_MIYASHITA_PARK-Shibuya_Tokyo_Tokyo_Prefecture_Kanto.html?m=66827",
+    "address_obj": {
+        "street1": "_6-20-10 Jingumae",
+        "street2": "MIYASHITA PARK North 4F",
+        "city": "Shibuya",
+        "state": "Tokyo Prefecture",
+        "country": "Japan",
+        "postalcode": "150-0001",
+        "address_string": "_6-20-10 Jingumae MIYASHITA PARK North 4F, Shibuya 150-0001 Tokyo Prefecture"
+    },
+    "ancestors": [
+        {
+            "level": "Municipality",
+            "name": "Shibuya",
+            "location_id": "1066456"
+        },
+        {
+            "level": "Region",
+            "name": "Tokyo",
+            "location_id": "298184"
+        },
+        {
+            "level": "State",
+            "name": "Tokyo Prefecture",
+            "location_id": "1023181"
+        },
+        {
+            "level": "Region",
+            "name": "Kanto",
+            "location_id": "298156"
+        },
+        {
+            "level": "Country",
+            "name": "Japan",
+            "location_id": "294232"
+        }
+    ],
+    "latitude": "35.663223",
+    "longitude": "139.70181",
+    "timezone": "Asia/Tokyo",
+    "write_review": "https://www.tripadvisor.com/UserReview-g1066456-d19990197-Sequence_MIYASHITA_PARK-Shibuya_Tokyo_Tokyo_Prefecture_Kanto.html?m=66827",
+    "ranking_data": {
+        "geo_location_id": "1066456",
+        "ranking_string": "#25 of 39 hotels in Shibuya",
+        "geo_location_name": "Shibuya",
+        "ranking_out_of": "39",
+        "ranking": "25"
+    },
+    "rating": "4.0",
+    "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.0-66827-5.svg",
+    "num_reviews": "24",
+    "review_rating_count": {
+        "1": "2",
+        "2": "2",
+        "3": "2",
+        "4": "12",
+        "5": "6"
+    },
+    "subratings": {
+        "0": {
+            "name": "rate_location",
+            "localized_name": "Location",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.5.svg",
+            "value": "4.5"
+        },
+        "1": {
+            "name": "rate_sleep",
+            "localized_name": "Sleep Quality",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss3.5.svg",
+            "value": "3.5"
+        },
+        "2": {
+            "name": "rate_room",
+            "localized_name": "Rooms",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.0.svg",
+            "value": "4.0"
+        },
+        "3": {
+            "name": "rate_service",
+            "localized_name": "Service",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss3.5.svg",
+            "value": "3.5"
+        },
+        "4": {
+            "name": "rate_value",
+            "localized_name": "Value",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss3.5.svg",
+            "value": "3.5"
+        },
+        "5": {
+            "name": "rate_cleanliness",
+            "localized_name": "Cleanliness",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.0.svg",
+            "value": "4.0"
+        }
+    },
+    "photo_count": "192",
+    "see_all_photos": "https://www.tripadvisor.com/Hotel_Review-g1066456-d19990197-m66827-Reviews-Sequence_MIYASHITA_PARK-Shibuya_Tokyo_Tokyo_Prefecture_Kanto.html#photos",
+    "price_level": "$$$",
+    "amenities": [
+        "Suites",
+        "Free Internet",
+        "Bar/Lounge",
+        "Wifi",
+        "Air conditioning",
+        "Safe",
+        "Restaurant",
+        "Free Wifi",
+        "Non-smoking rooms",
+        "Self-Serve Laundry",
+        "Flatscreen TV",
+        "Breakfast Available",
+        "Bath / Shower",
+        "Bottled Water",
+        "Coffee Shop",
+        "English",
+        "Complimentary Toiletries",
+        "Hair Dryer",
+        "Japanese",
+        "Landmark View",
+        "Telephone",
+        "VIP Room Facilities",
+        "Wake Up Service / Alarm Clock"
+    ],
+    "category": {
+        "name": "hotel",
+        "localized_name": "Hotel"
+    },
+    "subcategory": [
+        {
+            "name": "hotel",
+            "localized_name": "Hotel"
+        }
+    ],
+    "styles": [
+        "Quaint",
+        "Business"
+    ],
+    "neighborhood_info": [
+        {
+            "location_id": "7278771",
+            "name": "Shibuya / Harajuku / Ebisu"
+        }
+    ],
+    "trip_types": [
+        {
+            "name": "business",
+            "localized_name": "Business",
+            "value": "3"
+        },
+        {
+            "name": "couples",
+            "localized_name": "Couples",
+            "value": "6"
+        },
+        {
+            "name": "solo",
+            "localized_name": "Solo travel",
+            "value": "1"
+        },
+        {
+            "name": "family",
+            "localized_name": "Family",
+            "value": "5"
+        },
+        {
+            "name": "friends",
+            "localized_name": "Friends getaway",
+            "value": "3"
+        }
+    ],
+    "awards": []
+}
