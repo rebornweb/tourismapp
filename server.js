@@ -33,38 +33,154 @@ app.get('/api/nearby/places', async (req, res) => {
 
     // Static nearby places data (commented out the previous fetch)
     const staticData = {
-      "19990197": {
-        location_id: "19990197",
-        name: "sequence MIYASHITA PARK",
-        distance: "0.14113005212864138",
-        bearing: "northwest",
-        address_obj: {
-          street1: "_6-20-10 Jingumae",
-          street2: "MIYASHITA PARK North 4F",
-          city: "Shibuya",
-          state: "Tokyo Prefecture",
-          country: "Japan",
-          postalcode: "150-0001",
-          address_string: "_6-20-10 Jingumae MIYASHITA PARK North 4F, Shibuya 150-0001 Tokyo Prefecture"
-        }
-      },
-      "479494": {
-        location_id: "479494",
-        name: "Shibuya Tokyu REI Hotel",
-        distance: "0.15305531601241826",
-        bearing: "southwest",
-        address_obj: {
-          street1: "1-24-10 Shibuya",
-          street2: "",
-          city: "Shibuya",
-          state: "Tokyo Prefecture",
-          country: "Japan",
-          postalcode: "150-0002",
-          address_string: "1-24-10 Shibuya, Shibuya 150-0002 Tokyo Prefecture"
-        }
-      }
-      // Add more static nearby places as needed
-    };
+      "data": [
+          {
+              "location_id": "299048",
+              "name": "Ambassador Motor Inn",
+              "distance": "0.20062318028458978",
+              "bearing": "south",
+              "address_obj": {
+                  "street1": "180 Gladstone Rd",
+                  "street2": "South Brisbane",
+                  "city": "Brisbane",
+                  "state": "Queensland",
+                  "country": "Australia",
+                  "postalcode": "4101",
+                  "address_string": "180 Gladstone Rd South Brisbane, Brisbane, Queensland 4101 Australia"
+              }
+          },
+          {
+              "location_id": "256668",
+              "name": "Hotel Diana",
+              "distance": "0.5127826780447526",
+              "bearing": "northeast",
+              "address_obj": {
+                  "street1": "12 Annerley Rd",
+                  "street2": "Woolloongabba",
+                  "city": "Brisbane",
+                  "state": "Queensland",
+                  "country": "Australia",
+                  "postalcode": "4102",
+                  "address_string": "12 Annerley Rd Woolloongabba, Brisbane, Queensland 4102 Australia"
+              }
+          },
+          {
+              "location_id": "23898089",
+              "name": "Peak Apartments",
+              "distance": "0.566437534970521",
+              "bearing": "northeast",
+              "address_obj": {
+                  "street1": "218 Vulture Street",
+                  "city": "Brisbane",
+                  "state": "Queensland",
+                  "country": "Australia",
+                  "postalcode": "4101",
+                  "address_string": "218 Vulture Street, Brisbane, Queensland 4101 Australia"
+              }
+          },
+          {
+              "location_id": "23144750",
+              "name": "Courtyard by Marriott Brisbane South Bank",
+              "distance": "0.5834593715064114",
+              "bearing": "northeast",
+              "address_obj": {
+                  "street1": "218 Vulture Street",
+                  "city": "Brisbane",
+                  "state": "Queensland",
+                  "country": "Australia",
+                  "postalcode": "4101",
+                  "address_string": "218 Vulture Street, Brisbane, Queensland 4101 Australia"
+              }
+          },
+          {
+              "location_id": "10335467",
+              "name": "Menso at Southbank",
+              "distance": "0.5946333024866973",
+              "bearing": "north",
+              "address_obj": {
+                  "street1": "68 Cordelia St",
+                  "city": "Brisbane",
+                  "state": "Queensland",
+                  "country": "Australia",
+                  "postalcode": "4101",
+                  "address_string": "68 Cordelia St, Brisbane, Queensland 4101 Australia"
+              }
+          },
+          {
+              "location_id": "13993553",
+              "name": "Emporium Hotel South Bank",
+              "distance": "0.6010830044839831",
+              "bearing": "north",
+              "address_obj": {
+                  "street1": "267 Grey Street",
+                  "city": "Brisbane",
+                  "state": "Queensland",
+                  "country": "Australia",
+                  "postalcode": "4101",
+                  "address_string": "267 Grey Street, Brisbane, Queensland 4101 Australia"
+              }
+          },
+          {
+              "location_id": "256665",
+              "name": "Central Hillcrest Apartments",
+              "distance": "0.6368217456699429",
+              "bearing": "northeast",
+              "address_obj": {
+                  "street1": "Hillcrest Central Apartments 311 Vulture St",
+                  "street2": "",
+                  "city": "Brisbane",
+                  "state": "Queensland",
+                  "country": "Australia",
+                  "postalcode": "4101",
+                  "address_string": "Hillcrest Central Apartments 311 Vulture St, Brisbane, Queensland 4101 Australia"
+              }
+          },
+          {
+              "location_id": "584130",
+              "name": "Mantra South Bank Brisbane",
+              "distance": "0.822210694867177",
+              "bearing": "north",
+              "address_obj": {
+                  "street1": "161 Grey St",
+                  "street2": "South Bank",
+                  "city": "Brisbane",
+                  "state": "Queensland",
+                  "country": "Australia",
+                  "postalcode": "4101",
+                  "address_string": "161 Grey St South Bank, Brisbane, Queensland 4101 Australia"
+              }
+          },
+          {
+              "location_id": "289422",
+              "name": "Rydges South Bank Brisbane",
+              "distance": "0.8718504587098178",
+              "bearing": "north",
+              "address_obj": {
+                  "street1": "Rydges Southbank 9 Glenelg St",
+                  "street2": "South Brisbane",
+                  "city": "Brisbane",
+                  "state": "Queensland",
+                  "country": "Australia",
+                  "postalcode": "4101",
+                  "address_string": "Rydges Southbank 9 Glenelg St South Brisbane, Brisbane, Queensland 4101 Australia"
+              }
+          },
+          {
+              "location_id": "13839499",
+              "name": "Novotel Brisbane South Bank",
+              "distance": "0.8740253574721666",
+              "bearing": "north",
+              "address_obj": {
+                  "street1": "38 Cordelia St",
+                  "city": "Brisbane",
+                  "state": "Queensland",
+                  "country": "Australia",
+                  "postalcode": "4101",
+                  "address_string": "38 Cordelia St, Brisbane, Queensland 4101 Australia"
+              }
+          }
+      ]
+  }
     
     // res.json(data); // Return the fetched JSON data to the client
     res.json(staticData); // Return the static JSON data to the client
@@ -86,40 +202,178 @@ app.get('/api/location/details', async (req, res) => {
 
     // Static client details data (commented out the previous fetch)
     const staticData = {
-      location_id: "12389531",
-      name: "Trunk(Hotel)",
-      description: "TRUNK (HOTEL) is the transmission point of a new style of social contribution called . is \"to live true to yourself, without undue pressure, but with a life-sized social purpose.\" Hotel interior and design.Amenities and minibar in the rooms.Items, which can be purchased at the store, the takeout coffee··· Here exists various schemes that allow you to experience socializing. It is a hotel for all people who are living the “now”, and whose desires are to “be of help to someone” and to “do something for a reason”.",
-      web_url: "https://www.tripadvisor.com/Hotel_Review-g1066456-d12389531-Reviews-Trunk_Hotel-Shibuya_Tokyo_Tokyo_Prefecture_Kanto.html?m=66827",
-      address_obj: {
-        street1: "5-31 Jingumae",
-        city: "Shibuya",
-        state: "Tokyo Prefecture",
-        country: "Japan",
-        postalcode: "150-0001",
-        address_string: "5-31 Jingumae, Shibuya 150-0001 Tokyo Prefecture"
+      "location_id": "299048",
+      "name": "Ambassador Motor Inn",
+      "description": "If you’re looking for a motel in Brisbane, look no further than Ambassador Motor Inn.\nFor those interested in checking out popular landmarks while visiting Brisbane, Ambassador Motor Inn is located a short distance from West End (1.2 mi) and Albert Street Uniting Church (1.7 mi).\nYou’ll enjoy relaxing rooms that offer air conditioning, a refrigerator, and a kitchenette, and you can stay connected during your stay as Ambassador Motor Inn offers guests free wifi.\nThe motel features 24 hour check-in, room service, and express check-in and check-out. Plus, Ambassador Motor Inn offers a pool and barbeque facilities, providing a pleasant respite from your busy day. For guests with a vehicle, free parking is available.\nWhile in Brisbane, you may want to check out some of the restaurants that are a short walk away from Ambassador Motor Inn, including 1889 Enoteca (1.0 mi), Stokehouse Q (0.9 mi), and MADO Cafe and Restaurant (0.9 mi).\nIf you’re looking for something to do, South Bank Parklands (1.0 mi), Boggo Road Gaol (0.4 mi), and The Henderson Gallery (0.8 mi) are a nice way to spend some time, and they are all within walking distance of Ambassador Motor Inn.\nThe staff at Ambassador Motor Inn looks forward to serving you during your upcoming visit.\n",
+      "web_url": "https://www.tripadvisor.com/Hotel_Review-g255068-d299048-Reviews-Ambassador_Motor_Inn-Brisbane_Brisbane_Region_Queensland.html?m=66827",
+      "address_obj": {
+          "street1": "180 Gladstone Rd",
+          "street2": "South Brisbane",
+          "city": "Brisbane",
+          "state": "Queensland",
+          "country": "Australia",
+          "postalcode": "4101",
+          "address_string": "180 Gladstone Rd South Brisbane, Brisbane, Queensland 4101 Australia"
       },
-      ancestors: [
-        {
-          level: "Municipality",
-          name: "Shibuya",
-          location_id: "1066456"
-        },
-        // Add more ancestors as needed
+      "ancestors": [
+          {
+              "level": "City",
+              "name": "Brisbane",
+              "location_id": "255068"
+          },
+          {
+              "level": "Region",
+              "name": "Brisbane Region",
+              "location_id": "3203447"
+          },
+          {
+              "level": "State",
+              "name": "Queensland",
+              "location_id": "255067"
+          },
+          {
+              "level": "Country",
+              "name": "Australia",
+              "location_id": "255055"
+          }
       ],
-      latitude: "35.664204",
-      longitude: "139.70392",
-      timezone: "Asia/Tokyo",
-      write_review: "https://www.tripadvisor.com/UserReview-g1066456-d12389531-Trunk_Hotel-Shibuya_Tokyo_Tokyo_Prefecture_Kanto.html?m=66827",
-      ranking_data: {
-        geo_location_id: "1066456",
-        ranking_string: "#23 of 39 hotels in Shibuya",
-        geo_location_name: "Shibuya",
-        ranking_out_of: "39",
-        ranking: "23"
+      "latitude": "-27.49268",
+      "longitude": "153.02167",
+      "timezone": "Australia/Brisbane",
+      "write_review": "https://www.tripadvisor.com/UserReview-g255068-d299048-Ambassador_Motor_Inn-Brisbane_Brisbane_Region_Queensland.html?m=66827",
+      "ranking_data": {
+          "geo_location_id": "255068",
+          "ranking_string": "#147 of 173 hotels in Brisbane",
+          "geo_location_name": "Brisbane",
+          "ranking_out_of": "173",
+          "ranking": "147"
       },
-      rating: "3.5",
-      // Add more fields as needed
-    };
+      "rating": "3.5",
+      "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/3.5-66827-5.svg",
+      "num_reviews": "20",
+      "review_rating_count": {
+          "1": "3",
+          "2": "1",
+          "3": "7",
+          "4": "6",
+          "5": "3"
+      },
+      "subratings": {
+          "0": {
+              "name": "rate_sleep",
+              "localized_name": "Sleep Quality",
+              "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.0.svg",
+              "value": "4.0"
+          },
+          "1": {
+              "name": "rate_location",
+              "localized_name": "Location",
+              "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss3.0.svg",
+              "value": "3.0"
+          },
+          "2": {
+              "name": "rate_room",
+              "localized_name": "Rooms",
+              "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss3.5.svg",
+              "value": "3.5"
+          },
+          "3": {
+              "name": "rate_service",
+              "localized_name": "Service",
+              "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss3.5.svg",
+              "value": "3.5"
+          },
+          "4": {
+              "name": "rate_value",
+              "localized_name": "Value",
+              "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss3.5.svg",
+              "value": "3.5"
+          },
+          "5": {
+              "name": "rate_cleanliness",
+              "localized_name": "Cleanliness",
+              "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.0.svg",
+              "value": "4.0"
+          }
+      },
+      "photo_count": "24",
+      "see_all_photos": "https://www.tripadvisor.com/Hotel_Review-g255068-d299048-m66827-Reviews-Ambassador_Motor_Inn-Brisbane_Brisbane_Region_Queensland.html#photos",
+      "price_level": "$",
+      "amenities": [
+          "Pool",
+          "Internet",
+          "Shuttle Bus Service",
+          "Room service",
+          "Free Internet",
+          "Kitchenette",
+          "Airport transportation",
+          "Wifi",
+          "Free Wifi",
+          "Laundry Service",
+          "Air conditioning",
+          "Family Rooms",
+          "Non-smoking hotel",
+          "Parking",
+          "Baggage Storage",
+          "Bath / Shower",
+          "BBQ Facilities",
+          "Car Hire",
+          "24-Hour Check-in",
+          "Express Check-in / Check-out",
+          "Coffee Shop",
+          "Coffee / Tea Maker",
+          "Desk",
+          "English",
+          "Hair Dryer",
+          "Iron",
+          "Seating Area",
+          "24-Hour Security",
+          "Taxi Service"
+      ],
+      "category": {
+          "name": "hotel",
+          "localized_name": "Hotel"
+      },
+      "subcategory": [
+          {
+              "name": "hotel",
+              "localized_name": "Hotel"
+          }
+      ],
+      "styles": [
+          "Budget",
+          "Mid-range"
+      ],
+      "neighborhood_info": [],
+      "trip_types": [
+          {
+              "name": "business",
+              "localized_name": "Business",
+              "value": "4"
+          },
+          {
+              "name": "couples",
+              "localized_name": "Couples",
+              "value": "4"
+          },
+          {
+              "name": "solo",
+              "localized_name": "Solo travel",
+              "value": "3"
+          },
+          {
+              "name": "family",
+              "localized_name": "Family",
+              "value": "6"
+          },
+          {
+              "name": "friends",
+              "localized_name": "Friends getaway",
+              "value": "2"
+          }
+      ],
+      "awards": []
+  }
 
     // res.json(data); // Return the fetched JSON data to the client
     res.json(staticData); // Return the static JSON data to the client
@@ -142,58 +396,224 @@ app.get('/api/reviews', async (req, res) => {
 
     // Static reviews data (commented out the previous fetch)
     const staticData = {
-      data: [
-        {
-          id: 940263107,
-          lang: "en",
-          location_id: 12389531,
-          published_date: "2024-02-29T22:40:02Z",
-          rating: 5,
-          helpful_votes: 0,
-          rating_image_url: "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
-          url: "https://www.tripadvisor.com/ShowUserReviews-g1066456-d12389531-r940263107-Reviews-Trunk_Hotel-Shibuya_Tokyo_Tokyo_Prefecture_Kanto.html?m=66827#review940263107",
-          text: "Just love this place. It's so unique.  From the pajamas to the drink's in the fridge.  I also loved the vegan breakfast in the restaurant.  They were also really great to my son when I had to step out for a meeting.  We  will definitely go back.  The location is great too.",
-          title: "Stay here",
-          trip_type: "Family",
-          travel_date: "2023-07-31",
-          user: {
-            username: "BenLookingQC",
-            user_location: {
-              id: "298450",
-              name: "Makati, Metro Manila, Luzon"
-            },
-            avatar: {
-              thumbnail: "https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/e9/60/default-avatar-2020-64.jpg",
-              small: "https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/e9/60/default-avatar-2020-64.jpg",
-              medium: "https://media-cdn.tripadvisor.com/media/photo-f/1a/f6/e9/60/default-avatar-2020-64.jpg",
-              large: "https://media-cdn.tripadvisor.com/media/photo-p/1a/f6/e9/60/default-avatar-2020-64.jpg",
-              original: "https://media-cdn.tripadvisor.com/media/photo-o/1a/f6/e9/60/default-avatar-2020-64.jpg"
-            }
+      "data": [
+          {
+              "id": 941619351,
+              "lang": "en",
+              "location_id": 256668,
+              "published_date": "2024-03-10T06:13:39Z",
+              "rating": 5,
+              "helpful_votes": 0,
+              "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+              "url": "https://www.tripadvisor.com/ShowUserReviews-g255068-d256668-r941619351-Reviews-Hotel_Diana-Brisbane_Brisbane_Region_Queensland.html?m=66827#review941619351",
+              "text": "Hotel Diana is clean and tidy. Our room was the family room and spa. The spa in the bath works well and has strong jets. Kids loved it. Room was large and had sectioned areas for dining table and lounge. There was even a hot plate to cook with. I would stay here again. Real easy to pop out for dinner. So many restaurants around the hotel. Buffet breakfast on offer as well.",
+              "title": "Impressed",
+              "trip_type": "Family",
+              "travel_date": "2024-03-31",
+              "user": {
+                  "username": "Rloague",
+                  "user_location": {
+                      "id": "255067",
+                      "name": "Queensland"
+                  },
+                  "avatar": {
+                      "thumbnail": "https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/ef/73/default-avatar-2020-13.jpg",
+                      "small": "https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/ef/73/default-avatar-2020-13.jpg",
+                      "medium": "https://media-cdn.tripadvisor.com/media/photo-f/1a/f6/ef/73/default-avatar-2020-13.jpg",
+                      "large": "https://media-cdn.tripadvisor.com/media/photo-p/1a/f6/ef/73/default-avatar-2020-13.jpg",
+                      "original": "https://media-cdn.tripadvisor.com/media/photo-o/1a/f6/ef/73/default-avatar-2020-13.jpg"
+                  }
+              },
+              "subratings": {}
           },
-          subratings: {
-            "0": {
-              name: "RATE_VALUE",
-              rating_image_url: "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s4.0-66827-5.svg",
-              value: 4,
-              localized_name: "Value"
-            },
-            "1": {
-              name: "RATE_LOCATION",
-              rating_image_url: "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
-              value: 5,
-              localized_name: "Location"
-            },
-            "2": {
-              name: "RATE_SERVICE",
-              rating_image_url: "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
-              value: 5,
-              localized_name: "Service"
-            }
+          {
+              "id": 936672441,
+              "lang": "en",
+              "location_id": 256668,
+              "published_date": "2024-02-03T01:10:05Z",
+              "rating": 5,
+              "helpful_votes": 0,
+              "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+              "url": "https://www.tripadvisor.com/ShowUserReviews-g255068-d256668-r936672441-Reviews-Hotel_Diana-Brisbane_Brisbane_Region_Queensland.html?m=66827#review936672441",
+              "text": "Needed a good priced 1 night stay around the Southbank area of Brisbane. With the ridiculous prices most hotels were looking for around Southbank I came across this gem. The Hotel Diana. Price was awsome and included free parking. \nArrived to a super warm greeting for the lady behind the desk. Room was ready even though we arrived early. Room modern, fresh, super clean. \nHotel 10min easy walk to Southbank. Great eateries local to the hotel itself so not necessary to go to southbank if you don't need to. Breakfast reasonably priced and well presented. \nOnly negative, there is no pool but southbank has all the swimming facilities you would need.\nNice gym for the fitness gurus.\nDon't spend hundreds on other hotels in the area. Try this one first.",
+              "title": "Hidden Gem close to Southbank",
+              "trip_type": "Couples",
+              "travel_date": "2024-02-29",
+              "user": {
+                  "username": "TonyF255",
+                  "user_location": {
+                      "id": "255059",
+                      "name": "Coffs Harbour, New South Wales"
+                  },
+                  "avatar": {
+                      "thumbnail": "https://media-cdn.tripadvisor.com/media/photo-t/01/2e/70/7f/avatar066.jpg",
+                      "small": "https://media-cdn.tripadvisor.com/media/photo-l/01/2e/70/7f/avatar066.jpg",
+                      "medium": "https://media-cdn.tripadvisor.com/media/photo-f/01/2e/70/7f/avatar066.jpg"
+                  }
+              },
+              "subratings": {
+                  "0": {
+                      "name": "RATE_VALUE",
+                      "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                      "value": 5,
+                      "localized_name": "Value"
+                  },
+                  "1": {
+                      "name": "RATE_LOCATION",
+                      "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                      "value": 5,
+                      "localized_name": "Location"
+                  },
+                  "2": {
+                      "name": "RATE_SERVICE",
+                      "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                      "value": 5,
+                      "localized_name": "Service"
+                  }
+              }
+          },
+          {
+              "id": 933656339,
+              "lang": "en",
+              "location_id": 256668,
+              "published_date": "2024-01-10T23:35:11Z",
+              "rating": 5,
+              "helpful_votes": 0,
+              "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+              "url": "https://www.tripadvisor.com/ShowUserReviews-g255068-d256668-r933656339-Reviews-Hotel_Diana-Brisbane_Brisbane_Region_Queensland.html?m=66827#review933656339",
+              "text": "Great location for appointment at the Mater. Staff were very friendly and helpful.\nBeds were super comfy, had a great night sleep. Water pressure was good. Good selection of places close by for food. The water cooler was handy to refill with cold water. Will be staying here again on my next trip. Easy to get to from Roma Street Station.",
+              "title": "Superb",
+              "trip_type": "Family",
+              "travel_date": "2024-01-31",
+              "user": {
+                  "username": "59kathk",
+                  "user_location": {
+                      "id": "null"
+                  },
+                  "avatar": {
+                      "thumbnail": "https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/e3/6a/default-avatar-2020-47.jpg",
+                      "small": "https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/e3/6a/default-avatar-2020-47.jpg",
+                      "medium": "https://media-cdn.tripadvisor.com/media/photo-f/1a/f6/e3/6a/default-avatar-2020-47.jpg",
+                      "large": "https://media-cdn.tripadvisor.com/media/photo-p/1a/f6/e3/6a/default-avatar-2020-47.jpg",
+                      "original": "https://media-cdn.tripadvisor.com/media/photo-o/1a/f6/e3/6a/default-avatar-2020-47.jpg"
+                  }
+              },
+              "subratings": {
+                  "0": {
+                      "name": "RATE_VALUE",
+                      "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                      "value": 5,
+                      "localized_name": "Value"
+                  },
+                  "1": {
+                      "name": "RATE_LOCATION",
+                      "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                      "value": 5,
+                      "localized_name": "Location"
+                  },
+                  "2": {
+                      "name": "RATE_SERVICE",
+                      "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                      "value": 5,
+                      "localized_name": "Service"
+                  }
+              }
+          },
+          {
+              "id": 930898845,
+              "lang": "en",
+              "location_id": 256668,
+              "published_date": "2023-12-24T11:26:04Z",
+              "rating": 4,
+              "helpful_votes": 0,
+              "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s4.0-66827-5.svg",
+              "url": "https://www.tripadvisor.com/ShowUserReviews-g255068-d256668-r930898845-Reviews-Hotel_Diana-Brisbane_Brisbane_Region_Queensland.html?m=66827#review930898845",
+              "text": "Stayed at this property for four nights prior to a 2 week cruise.  We came from overseas and were permitted to check in early which was nice after a 15 hr flight.  We had a king room on the 3rd floor.  The room was not large but very well appointed, comfortable and very clean.  There were wine glass in the room, small fridge, and coffee/tea making facilities, including an occasional chair and table for sitting at.  The bathroom was a tile and the shower had great pressure.  The front desk staff were very friendly and always greeted us when we passed by.  The location of the hotel is nice, less than  5 min walk to the south bank and adjacent to the Brisbane Brewing Company pub and some food court type restaurants.  I would recommend this hotel to anyone visiting Brisbane, as the service, quality and location was great value for the price paid!",
+              "title": "Highly Recommend  - Close to South Bank",
+              "trip_type": "Couples",
+              "travel_date": "2023-11-30",
+              "user": {
+                  "username": "haybri2016",
+                  "user_location": {
+                      "id": "181772",
+                      "name": "Sidney, Victoria Capital Regional District, Vancouver Island, British Columbia"
+                  },
+                  "avatar": {
+                      "thumbnail": "https://media-cdn.tripadvisor.com/media/photo-t/01/2e/70/9a/avatar026.jpg",
+                      "small": "https://media-cdn.tripadvisor.com/media/photo-l/01/2e/70/9a/avatar026.jpg",
+                      "medium": "https://media-cdn.tripadvisor.com/media/photo-f/01/2e/70/9a/avatar026.jpg"
+                  }
+              },
+              "subratings": {
+                  "0": {
+                      "name": "RATE_VALUE",
+                      "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                      "value": 5,
+                      "localized_name": "Value"
+                  },
+                  "1": {
+                      "name": "RATE_LOCATION",
+                      "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s4.0-66827-5.svg",
+                      "value": 4,
+                      "localized_name": "Location"
+                  },
+                  "2": {
+                      "name": "RATE_SERVICE",
+                      "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                      "value": 5,
+                      "localized_name": "Service"
+                  }
+              }
+          },
+          {
+              "id": 929505994,
+              "lang": "en",
+              "location_id": 256668,
+              "published_date": "2023-12-14T17:12:08Z",
+              "rating": 3,
+              "helpful_votes": 0,
+              "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s3.0-66827-5.svg",
+              "url": "https://www.tripadvisor.com/ShowUserReviews-g255068-d256668-r929505994-Reviews-Hotel_Diana-Brisbane_Brisbane_Region_Queensland.html?m=66827#review929505994",
+              "text": "The room was supposed to be a deluxe queen and single. The queen was just two singles pushed together. The room had cockroaches in the bathroom which scared me when I went for my shower. The kettle was covered in dust and the milk provided was a bit sad as it is only tiny long life. The walls are thin and you can hear other people’s enjoyment in certain activities. The bar fridge was old and was loud during the night. The room is small. The carpet is dirty. The bathroom needs refurbishing as the cupboards are rotting and there is mould on the roof and in the grout in the shower.\nIt was convenient and close to the hospital for my stay.",
+              "title": "Run down, convenient and positioned well.",
+              "trip_type": "Family",
+              "travel_date": "2023-11-30",
+              "user": {
+                  "username": "R7966QLrachelh",
+                  "user_location": {
+                      "id": "null"
+                  },
+                  "avatar": {
+                      "thumbnail": "https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/e8/ea/default-avatar-2020-63.jpg",
+                      "small": "https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/e8/ea/default-avatar-2020-63.jpg",
+                      "medium": "https://media-cdn.tripadvisor.com/media/photo-f/1a/f6/e8/ea/default-avatar-2020-63.jpg",
+                      "large": "https://media-cdn.tripadvisor.com/media/photo-p/1a/f6/e8/ea/default-avatar-2020-63.jpg",
+                      "original": "https://media-cdn.tripadvisor.com/media/photo-o/1a/f6/e8/ea/default-avatar-2020-63.jpg"
+                  }
+              },
+              "subratings": {
+                  "0": {
+                      "name": "RATE_VALUE",
+                      "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s3.0-66827-5.svg",
+                      "value": 3,
+                      "localized_name": "Value"
+                  },
+                  "1": {
+                      "name": "RATE_LOCATION",
+                      "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                      "value": 5,
+                      "localized_name": "Location"
+                  },
+                  "2": {
+                      "name": "RATE_SERVICE",
+                      "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                      "value": 5,
+                      "localized_name": "Service"
+                  }
+              }
           }
-        },
-        // Add more static review data as needed
       ]
-    };
+  }
 
     // res.json(data); // Return the fetched JSON data to the client
     res.json(staticData); // Return the static JSON data to the client
@@ -215,37 +635,205 @@ app.get('/api/photos', async (req, res) => {
       // const data = await response.json();
     // Static data
     const staticData = {
-      data: [
-        {
-          id: 123456789,
-          caption: "Static Image 1",
-          images: {
-            thumbnail: {
-              height: 50,
-              width: 50,
-              url: "https://media-cdn.tripadvisor.com/media/photo-t/10/53/64/aa/lobby--v17159715.jpg"
-            },
-            medium: {
-              height: 200,
-              width: 300,
-              url: "https://media-cdn.tripadvisor.com/media/oyster/550/10/53/64/aa/lobby--v17159715.jpg"
-            },
-            original: {
-              height: 800,
-              width: 1200,
-              url: "hhttps://media-cdn.tripadvisor.com/media/oyster/2600/10/53/64/aa/lobby--v17159715.jpg"
-            }
+      "data": [
+          {
+              "id": 734792744,
+              "is_blessed": false,
+              "caption": "Harbor View Deluxe Room",
+              "published_date": "2024-04-05T20:45:54.582Z",
+              "images": {
+                  "thumbnail": {
+                      "height": 50,
+                      "width": 50,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-t/2b/cc/0c/28/harbor-view-deluxe-room.jpg"
+                  },
+                  "small": {
+                      "height": 150,
+                      "width": 150,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-l/2b/cc/0c/28/harbor-view-deluxe-room.jpg"
+                  },
+                  "medium": {
+                      "height": 167,
+                      "width": 250,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-f/2b/cc/0c/28/harbor-view-deluxe-room.jpg"
+                  },
+                  "large": {
+                      "height": 367,
+                      "width": 550,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-s/2b/cc/0c/28/harbor-view-deluxe-room.jpg"
+                  },
+                  "original": {
+                      "height": 682,
+                      "width": 1023,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-o/2b/cc/0c/28/harbor-view-deluxe-room.jpg"
+                  }
+              },
+              "album": "Room/Suite",
+              "source": {
+                  "name": "Management",
+                  "localized_name": "Management"
+              }
           },
-          album: "Static Album",
-          source: {
-            name: "Static Source",
-            localized_name: "Static Source"
+          {
+              "id": 563047881,
+              "is_blessed": false,
+              "caption": "",
+              "published_date": "2021-12-09T19:21:48.989Z",
+              "images": {
+                  "thumbnail": {
+                      "height": 50,
+                      "width": 50,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-t/21/8f/6d/c9/boston-harbor-hotel.jpg"
+                  },
+                  "small": {
+                      "height": 150,
+                      "width": 150,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-l/21/8f/6d/c9/boston-harbor-hotel.jpg"
+                  },
+                  "medium": {
+                      "height": 167,
+                      "width": 250,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-f/21/8f/6d/c9/boston-harbor-hotel.jpg"
+                  },
+                  "large": {
+                      "height": 367,
+                      "width": 550,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-s/21/8f/6d/c9/boston-harbor-hotel.jpg"
+                  },
+                  "original": {
+                      "height": 853,
+                      "width": 1280,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/21/8f/6d/c9/boston-harbor-hotel.jpg"
+                  }
+              },
+              "album": "Hotel & Grounds",
+              "source": {
+                  "name": "Management",
+                  "localized_name": "Management"
+              },
+              "user": {
+                  "username": "Management"
+              }
+          },
+          {
+              "id": 564181311,
+              "is_blessed": false,
+              "caption": "",
+              "published_date": "2021-12-16T17:58:16.23Z",
+              "images": {
+                  "thumbnail": {
+                      "height": 50,
+                      "width": 50,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-t/21/a0/b9/3f/boston-harbor-hotel.jpg"
+                  },
+                  "small": {
+                      "height": 150,
+                      "width": 150,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-l/21/a0/b9/3f/boston-harbor-hotel.jpg"
+                  },
+                  "medium": {
+                      "height": 137,
+                      "width": 250,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-f/21/a0/b9/3f/boston-harbor-hotel.jpg"
+                  },
+                  "large": {
+                      "height": 301,
+                      "width": 550,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-s/21/a0/b9/3f/boston-harbor-hotel.jpg"
+                  },
+                  "original": {
+                      "height": 702,
+                      "width": 1280,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/21/a0/b9/3f/boston-harbor-hotel.jpg"
+                  }
+              },
+              "album": "Room/Suite",
+              "source": {
+                  "name": "Management",
+                  "localized_name": "Management"
+              },
+              "user": {
+                  "username": "Management"
+              }
+          },
+          {
+              "id": 273900720,
+              "is_blessed": false,
+              "caption": "Lobby at the Boston Harbor Hotel",
+              "published_date": "2017-08-18T14:48:20.294Z",
+              "images": {
+                  "thumbnail": {
+                      "height": 50,
+                      "width": 50,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-t/10/53/64/b0/lobby--v17159725.jpg"
+                  },
+                  "small": {
+                      "height": 150,
+                      "width": 150,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-l/10/53/64/b0/lobby--v17159725.jpg"
+                  },
+                  "medium": {
+                      "height": 205,
+                      "width": 250,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-f/10/53/64/b0/lobby--v17159725.jpg"
+                  },
+                  "large": {
+                      "height": 367,
+                      "width": 550,
+                      "url": "https://media-cdn.tripadvisor.com/media/oyster/550/10/53/64/b0/lobby--v17159725.jpg"
+                  },
+                  "original": {
+                      "height": 1733,
+                      "width": 2600,
+                      "url": "https://media-cdn.tripadvisor.com/media/oyster/2600/10/53/64/b0/lobby--v17159725.jpg"
+                  }
+              },
+              "album": "The Hotel",
+              "source": {
+                  "name": "Expert",
+                  "localized_name": "Expert"
+              }
+          },
+          {
+              "id": 273900714,
+              "is_blessed": false,
+              "caption": "Lobby at the Boston Harbor Hotel",
+              "published_date": "2017-08-18T14:48:19.551Z",
+              "images": {
+                  "thumbnail": {
+                      "height": 50,
+                      "width": 50,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-t/10/53/64/aa/lobby--v17159715.jpg"
+                  },
+                  "small": {
+                      "height": 150,
+                      "width": 150,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-l/10/53/64/aa/lobby--v17159715.jpg"
+                  },
+                  "medium": {
+                      "height": 205,
+                      "width": 250,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-f/10/53/64/aa/lobby--v17159715.jpg"
+                  },
+                  "large": {
+                      "height": 367,
+                      "width": 550,
+                      "url": "https://media-cdn.tripadvisor.com/media/oyster/550/10/53/64/aa/lobby--v17159715.jpg"
+                  },
+                  "original": {
+                      "height": 1733,
+                      "width": 2600,
+                      "url": "https://media-cdn.tripadvisor.com/media/oyster/2600/10/53/64/aa/lobby--v17159715.jpg"
+                  }
+              },
+              "album": "The Hotel",
+              "source": {
+                  "name": "Expert",
+                  "localized_name": "Expert"
+              }
           }
-        },
-        // Add more static data objects as needed
       ]
-    };
-   
+  }
     // res.json(data); // Return the combined JSON data to the client
 
     // Instead, send only static data as the response

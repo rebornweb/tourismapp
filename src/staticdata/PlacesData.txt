@@ -1,0 +1,149 @@
+{
+    "data": [
+        {
+            "location_id": "299048",
+            "name": "Ambassador Motor Inn",
+            "distance": "0.20062318028458978",
+            "bearing": "south",
+            "address_obj": {
+                "street1": "180 Gladstone Rd",
+                "street2": "South Brisbane",
+                "city": "Brisbane",
+                "state": "Queensland",
+                "country": "Australia",
+                "postalcode": "4101",
+                "address_string": "180 Gladstone Rd South Brisbane, Brisbane, Queensland 4101 Australia"
+            }
+        },
+        {
+            "location_id": "256668",
+            "name": "Hotel Diana",
+            "distance": "0.5127826780447526",
+            "bearing": "northeast",
+            "address_obj": {
+                "street1": "12 Annerley Rd",
+                "street2": "Woolloongabba",
+                "city": "Brisbane",
+                "state": "Queensland",
+                "country": "Australia",
+                "postalcode": "4102",
+                "address_string": "12 Annerley Rd Woolloongabba, Brisbane, Queensland 4102 Australia"
+            }
+        },
+        {
+            "location_id": "23898089",
+            "name": "Peak Apartments",
+            "distance": "0.566437534970521",
+            "bearing": "northeast",
+            "address_obj": {
+                "street1": "218 Vulture Street",
+                "city": "Brisbane",
+                "state": "Queensland",
+                "country": "Australia",
+                "postalcode": "4101",
+                "address_string": "218 Vulture Street, Brisbane, Queensland 4101 Australia"
+            }
+        },
+        {
+            "location_id": "23144750",
+            "name": "Courtyard by Marriott Brisbane South Bank",
+            "distance": "0.5834593715064114",
+            "bearing": "northeast",
+            "address_obj": {
+                "street1": "218 Vulture Street",
+                "city": "Brisbane",
+                "state": "Queensland",
+                "country": "Australia",
+                "postalcode": "4101",
+                "address_string": "218 Vulture Street, Brisbane, Queensland 4101 Australia"
+            }
+        },
+        {
+            "location_id": "10335467",
+            "name": "Menso at Southbank",
+            "distance": "0.5946333024866973",
+            "bearing": "north",
+            "address_obj": {
+                "street1": "68 Cordelia St",
+                "city": "Brisbane",
+                "state": "Queensland",
+                "country": "Australia",
+                "postalcode": "4101",
+                "address_string": "68 Cordelia St, Brisbane, Queensland 4101 Australia"
+            }
+        },
+        {
+            "location_id": "13993553",
+            "name": "Emporium Hotel South Bank",
+            "distance": "0.6010830044839831",
+            "bearing": "north",
+            "address_obj": {
+                "street1": "267 Grey Street",
+                "city": "Brisbane",
+                "state": "Queensland",
+                "country": "Australia",
+                "postalcode": "4101",
+                "address_string": "267 Grey Street, Brisbane, Queensland 4101 Australia"
+            }
+        },
+        {
+            "location_id": "256665",
+            "name": "Central Hillcrest Apartments",
+            "distance": "0.6368217456699429",
+            "bearing": "northeast",
+            "address_obj": {
+                "street1": "Hillcrest Central Apartments 311 Vulture St",
+                "street2": "",
+                "city": "Brisbane",
+                "state": "Queensland",
+                "country": "Australia",
+                "postalcode": "4101",
+                "address_string": "Hillcrest Central Apartments 311 Vulture St, Brisbane, Queensland 4101 Australia"
+            }
+        },
+        {
+            "location_id": "584130",
+            "name": "Mantra South Bank Brisbane",
+            "distance": "0.822210694867177",
+            "bearing": "north",
+            "address_obj": {
+                "street1": "161 Grey St",
+                "street2": "South Bank",
+                "city": "Brisbane",
+                "state": "Queensland",
+                "country": "Australia",
+                "postalcode": "4101",
+                "address_string": "161 Grey St South Bank, Brisbane, Queensland 4101 Australia"
+            }
+        },
+        {
+            "location_id": "289422",
+            "name": "Rydges South Bank Brisbane",
+            "distance": "0.8718504587098178",
+            "bearing": "north",
+            "address_obj": {
+                "street1": "Rydges Southbank 9 Glenelg St",
+                "street2": "South Brisbane",
+                "city": "Brisbane",
+                "state": "Queensland",
+                "country": "Australia",
+                "postalcode": "4101",
+                "address_string": "Rydges Southbank 9 Glenelg St South Brisbane, Brisbane, Queensland 4101 Australia"
+            }
+        },
+        {
+            "location_id": "13839499",
+            "name": "Novotel Brisbane South Bank",
+            "distance": "0.8740253574721666",
+            "bearing": "north",
+            "address_obj": {
+                "street1": "38 Cordelia St",
+                "city": "Brisbane",
+                "state": "Queensland",
+                "country": "Australia",
+                "postalcode": "4101",
+                "address_string": "38 Cordelia St, Brisbane, Queensland 4101 Australia"
+            }
+        }
+    ]
+}

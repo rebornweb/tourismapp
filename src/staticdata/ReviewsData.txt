@@ -1,0 +1,219 @@
+{
+    "data": [
+        {
+            "id": 941619351,
+            "lang": "en",
+            "location_id": 256668,
+            "published_date": "2024-03-10T06:13:39Z",
+            "rating": 5,
+            "helpful_votes": 0,
+            "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+            "url": "https://www.tripadvisor.com/ShowUserReviews-g255068-d256668-r941619351-Reviews-Hotel_Diana-Brisbane_Brisbane_Region_Queensland.html?m=66827#review941619351",
+            "text": "Hotel Diana is clean and tidy. Our room was the family room and spa. The spa in the bath works well and has strong jets. Kids loved it. Room was large and had sectioned areas for dining table and lounge. There was even a hot plate to cook with. I would stay here again. Real easy to pop out for dinner. So many restaurants around the hotel. Buffet breakfast on offer as well.",
+            "title": "Impressed",
+            "trip_type": "Family",
+            "travel_date": "2024-03-31",
+            "user": {
+                "username": "Rloague",
+                "user_location": {
+                    "id": "255067",
+                    "name": "Queensland"
+                },
+                "avatar": {
+                    "thumbnail": "https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/ef/73/default-avatar-2020-13.jpg",
+                    "small": "https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/ef/73/default-avatar-2020-13.jpg",
+                    "medium": "https://media-cdn.tripadvisor.com/media/photo-f/1a/f6/ef/73/default-avatar-2020-13.jpg",
+                    "large": "https://media-cdn.tripadvisor.com/media/photo-p/1a/f6/ef/73/default-avatar-2020-13.jpg",
+                    "original": "https://media-cdn.tripadvisor.com/media/photo-o/1a/f6/ef/73/default-avatar-2020-13.jpg"
+                }
+            },
+            "subratings": {}
+        },
+        {
+            "id": 936672441,
+            "lang": "en",
+            "location_id": 256668,
+            "published_date": "2024-02-03T01:10:05Z",
+            "rating": 5,
+            "helpful_votes": 0,
+            "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+            "url": "https://www.tripadvisor.com/ShowUserReviews-g255068-d256668-r936672441-Reviews-Hotel_Diana-Brisbane_Brisbane_Region_Queensland.html?m=66827#review936672441",
+            "text": "Needed a good priced 1 night stay around the Southbank area of Brisbane. With the ridiculous prices most hotels were looking for around Southbank I came across this gem. The Hotel Diana. Price was awsome and included free parking. \nArrived to a super warm greeting for the lady behind the desk. Room was ready even though we arrived early. Room modern, fresh, super clean. \nHotel 10min easy walk to Southbank. Great eateries local to the hotel itself so not necessary to go to southbank if you don't need to. Breakfast reasonably priced and well presented. \nOnly negative, there is no pool but southbank has all the swimming facilities you would need.\nNice gym for the fitness gurus.\nDon't spend hundreds on other hotels in the area. Try this one first.",
+            "title": "Hidden Gem close to Southbank",
+            "trip_type": "Couples",
+            "travel_date": "2024-02-29",
+            "user": {
+                "username": "TonyF255",
+                "user_location": {
+                    "id": "255059",
+                    "name": "Coffs Harbour, New South Wales"
+                },
+                "avatar": {
+                    "thumbnail": "https://media-cdn.tripadvisor.com/media/photo-t/01/2e/70/7f/avatar066.jpg",
+                    "small": "https://media-cdn.tripadvisor.com/media/photo-l/01/2e/70/7f/avatar066.jpg",
+                    "medium": "https://media-cdn.tripadvisor.com/media/photo-f/01/2e/70/7f/avatar066.jpg"
+                }
+            },
+            "subratings": {
+                "0": {
+                    "name": "RATE_VALUE",
+                    "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                    "value": 5,
+                    "localized_name": "Value"
+                },
+                "1": {
+                    "name": "RATE_LOCATION",
+                    "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                    "value": 5,
+                    "localized_name": "Location"
+                },
+                "2": {
+                    "name": "RATE_SERVICE",
+                    "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                    "value": 5,
+                    "localized_name": "Service"
+                }
+            }
+        },
+        {
+            "id": 933656339,
+            "lang": "en",
+            "location_id": 256668,
+            "published_date": "2024-01-10T23:35:11Z",
+            "rating": 5,
+            "helpful_votes": 0,
+            "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+            "url": "https://www.tripadvisor.com/ShowUserReviews-g255068-d256668-r933656339-Reviews-Hotel_Diana-Brisbane_Brisbane_Region_Queensland.html?m=66827#review933656339",
+            "text": "Great location for appointment at the Mater. Staff were very friendly and helpful.\nBeds were super comfy, had a great night sleep. Water pressure was good. Good selection of places close by for food. The water cooler was handy to refill with cold water. Will be staying here again on my next trip. Easy to get to from Roma Street Station.",
+            "title": "Superb",
+            "trip_type": "Family",
+            "travel_date": "2024-01-31",
+            "user": {
+                "username": "59kathk",
+                "user_location": {
+                    "id": "null"
+                },
+                "avatar": {
+                    "thumbnail": "https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/e3/6a/default-avatar-2020-47.jpg",
+                    "small": "https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/e3/6a/default-avatar-2020-47.jpg",
+                    "medium": "https://media-cdn.tripadvisor.com/media/photo-f/1a/f6/e3/6a/default-avatar-2020-47.jpg",
+                    "large": "https://media-cdn.tripadvisor.com/media/photo-p/1a/f6/e3/6a/default-avatar-2020-47.jpg",
+                    "original": "https://media-cdn.tripadvisor.com/media/photo-o/1a/f6/e3/6a/default-avatar-2020-47.jpg"
+                }
+            },
+            "subratings": {
+                "0": {
+                    "name": "RATE_VALUE",
+                    "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                    "value": 5,
+                    "localized_name": "Value"
+                },
+                "1": {
+                    "name": "RATE_LOCATION",
+                    "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                    "value": 5,
+                    "localized_name": "Location"
+                },
+                "2": {
+                    "name": "RATE_SERVICE",
+                    "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                    "value": 5,
+                    "localized_name": "Service"
+                }
+            }
+        },
+        {
+            "id": 930898845,
+            "lang": "en",
+            "location_id": 256668,
+            "published_date": "2023-12-24T11:26:04Z",
+            "rating": 4,
+            "helpful_votes": 0,
+            "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s4.0-66827-5.svg",
+            "url": "https://www.tripadvisor.com/ShowUserReviews-g255068-d256668-r930898845-Reviews-Hotel_Diana-Brisbane_Brisbane_Region_Queensland.html?m=66827#review930898845",
+            "text": "Stayed at this property for four nights prior to a 2 week cruise.  We came from overseas and were permitted to check in early which was nice after a 15 hr flight.  We had a king room on the 3rd floor.  The room was not large but very well appointed, comfortable and very clean.  There were wine glass in the room, small fridge, and coffee/tea making facilities, including an occasional chair and table for sitting at.  The bathroom was a tile and the shower had great pressure.  The front desk staff were very friendly and always greeted us when we passed by.  The location of the hotel is nice, less than  5 min walk to the south bank and adjacent to the Brisbane Brewing Company pub and some food court type restaurants.  I would recommend this hotel to anyone visiting Brisbane, as the service, quality and location was great value for the price paid!",
+            "title": "Highly Recommend  - Close to South Bank",
+            "trip_type": "Couples",
+            "travel_date": "2023-11-30",
+            "user": {
+                "username": "haybri2016",
+                "user_location": {
+                    "id": "181772",
+                    "name": "Sidney, Victoria Capital Regional District, Vancouver Island, British Columbia"
+                },
+                "avatar": {
+                    "thumbnail": "https://media-cdn.tripadvisor.com/media/photo-t/01/2e/70/9a/avatar026.jpg",
+                    "small": "https://media-cdn.tripadvisor.com/media/photo-l/01/2e/70/9a/avatar026.jpg",
+                    "medium": "https://media-cdn.tripadvisor.com/media/photo-f/01/2e/70/9a/avatar026.jpg"
+                }
+            },
+            "subratings": {
+                "0": {
+                    "name": "RATE_VALUE",
+                    "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                    "value": 5,
+                    "localized_name": "Value"
+                },
+                "1": {
+                    "name": "RATE_LOCATION",
+                    "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s4.0-66827-5.svg",
+                    "value": 4,
+                    "localized_name": "Location"
+                },
+                "2": {
+                    "name": "RATE_SERVICE",
+                    "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                    "value": 5,
+                    "localized_name": "Service"
+                }
+            }
+        },
+        {
+            "id": 929505994,
+            "lang": "en",
+            "location_id": 256668,
+            "published_date": "2023-12-14T17:12:08Z",
+            "rating": 3,
+            "helpful_votes": 0,
+            "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s3.0-66827-5.svg",
+            "url": "https://www.tripadvisor.com/ShowUserReviews-g255068-d256668-r929505994-Reviews-Hotel_Diana-Brisbane_Brisbane_Region_Queensland.html?m=66827#review929505994",
+            "text": "The room was supposed to be a deluxe queen and single. The queen was just two singles pushed together. The room had cockroaches in the bathroom which scared me when I went for my shower. The kettle was covered in dust and the milk provided was a bit sad as it is only tiny long life. The walls are thin and you can hear other people’s enjoyment in certain activities. The bar fridge was old and was loud during the night. The room is small. The carpet is dirty. The bathroom needs refurbishing as the cupboards are rotting and there is mould on the roof and in the grout in the shower.\nIt was convenient and close to the hospital for my stay.",
+            "title": "Run down, convenient and positioned well.",
+            "trip_type": "Family",
+            "travel_date": "2023-11-30",
+            "user": {
+                "username": "R7966QLrachelh",
+                "user_location": {
+                    "id": "null"
+                },
+                "avatar": {
+                    "thumbnail": "https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/e8/ea/default-avatar-2020-63.jpg",
+                    "small": "https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/e8/ea/default-avatar-2020-63.jpg",
+                    "medium": "https://media-cdn.tripadvisor.com/media/photo-f/1a/f6/e8/ea/default-avatar-2020-63.jpg",
+                    "large": "https://media-cdn.tripadvisor.com/media/photo-p/1a/f6/e8/ea/default-avatar-2020-63.jpg",
+                    "original": "https://media-cdn.tripadvisor.com/media/photo-o/1a/f6/e8/ea/default-avatar-2020-63.jpg"
+                }
+            },
+            "subratings": {
+                "0": {
+                    "name": "RATE_VALUE",
+                    "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s3.0-66827-5.svg",
+                    "value": 3,
+                    "localized_name": "Value"
+                },
+                "1": {
+                    "name": "RATE_LOCATION",
+                    "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                    "value": 5,
+                    "localized_name": "Location"
+                },
+                "2": {
+                    "name": "RATE_SERVICE",
+                    "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s5.0-66827-5.svg",
+                    "value": 5,
+                    "localized_name": "Service"
+                }
+            }
+        }
+    ]
+}
