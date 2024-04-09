@@ -23,7 +23,7 @@ const duffel = new Duffel({
   debug: { verbose: true },
 });
 
-// Endpoint to fetch places data with category parameter
+// Trip Advisor Endpoint to fetch places data with category parameter
 app.get('/api/nearby/places', async (req, res) => {
   const { lat, lng, category } = req.query;
   try {
@@ -58,6 +58,21 @@ app.get('/api/reviews', async (req, res) => {
     // Fetch reviews data from the TripAdvisor API
     const response = await fetch(`${base_url}/location/${location_Id}/reviews?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
     const data = await response.json();
+    res.json(data); // Return the JSON data to the client
+
+  } catch (error) {
+    console.error('Error fetching reviews:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.get('/api/photos', async (req, res) => {
+  const { location_Id} = req.query;
+  try {
+    // Fetch reviews data from the TripAdvisor API
+    const response = await fetch(`${base_url}/location/${location_Id}/photos?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
+    const data = await response.json();
+    console.log('Photos data: ' + data);
     res.json(data); // Return the JSON data to the client
 
   } catch (error) {
@@ -124,20 +139,30 @@ app.post('/api/duffel/offer_requests', async (req, res) => {
 });
 
 
-app.get('/api/photos', async (req, res) => {
-  const { location_Id} = req.query;
-  try {
-    // Fetch reviews data from the TripAdvisor API
-    const response = await fetch(`${base_url}/location/${location_Id}/photos?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
-    const data = await response.json();
-    console.log('Photos data: ' + data);
-    res.json(data); // Return the JSON data to the client
 
+
+// Add the following import statement
+const googleApiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+
+// Inside your existing Express server setup...
+
+app.get('/api/google/places', async (req, res) => {
+  const { input } = req.query;
+
+  try {
+    const response = await fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${input}&inputtype=textquery&key=${googleApiKey}`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch places: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    res.json(data); // Return the JSON data to the client
   } catch (error) {
-    console.error('Error fetching reviews:', error);
+    console.error('Error fetching Google Places:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
 
 // Serve the React app from the build directory
 app.use(express.static(path.join(__dirname, 'build')));

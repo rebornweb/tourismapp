@@ -162,7 +162,6 @@ const GoogleMaps = ({ onLocationChange }) => {
     };
   }, []);
 
-
   return (
     <div>
       {/* Your existing JSX for Google Maps UI */}
