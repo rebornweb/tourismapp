@@ -633,6 +633,7 @@ app.get('/api/photos', async (req, res) => {
        // Fetch reviews data from the TripAdvisor API
       // const response = await fetch(`${base_url}/location/${location_Id}/photos?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
       // const data = await response.json();
+      //To do get the photos of ancestors which is the City and country e.g ${base_url}/location/255068/photos?language=en
     // Static data
     const staticData = {
       "data": [
