@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Heading, Text, useBreakpointValue, Container, Stack } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
+import Reviews from './Reviews';
 
 interface DetailsMoreProps {
-  locationId?: string; // Make locationId optional
+  locationId: string; // Make locationId optional
 }
 
 const DetailsMore: React.FC<DetailsMoreProps> = ({ locationId }) => {
@@ -109,6 +110,8 @@ const DetailsMore: React.FC<DetailsMoreProps> = ({ locationId }) => {
           </Box>
         ))}
       </Box>
+
+      <Reviews locationId={locationId} />
     </div>
   );
 };

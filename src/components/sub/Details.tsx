@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Heading, Text, useBreakpointValue, Container, Stack } from '@chakra-ui/react';
+import { Card, CardHeader, CardBody, CardFooter, Box, Heading, Text,
+   SimpleGrid, Stack, Image,Button, ButtonGroup } from '@chakra-ui/react';
 
-interface DetailsProps {
-  locationId: string;
-}
+   interface DetailsProps {
+    locationId: string;
+    images?: {
+      small: {
+        url: string;
+      };
+    };
+  }
+  
 
 const Details: React.FC<DetailsProps> = ({ locationId }) => {
   const localApiUrl = process.env.REACT_APP_LOCAL_API_URL;
@@ -61,31 +68,44 @@ const Details: React.FC<DetailsProps> = ({ locationId }) => {
 
   return (
     <div>
-      <Heading as="h3" size="md">{detailsData.name}</Heading>
-      <Text>Address: {detailsData.address_obj.address_string}</Text>
-      <Text>Rating: {detailsData.rating}</Text>
-      <Text>
-        Description: {detailsData.description && detailsData.description.split('.').length >= 3 ? detailsData.description : 'Not available'}
-      </Text>
+        <Card
+        direction={{ base: 'column', sm: 'row' }}
+        overflow='hidden'
+        variant='outline'
+      >
+        <Image
+          objectFit='cover'
+          maxW={{ base: '100%', sm: '500px' }}
+          src={photoData.images.large.url}
+          alt={photoData.album}
+        />
 
-      {/* Your existing Details component content Open a new */}
-      <Link to={`/details/${locationId}`} target="_blank" rel="noopener noreferrer">
-        View More Details
-      </Link>
-
-
-      <Box height={'400px'} position="relative" backgroundPosition="center" backgroundRepeat="no-repeat" backgroundSize="cover" backgroundImage={`url(${photoData.images.large.url})`}>
-        <Container size="container.lg" height="600px" position="relative">
-          <Stack spacing={6} w={'full'} maxW={'lg'} position="absolute" top="50%" transform="translate(0, -50%)" color="white">
-            <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-              {photoData.heading}
+        <Stack>
+          <CardBody>
+             
+            <Heading  size="lg">
+            {detailsData.name} {detailsData.rating} <p><Image src={detailsData.rating_image_url} /></p>
             </Heading>
-            <Text fontSize={{ base: 'md', lg: 'lg' }} color="GrayText">
-              {photoData.caption}
-            </Text>
-          </Stack>
-        </Container>
-      </Box>
+            
+           
+         
+          
+          Address: {detailsData.address_obj.address_string}
+            <Text py='2'>
+        Description: {detailsData.description && detailsData.description.split('.').length >= 3 ? detailsData.description : 'Not available'}
+       </Text>
+          </CardBody>
+
+          <CardFooter>
+            {/* Your existing Details component content Open a new */}
+            <Link to={`/details/${locationId}`} target="_blank" rel="noopener noreferrer">
+              View More Details
+            </Link>
+          </CardFooter>
+        </Stack>
+      </Card>
+           
+
     </div>
   );
 };

@@ -71,7 +71,7 @@ const Places: React.FC<placeProps> = ({ location }) => {
 
           <Details locationId={place.location_id}/>
 
-          <Reviews locationId={place.location_id} />
+          
         </Box>
       ))}
     </div>
