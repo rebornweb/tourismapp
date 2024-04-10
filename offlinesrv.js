@@ -199,7 +199,7 @@ app.get('/api/location/details', async (req, res) => {
     // Fetch details data from the specified endpoint
     // const response = await fetch(`${base_url}/location/${location_Id}/details?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
     // const data = await response.json();
-
+    // To do when looking up the ancestor you can details of the city of where the hotel is {{base_url}}/location/255068/details?language=en&key
     // Static client details data (commented out the previous fetch)
     const staticData = {
       "location_id": "299048",
