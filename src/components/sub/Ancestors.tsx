@@ -5,14 +5,16 @@ interface Ancestor {
   level: string;
   name: string;
   location_id: string;
+  photos: any[]; // Add a photos property to the Ancestor interface
 }
+
 const Ancestors: React.FC<{ locationId: string }> = ({ locationId }) => {
   const [ancestors, setAncestors] = useState<Ancestor[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const localApiUrl = process.env.REACT_APP_LOCAL_API_URL;
-  const ancestorsUrl = `${localApiUrl}/location/details?location_Id=${locationId}`;
+  const ancestorsUrl = `${localApiUrl}/location/details/ancestors?location_Id=${locationId}`;
 
   useEffect(() => {
     const fetchAncestors = async () => {
@@ -25,8 +27,14 @@ const Ancestors: React.FC<{ locationId: string }> = ({ locationId }) => {
           throw new Error(`Failed to fetch ancestors: ${response.statusText}`);
         }
         const data = await response.json();
-        console.log('API Response:', data); // Log the entire response for debugging
-        setAncestors(data.ancestors);
+        console.log('Ancestors Response:', data); // Log the entire response for debugging
+
+        // Fetch photos for each ancestor and update the Ancestor interface
+        const ancestorList: Ancestor[] = data.ancestors.map((ancestor: Ancestor) => ({
+          ...ancestor,
+          photos: [] // Initialize photos array
+        }));
+        setAncestors(ancestorList);
       } catch (error:any) {
         console.error('Error fetching ancestors:', error);
         setError(`Error fetching ancestors: ${error.message}`);
@@ -48,8 +56,8 @@ const Ancestors: React.FC<{ locationId: string }> = ({ locationId }) => {
         {ancestors.map((ancestor, index) => (
           <li key={index}>
             {ancestor.level}: {ancestor.name} (Location ID: {ancestor.location_id})
-            {/* Ensure Photos component is rendered conditionally */}
-        
+            {/* Render the Photos component for each ancestor */}
+            <Photos locationId={ancestor.location_id} />
           </li>
         ))}
       </ul>
@@ -57,6 +65,4 @@ const Ancestors: React.FC<{ locationId: string }> = ({ locationId }) => {
   );
 };
 
-
 export default Ancestors;
-

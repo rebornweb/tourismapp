@@ -386,6 +386,436 @@ app.get('/api/location/details', async (req, res) => {
 });
 
 
+app.get('/api/location/details', async (req, res) => {
+    const { location_Id } = req.query;
+    try {
+      // Fetch details data from the specified endpoint
+      // const response = await fetch(`${base_url}/location/${location_Id}/details?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
+      // const data = await response.json();
+      // To do when looking up the ancestor you can details of the city of where the hotel is {{base_url}}/location/255068/details?language=en&key
+      // Static client details data (commented out the previous fetch)
+      const staticData = {
+        "location_id": "299048",
+        "name": "Ambassador Motor Inn",
+        "description": "If you’re looking for a motel in Brisbane, look no further than Ambassador Motor Inn.\nFor those interested in checking out popular landmarks while visiting Brisbane, Ambassador Motor Inn is located a short distance from West End (1.2 mi) and Albert Street Uniting Church (1.7 mi).\nYou’ll enjoy relaxing rooms that offer air conditioning, a refrigerator, and a kitchenette, and you can stay connected during your stay as Ambassador Motor Inn offers guests free wifi.\nThe motel features 24 hour check-in, room service, and express check-in and check-out. Plus, Ambassador Motor Inn offers a pool and barbeque facilities, providing a pleasant respite from your busy day. For guests with a vehicle, free parking is available.\nWhile in Brisbane, you may want to check out some of the restaurants that are a short walk away from Ambassador Motor Inn, including 1889 Enoteca (1.0 mi), Stokehouse Q (0.9 mi), and MADO Cafe and Restaurant (0.9 mi).\nIf you’re looking for something to do, South Bank Parklands (1.0 mi), Boggo Road Gaol (0.4 mi), and The Henderson Gallery (0.8 mi) are a nice way to spend some time, and they are all within walking distance of Ambassador Motor Inn.\nThe staff at Ambassador Motor Inn looks forward to serving you during your upcoming visit.\n",
+        "web_url": "https://www.tripadvisor.com/Hotel_Review-g255068-d299048-Reviews-Ambassador_Motor_Inn-Brisbane_Brisbane_Region_Queensland.html?m=66827",
+        "address_obj": {
+            "street1": "180 Gladstone Rd",
+            "street2": "South Brisbane",
+            "city": "Brisbane",
+            "state": "Queensland",
+            "country": "Australia",
+            "postalcode": "4101",
+            "address_string": "180 Gladstone Rd South Brisbane, Brisbane, Queensland 4101 Australia"
+        },
+        "ancestors": [
+            {
+                "level": "City",
+                "name": "Brisbane",
+                "location_id": "255068"
+            },
+            {
+                "level": "Region",
+                "name": "Brisbane Region",
+                "location_id": "3203447"
+            },
+            {
+                "level": "State",
+                "name": "Queensland",
+                "location_id": "255067"
+            },
+            {
+                "level": "Country",
+                "name": "Australia",
+                "location_id": "255055"
+            }
+        ],
+        "latitude": "-27.49268",
+        "longitude": "153.02167",
+        "timezone": "Australia/Brisbane",
+        "write_review": "https://www.tripadvisor.com/UserReview-g255068-d299048-Ambassador_Motor_Inn-Brisbane_Brisbane_Region_Queensland.html?m=66827",
+        "ranking_data": {
+            "geo_location_id": "255068",
+            "ranking_string": "#147 of 173 hotels in Brisbane",
+            "geo_location_name": "Brisbane",
+            "ranking_out_of": "173",
+            "ranking": "147"
+        },
+        "rating": "3.5",
+        "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/3.5-66827-5.svg",
+        "num_reviews": "20",
+        "review_rating_count": {
+            "1": "3",
+            "2": "1",
+            "3": "7",
+            "4": "6",
+            "5": "3"
+        },
+        "subratings": {
+            "0": {
+                "name": "rate_sleep",
+                "localized_name": "Sleep Quality",
+                "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.0.svg",
+                "value": "4.0"
+            },
+            "1": {
+                "name": "rate_location",
+                "localized_name": "Location",
+                "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss3.0.svg",
+                "value": "3.0"
+            },
+            "2": {
+                "name": "rate_room",
+                "localized_name": "Rooms",
+                "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss3.5.svg",
+                "value": "3.5"
+            },
+            "3": {
+                "name": "rate_service",
+                "localized_name": "Service",
+                "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss3.5.svg",
+                "value": "3.5"
+            },
+            "4": {
+                "name": "rate_value",
+                "localized_name": "Value",
+                "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss3.5.svg",
+                "value": "3.5"
+            },
+            "5": {
+                "name": "rate_cleanliness",
+                "localized_name": "Cleanliness",
+                "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.0.svg",
+                "value": "4.0"
+            }
+        },
+        "photo_count": "24",
+        "see_all_photos": "https://www.tripadvisor.com/Hotel_Review-g255068-d299048-m66827-Reviews-Ambassador_Motor_Inn-Brisbane_Brisbane_Region_Queensland.html#photos",
+        "price_level": "$",
+        "amenities": [
+            "Pool",
+            "Internet",
+            "Shuttle Bus Service",
+            "Room service",
+            "Free Internet",
+            "Kitchenette",
+            "Airport transportation",
+            "Wifi",
+            "Free Wifi",
+            "Laundry Service",
+            "Air conditioning",
+            "Family Rooms",
+            "Non-smoking hotel",
+            "Parking",
+            "Baggage Storage",
+            "Bath / Shower",
+            "BBQ Facilities",
+            "Car Hire",
+            "24-Hour Check-in",
+            "Express Check-in / Check-out",
+            "Coffee Shop",
+            "Coffee / Tea Maker",
+            "Desk",
+            "English",
+            "Hair Dryer",
+            "Iron",
+            "Seating Area",
+            "24-Hour Security",
+            "Taxi Service"
+        ],
+        "category": {
+            "name": "hotel",
+            "localized_name": "Hotel"
+        },
+        "subcategory": [
+            {
+                "name": "hotel",
+                "localized_name": "Hotel"
+            }
+        ],
+        "styles": [
+            "Budget",
+            "Mid-range"
+        ],
+        "neighborhood_info": [],
+        "trip_types": [
+            {
+                "name": "business",
+                "localized_name": "Business",
+                "value": "4"
+            },
+            {
+                "name": "couples",
+                "localized_name": "Couples",
+                "value": "4"
+            },
+            {
+                "name": "solo",
+                "localized_name": "Solo travel",
+                "value": "3"
+            },
+            {
+                "name": "family",
+                "localized_name": "Family",
+                "value": "6"
+            },
+            {
+                "name": "friends",
+                "localized_name": "Friends getaway",
+                "value": "2"
+            }
+        ],
+        "awards": []
+    }
+  
+      // res.json(data); // Return the fetched JSON data to the client
+      res.json(staticData); // Return the static JSON data to the client
+  
+      console.log('Server Location Id Trip Advisor details:' + staticData);
+    } catch (error) {
+      console.error('Error fetching details:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
+  app.get('/api/location/details/ancestors', async (req, res) => {
+    const { location_Id } = req.query;
+    try {
+      // Fetch details data from the specified endpoint
+      // const response = await fetch(`${base_url}/location/${location_Id}/details?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
+      // const data = await response.json();
+      // To do when looking up the ancestor you can details of the city of where the hotel is {{base_url}}/location/255068/details?language=en&key
+      // Static client details data (commented out the previous fetch)
+      const staticData = {
+        "location_id": "7395163",
+        "name": "Capri By Fraser, Brisbane",
+        "description": "Luxury accommodation for your Brisbane vacation: Capri by Fraser, Brisbane is perfect. In the CBD and just minutes' walk from must see attractions including the beautiful botanical gardens and the well-known riverside dining scene, Eagle Street Pier in Brisbane. If you are looking for a hotel near Suncorp Stadium in Brisbane, look no further because Capri by Fraser, Brisbane is the perfect choice for any big event in the City. Relax in our sauna, steam room or heated indoor pool, or get a work out in our 24/7 gym, which features yoga space, free weights and kick boxing. Capri by Fraser, Brisbane also features a 24/7 Spin and Play Laundrette - free for guest use.. While you're staying in Brisbane, you can choose to dine at the restaurant Black Fire Brisbane, grab a coffee at our grab-and-go coffee bar, or head out to explore the amazing restaurants Brisbane has to offer.",
+        "web_url": "https://www.tripadvisor.com/Hotel_Review-g255068-d7395163-Reviews-Capri_By_Fraser_Brisbane-Brisbane_Brisbane_Region_Queensland.html?m=66827",
+        "address_obj": {
+          "street1": "80 Albert Street",
+          "street2": "Cnr Mary Street",
+          "city": "Brisbane",
+          "state": "Queensland",
+          "country": "Australia",
+          "postalcode": "4000",
+          "address_string": "80 Albert Street Cnr Mary Street, Brisbane, Queensland 4000 Australia"
+        },
+        "ancestors": [
+          {
+            "level": "City",
+            "name": "Brisbane",
+            "location_id": "255068"
+          },
+          {
+            "level": "Region",
+            "name": "Brisbane Region",
+            "location_id": "3203447"
+          },
+          {
+            "level": "State",
+            "name": "Queensland",
+            "location_id": "255067"
+          },
+          {
+            "level": "Country",
+            "name": "Australia",
+            "location_id": "255055"
+          }
+        ],
+        "latitude": "-27.472284",
+        "longitude": "153.02756",
+        "timezone": "Australia/Brisbane",
+        "write_review": "https://www.tripadvisor.com/UserReview-g255068-d7395163-Capri_By_Fraser_Brisbane-Brisbane_Brisbane_Region_Queensland.html?m=66827",
+        "ranking_data": {
+          "geo_location_id": "255068",
+          "ranking_string": "#43 of 173 hotels in Brisbane",
+          "geo_location_name": "Brisbane",
+          "ranking_out_of": "173",
+          "ranking": "43"
+        },
+        "rating": "4.5",
+        "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg",
+        "num_reviews": "1955",
+        "review_rating_count": {
+          "1": "44",
+          "2": "53",
+          "3": "140",
+          "4": "540",
+          "5": "1178"
+        },
+        "subratings": {
+          "0": {
+            "name": "rate_location",
+            "localized_name": "Location",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss5.0.svg",
+            "value": "5.0"
+          },
+          "1": {
+            "name": "rate_sleep",
+            "localized_name": "Sleep Quality",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.5.svg",
+            "value": "4.5"
+          },
+          "2": {
+            "name": "rate_room",
+            "localized_name": "Rooms",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.5.svg",
+            "value": "4.5"
+          },
+          "3": {
+            "name": "rate_service",
+            "localized_name": "Service",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.5.svg",
+            "value": "4.5"
+          },
+          "4": {
+            "name": "rate_value",
+            "localized_name": "Value",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.5.svg",
+            "value": "4.5"
+          },
+          "5": {
+            "name": "rate_cleanliness",
+            "localized_name": "Cleanliness",
+            "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.5.svg",
+            "value": "4.5"
+          }
+        },
+        "photo_count": "633",
+        "see_all_photos": "https://www.tripadvisor.com/Hotel_Review-g255068-d7395163-m66827-Reviews-Capri_By_Fraser_Brisbane-Brisbane_Brisbane_Region_Queensland.html#photos",
+        "price_level": "$$",
+        "amenities": [
+          "Internet",
+          "Free Internet",
+          "Wifi",
+          "Free Wifi",
+          "Pool",
+          "Suites",
+          "Room service",
+          "Wheelchair access",
+          "Restaurant",
+          "Kitchenette",
+          "Public Wifi",
+          "Dry Cleaning",
+          "Meeting rooms",
+          "Non-smoking rooms",
+          "Fitness center",
+          "Laundry Service",
+          "Concierge",
+          "Air conditioning",
+          "Multilingual Staff",
+          "Self-Serve Laundry",
+          "Accessible rooms",
+          "Microwave",
+          "Refrigerator in room",
+          "Minibar",
+          "Conference Facilities",
+          "Non-smoking hotel",
+          "Safe",
+          "Heated pool",
+          "Flatscreen TV",
+          "Breakfast Buffet",
+          "Indoor pool",
+          "Breakfast Available",
+          "Parking",
+          "Facilities for Disabled Guests",
+          "Housekeeping",
+          "Sauna",
+          "Baggage Storage",
+          "Bath / Shower",
+          "Breakfast in the Room",
+          "Complimentary Tea",
+          "Desk",
+          "English",
+          "Fitness / Spa Locker Rooms",
+          "Complimentary Toiletries",
+          "Hair Dryer",
+          "Iron",
+          "Ironing Service",
+          "Kitchenware",
+          "Parking Garage",
+          "Paid Private Parking On-site",
+          "24-Hour Security",
+          "Secured Parking",
+          "Taxi Service",
+          "Bathrobes",
+          "Blackout Curtains",
+          "24-Hour Check-in",
+          "Express Check-in / Check-out",
+          "Clothes Rack",
+          "Coffee / Tea Maker",
+          "Electric Kettle",
+          "First Aid Kit",
+          "Complimentary Instant Cofffee",
+          "24-Hour Front Desk",
+          "German",
+          "iPod Docking Station",
+          "Paid Public Parking Nearby",
+          "Radio",
+          "Telephone",
+          "Umbrella",
+          "Wake Up Service / Alarm Clock",
+          "Walk-in Shower",
+          "Wardrobe / Closet",
+          "Wine / Champagne"
+        ],
+        "parent_brand": "Frasers",
+        "brand": "Capri by Fraser",
+        "category": {
+          "name": "hotel",
+          "localized_name": "Hotel"
+        },
+        "subcategory": [
+          {
+            "name": "hotel",
+            "localized_name": "Hotel"
+          }
+        ],
+        "styles": [
+          "Modern",
+          "Quiet"
+        ],
+        "neighborhood_info": [],
+        "trip_types": [
+          {
+            "name": "business",
+            "localized_name": "Business",
+            "value": "522"
+          },
+          {
+            "name": "couples",
+            "localized_name": "Couples",
+            "value": "749"
+          },
+          {
+            "name": "solo",
+            "localized_name": "Solo travel",
+            "value": "137"
+          },
+          {
+            "name": "family",
+            "localized_name": "Family",
+            "value": "149"
+          },
+          {
+            "name": "friends",
+            "localized_name": "Friends getaway",
+            "value": "100"
+          }
+        ],
+        "awards": []
+      }
+  
+      // res.json(data); // Return the fetched JSON data to the client
+      res.json(staticData); // Return the static JSON data to the client
+  
+      console.log('Server Location Id Trip Advisor details:' + staticData);
+    } catch (error) {
+      console.error('Error fetching details:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
 
 app.get('/api/reviews', async (req, res) => {
   const { location_Id } = req.query;

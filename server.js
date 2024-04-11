@@ -52,6 +52,20 @@ app.get('/api/location/details', async (req, res) => {
   }
 });
 
+app.get('/api/location/details/ancestors', async (req, res) => {
+  const { location_Id } = req.query;
+  try {
+    // Fetch details data from the specified endpoint
+    const response = await fetch(`${base_url}/location/${location_Id}/details?language=en&key=${process.env.TRIPADVISOR_API_KEY_ENV}`);
+    const data = await response.json();
+    res.json(data); // Return the JSON data to the client
+    console.log('Server Location Id Trip Advisor details:' + data);
+  } catch (error) {
+    console.error('Error fetching details:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 
 app.get('/api/reviews', async (req, res) => {
   const { location_Id } = req.query;
