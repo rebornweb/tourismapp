@@ -24,7 +24,7 @@ const settings = {
 }
 
 interface PhotosProps {
-  locationId: string; // Location ID to fetch photos
+  locationId: number; // Location ID to fetch photos
 }
 
 const Photos: React.FC<PhotosProps> = ({ locationId }) => {
