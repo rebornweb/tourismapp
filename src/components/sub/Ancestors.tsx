@@ -53,7 +53,7 @@ const Ancestors: React.FC<{ locationId: string }> = ({ locationId }) => {
     <div>
       <h2>Ancestors:</h2>
       <ul>
-        {ancestors.map((ancestor, index) => (
+        {ancestors.slice(0,1).map((ancestor, index) => (
           <li key={index}>
             {ancestor.level}: {ancestor.name} (Location ID: {ancestor.location_id})
             {/* Render the Photos component for each ancestor */}
