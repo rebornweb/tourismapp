@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardBody, CardFooter, Stack, Image, Text, Heading } from '@chakra-ui/react';
-import Ancestors from './Ancestors';
 
 interface DetailsProps {
   locationId: string;

@@ -70,6 +70,7 @@ const Places: React.FC<placeProps> = ({ location }) => {
       )}
       {placesData !== null && placesData.length > 0 && (
         <>
+        {/*Render the first place for ancestors comoponent*/}
           <Ancestors locationId={placesData[0].location_id} />
           {placesData.slice(0, 3).map((place: any) => (
             <Box key={place.location_id} borderWidth="1px" borderRadius="lg" p="2">

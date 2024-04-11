@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Photos from './Photos';
+import Details from './Details';
 
 interface Ancestor {
   level: string;
@@ -53,11 +54,12 @@ const Ancestors: React.FC<{ locationId: string }> = ({ locationId }) => {
     <div>
       <h2>Ancestors:</h2>
       <ul>
-        {ancestors.slice(0,1).map((ancestor, index) => (
+        {ancestors.map((ancestor, index) => (
           <li key={index}>
             {ancestor.level}: {ancestor.name} (Location ID: {ancestor.location_id})
             {/* Render the Photos component for each ancestor */}
-            <Photos locationId={ancestor.location_id} />
+            <Details locationId={ancestor.location_id}/>
+            
           </li>
         ))}
       </ul>
