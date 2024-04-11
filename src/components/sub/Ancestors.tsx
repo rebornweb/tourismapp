@@ -49,7 +49,7 @@ const Ancestors: React.FC<{ locationId: string }> = ({ locationId }) => {
           <li key={index}>
             {ancestor.level}: {ancestor.name} (Location ID: {ancestor.location_id})
             {/* Ensure Photos component is rendered conditionally */}
-            {ancestor.location_id && <Photos locationId={ancestor.location_id} />}
+        
           </li>
         ))}
       </ul>

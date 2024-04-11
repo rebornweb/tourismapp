@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardHeader, CardBody, CardFooter, Box, Heading, Text,
-   SimpleGrid, Stack, Image,Button, ButtonGroup } from '@chakra-ui/react';
+import { Card, CardBody, CardFooter, Stack, Image, Text, Heading } from '@chakra-ui/react';
+import Ancestors from './Ancestors';
 
-   interface DetailsProps {
-    locationId: string;
-    images?: {
-      small: {
-        url: string;
-      };
+interface DetailsProps {
+  locationId: string;
+  images?: {
+    small: {
+      url: string;
     };
-  }
-  
+  };
+}
 
 const Details: React.FC<DetailsProps> = ({ locationId }) => {
   const localApiUrl = process.env.REACT_APP_LOCAL_API_URL;
@@ -65,10 +64,11 @@ const Details: React.FC<DetailsProps> = ({ locationId }) => {
     return <Text>Loading...</Text>;
   }
 
-
   return (
     <div>
-        <Card
+      <Ancestors locationId={locationId} /> {/* Pass locationId prop to Ancestors component */}
+
+      <Card
         direction={{ base: 'column', sm: 'row' }}
         overflow='hidden'
         variant='outline'
@@ -82,30 +82,22 @@ const Details: React.FC<DetailsProps> = ({ locationId }) => {
 
         <Stack>
           <CardBody>
-             
-            <Heading  size="lg">
-            {detailsData.name} {detailsData.rating} <p><Image src={detailsData.rating_image_url} /></p>
+            <Heading size="lg">
+              {detailsData.name} {detailsData.rating} <p><Image src={detailsData.rating_image_url} /></p>
             </Heading>
-            
-           
-         
-          
-          Address: {detailsData.address_obj.address_string}
+            Address: {detailsData.address_obj.address_string}
             <Text py='2'>
-        Description: {detailsData.description && detailsData.description.split('.').length >= 3 ? detailsData.description : 'Not available'}
-       </Text>
+              Description: {detailsData.description && detailsData.description.split('.').length >= 3 ? detailsData.description : 'Not available'}
+            </Text>
           </CardBody>
 
           <CardFooter>
-            {/* Your existing Details component content Open a new */}
             <Link to={`/details/${locationId}`} target="_blank" rel="noopener noreferrer">
               View More Details
             </Link>
           </CardFooter>
         </Stack>
       </Card>
-           
-
     </div>
   );
 };

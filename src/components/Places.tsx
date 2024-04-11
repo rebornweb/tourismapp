@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, Heading, Text, Select } from '@chakra-ui/react';
 import Details from './sub/Details';
 import Reviews from './sub/Reviews'; 
+
 interface placeProps {
   location: {
     lat: number;
@@ -16,7 +17,6 @@ const Places: React.FC<placeProps> = ({ location }) => {
   const [category, setCategory] = useState<string>('hotels'); // State to store selected category
   const [loading, setLoading] = useState<boolean>(false); // State to track loading status
   const [error, setError] = useState<string | null>(null); // State to store error message
-
 
   useEffect(() => {
     // Fetch places data from backend server based on the provided location and category
@@ -66,12 +66,9 @@ const Places: React.FC<placeProps> = ({ location }) => {
       {placesData && placesData.length === 0 && (
         <p>No {category} found.</p>
       )}
-      {placesData && placesData.length > 0 && placesData.map((place: any) => (
+      {placesData && placesData.length > 0 && placesData.slice(0, 3).map((place: any) => (
         <Box key={place.location_id} borderWidth="1px" borderRadius="lg" p="2">
-
           <Details locationId={place.location_id}/>
-
-          
         </Box>
       ))}
     </div>
