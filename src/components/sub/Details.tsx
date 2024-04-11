@@ -66,7 +66,7 @@ const Details: React.FC<DetailsProps> = ({ locationId }) => {
 
   return (
     <div>
-      <Ancestors locationId={locationId} /> {/* Pass locationId prop to Ancestors component */}
+      
 
       <Card
         direction={{ base: 'column', sm: 'row' }}

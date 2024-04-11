@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Heading, Text, Select } from '@chakra-ui/react';
 import Details from './sub/Details';
-import Reviews from './sub/Reviews'; 
+import Reviews from './sub/Reviews';
+import Ancestors from './sub/Ancestors'; 
 
 interface placeProps {
   location: {
@@ -13,14 +14,14 @@ interface placeProps {
 const Places: React.FC<placeProps> = ({ location }) => {
   const localApiUrl = process.env.REACT_APP_LOCAL_API_URL;
 
-  const [placesData, setplacesData] = useState<any>(null); // State to store fetched places data
+  const [placesData, setPlacesData] = useState<any>(null); // State to store fetched places data
   const [category, setCategory] = useState<string>('hotels'); // State to store selected category
   const [loading, setLoading] = useState<boolean>(false); // State to track loading status
   const [error, setError] = useState<string | null>(null); // State to store error message
 
   useEffect(() => {
     // Fetch places data from backend server based on the provided location and category
-    const fetchplacesFromBackend = async () => {
+    const fetchPlacesFromBackend = async () => {
       try {
         const response = await fetch(`${localApiUrl}/nearby/places?lat=${location.lat}&lng=${location.lng}&category=${category}`);
         if (!response.ok) {
@@ -32,9 +33,9 @@ const Places: React.FC<placeProps> = ({ location }) => {
           console.log('Client Places data:', data);
           if (data.data && data.data.length > 0) {
             const sortedData = data.data.sort((a: any, b: any) => a.distance - b.distance);
-            setplacesData(sortedData); // Update placesData state with sorted data from backend
+            setPlacesData(sortedData); // Update placesData state with sorted data from backend
           } else {
-            setplacesData([]); // Set placesData to an empty array if there are no places
+            setPlacesData([]); // Set placesData to an empty array if there are no places
           }
         } else {
           const data = await response.text(); // Treat response as text
@@ -49,7 +50,7 @@ const Places: React.FC<placeProps> = ({ location }) => {
       }
     };
     
-    fetchplacesFromBackend(); // Call fetchplacesFromBackend function when component mounts or when category changes
+    fetchPlacesFromBackend(); // Call fetchPlacesFromBackend function when component mounts or when category changes
   }, [location.lat, location.lng, category]); // Depend on location and category changes
 
   return (
@@ -63,14 +64,20 @@ const Places: React.FC<placeProps> = ({ location }) => {
         <option value="geos">Geos</option>
       </Select>
       <h3>Nearby {category.charAt(0).toUpperCase() + category.slice(1)} Data</h3>
-      {placesData && placesData.length === 0 && (
+      {placesData === null && <p>Loading...</p>}
+      {placesData !== null && placesData.length === 0 && (
         <p>No {category} found.</p>
       )}
-      {placesData && placesData.length > 0 && placesData.slice(0, 3).map((place: any) => (
-        <Box key={place.location_id} borderWidth="1px" borderRadius="lg" p="2">
-          <Details locationId={place.location_id}/>
-        </Box>
-      ))}
+      {placesData !== null && placesData.length > 0 && (
+        <>
+          <Ancestors locationId={placesData[0].location_id} />
+          {placesData.slice(0, 3).map((place: any) => (
+            <Box key={place.location_id} borderWidth="1px" borderRadius="lg" p="2">
+              <Details locationId={place.location_id}/>
+            </Box>
+          ))}
+        </>
+      )}
     </div>
   );
 };
