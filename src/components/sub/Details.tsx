@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, CardHeader, CardBody, CardFooter, Box, Heading, Text,
-   SimpleGrid, Stack, Image,Button, ButtonGroup } from '@chakra-ui/react';
+import { Text, Card, Stack, Heading, Image, CardBody, CardFooter } from '@chakra-ui/react';
+import Ancestors from './Ancestors'; // Import the Ancestors component
 
-   interface DetailsProps {
-    locationId: string;
-    images?: {
-      small: {
-        url: string;
-      };
-    };
-  }
-  
+interface DetailsProps {
+  locationId: string;
+  // Define other props as needed
+}
 
 const Details: React.FC<DetailsProps> = ({ locationId }) => {
   const localApiUrl = process.env.REACT_APP_LOCAL_API_URL;
@@ -31,7 +26,6 @@ const Details: React.FC<DetailsProps> = ({ locationId }) => {
           throw new Error(`Failed to fetch Details: ${response.statusText}`);
         }
         const data = await response.json();
-        console.log('Client Details data:', data);
         setDetailsData(data);
         setIsLoadingDetails(false);
       } catch (error) {
@@ -65,10 +59,9 @@ const Details: React.FC<DetailsProps> = ({ locationId }) => {
     return <Text>Loading...</Text>;
   }
 
-
   return (
     <div>
-        <Card
+      <Card
         direction={{ base: 'column', sm: 'row' }}
         overflow='hidden'
         variant='outline'
@@ -82,30 +75,27 @@ const Details: React.FC<DetailsProps> = ({ locationId }) => {
 
         <Stack>
           <CardBody>
-             
-            <Heading  size="lg">
-            {detailsData.name} {detailsData.rating} <p><Image src={detailsData.rating_image_url} /></p>
+            <Heading size="lg">
+              {detailsData.name} {detailsData.rating} <p><Image src={detailsData.rating_image_url} /></p>
             </Heading>
-            
-           
-         
-          
-          Address: {detailsData.address_obj.address_string}
+            Address: {detailsData.address_obj.address_string}
             <Text py='2'>
-        Description: {detailsData.description && detailsData.description.split('.').length >= 3 ? detailsData.description : 'Not available'}
-       </Text>
+              Description: {detailsData.description && detailsData.description.split('.').length >= 3 ? detailsData.description : 'Not available'}
+            </Text>
           </CardBody>
 
           <CardFooter>
-            {/* Your existing Details component content Open a new */}
             <Link to={`/details/${locationId}`} target="_blank" rel="noopener noreferrer">
               View More Details
             </Link>
           </CardFooter>
         </Stack>
       </Card>
-           
 
+      {/* Conditionally render Ancestors component */}
+      {!isLoadingDetails && !isLoadingPhoto && photoData && (
+        <Ancestors locationId={locationId} />
+      )}
     </div>
   );
 };
