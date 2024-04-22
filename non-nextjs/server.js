@@ -1,14 +1,11 @@
-// the .env file will load evinroment vars here the .env.local will load it on the client side
-
 const express = require('express');
+const fetch = require('node-fetch');
 const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
+const axios = require('axios');
 const { Duffel } = require('@duffel/api');
 const bodyParser = require('body-parser');
-console.log('Environment Variables:', process.env);
-console.log('Duffel API Endpoint:', process.env.NEXT_PUBLIC_DUFFEL_API_ENDPOINT);
-
 
 
 
@@ -207,67 +204,68 @@ app.get('/api/location/details', async (req, res) => {
     // To do when looking up the ancestor you can details of the city of where the hotel is {{base_url}}/location/255068/details?language=en&key
     // Static client details data (commented out the previous fetch)
     const staticData = {
-      "location_id": "1160898",
-      "name": "The Originals Lyon Est Eclipse",
-      "description": "Ideally situated just minutes from the centre of Lyon, the Hotel Eclipse offers high-quality comfort in a clam and comfortable atmosphere. It features modern guestrooms designed to be relaxing living spaces. All guestrooms are equipped with satellite television and free Wi-Fi internet access.",
-      "web_url": "https://www.tripadvisor.com/Hotel_Review-g1080938-d1160898-Reviews-The_Originals_Lyon_Est_Eclipse-Decines_Charpieu_Rhone_Auvergne_Rhone_Alpes.html?m=66827",
+      "location_id": "299048",
+      "name": "Ambassador Motor Inn",
+      "description": "If you’re looking for a motel in Brisbane, look no further than Ambassador Motor Inn.\nFor those interested in checking out popular landmarks while visiting Brisbane, Ambassador Motor Inn is located a short distance from West End (1.2 mi) and Albert Street Uniting Church (1.7 mi).\nYou’ll enjoy relaxing rooms that offer air conditioning, a refrigerator, and a kitchenette, and you can stay connected during your stay as Ambassador Motor Inn offers guests free wifi.\nThe motel features 24 hour check-in, room service, and express check-in and check-out. Plus, Ambassador Motor Inn offers a pool and barbeque facilities, providing a pleasant respite from your busy day. For guests with a vehicle, free parking is available.\nWhile in Brisbane, you may want to check out some of the restaurants that are a short walk away from Ambassador Motor Inn, including 1889 Enoteca (1.0 mi), Stokehouse Q (0.9 mi), and MADO Cafe and Restaurant (0.9 mi).\nIf you’re looking for something to do, South Bank Parklands (1.0 mi), Boggo Road Gaol (0.4 mi), and The Henderson Gallery (0.8 mi) are a nice way to spend some time, and they are all within walking distance of Ambassador Motor Inn.\nThe staff at Ambassador Motor Inn looks forward to serving you during your upcoming visit.\n",
+      "web_url": "https://www.tripadvisor.com/Hotel_Review-g255068-d299048-Reviews-Ambassador_Motor_Inn-Brisbane_Brisbane_Region_Queensland.html?m=66827",
       "address_obj": {
-          "street1": "25 Avenue Jean Jaures",
-          "street2": "",
-          "city": "Decines-Charpieu",
-          "country": "France",
-          "postalcode": "69150",
-          "address_string": "25 Avenue Jean Jaures, 69150 Decines-Charpieu France"
+          "street1": "180 Gladstone Rd",
+          "street2": "South Brisbane",
+          "city": "Brisbane",
+          "state": "Queensland",
+          "country": "Australia",
+          "postalcode": "4101",
+          "address_string": "180 Gladstone Rd South Brisbane, Brisbane, Queensland 4101 Australia"
       },
       "ancestors": [
           {
               "level": "City",
-              "name": "Decines-Charpieu",
-              "location_id": "1080938"
-          },
-          {
-              "level": "Department",
-              "name": "Rhone",
-              "location_id": "1904061"
+              "name": "Brisbane",
+              "location_id": "255068"
           },
           {
               "level": "Region",
-              "name": "Auvergne-Rhone-Alpes",
-              "location_id": "11038913"
+              "name": "Brisbane Region",
+              "location_id": "3203447"
+          },
+          {
+              "level": "State",
+              "name": "Queensland",
+              "location_id": "255067"
           },
           {
               "level": "Country",
-              "name": "France",
-              "location_id": "187070"
+              "name": "Australia",
+              "location_id": "255055"
           }
       ],
-      "latitude": "45.76837",
-      "longitude": "4.938692",
-      "timezone": "Europe/Paris",
-      "write_review": "https://www.tripadvisor.com/UserReview-g1080938-d1160898-The_Originals_Lyon_Est_Eclipse-Decines_Charpieu_Rhone_Auvergne_Rhone_Alpes.html?m=66827",
+      "latitude": "-27.49268",
+      "longitude": "153.02167",
+      "timezone": "Australia/Brisbane",
+      "write_review": "https://www.tripadvisor.com/UserReview-g255068-d299048-Ambassador_Motor_Inn-Brisbane_Brisbane_Region_Queensland.html?m=66827",
       "ranking_data": {
-          "geo_location_id": "1080938",
-          "ranking_string": "#2 of 3 hotels in Decines-Charpieu",
-          "geo_location_name": "Decines-Charpieu",
-          "ranking_out_of": "3",
-          "ranking": "2"
+          "geo_location_id": "255068",
+          "ranking_string": "#147 of 173 hotels in Brisbane",
+          "geo_location_name": "Brisbane",
+          "ranking_out_of": "173",
+          "ranking": "147"
       },
       "rating": "3.5",
       "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/3.5-66827-5.svg",
-      "num_reviews": "172",
+      "num_reviews": "20",
       "review_rating_count": {
-          "1": "27",
-          "2": "19",
-          "3": "38",
-          "4": "57",
-          "5": "31"
+          "1": "3",
+          "2": "1",
+          "3": "7",
+          "4": "6",
+          "5": "3"
       },
       "subratings": {
           "0": {
               "name": "rate_sleep",
               "localized_name": "Sleep Quality",
-              "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss3.5.svg",
-              "value": "3.5"
+              "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.0.svg",
+              "value": "4.0"
           },
           "1": {
               "name": "rate_location",
@@ -284,8 +282,8 @@ app.get('/api/location/details', async (req, res) => {
           "3": {
               "name": "rate_service",
               "localized_name": "Service",
-              "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.0.svg",
-              "value": "4.0"
+              "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss3.5.svg",
+              "value": "3.5"
           },
           "4": {
               "name": "rate_value",
@@ -296,54 +294,44 @@ app.get('/api/location/details', async (req, res) => {
           "5": {
               "name": "rate_cleanliness",
               "localized_name": "Cleanliness",
-              "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss3.5.svg",
-              "value": "3.5"
+              "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.0.svg",
+              "value": "4.0"
           }
       },
-      "photo_count": "103",
-      "see_all_photos": "https://www.tripadvisor.com/Hotel_Review-g1080938-d1160898-m66827-Reviews-The_Originals_Lyon_Est_Eclipse-Decines_Charpieu_Rhone_Auvergne_Rhone_Alpes.html#photos",
+      "photo_count": "24",
+      "see_all_photos": "https://www.tripadvisor.com/Hotel_Review-g255068-d299048-m66827-Reviews-Ambassador_Motor_Inn-Brisbane_Brisbane_Region_Queensland.html#photos",
       "price_level": "$",
       "amenities": [
+          "Pool",
+          "Internet",
+          "Shuttle Bus Service",
+          "Room service",
+          "Free Internet",
+          "Kitchenette",
+          "Airport transportation",
           "Wifi",
           "Free Wifi",
-          "Meeting rooms",
-          "Non-smoking rooms",
-          "Multilingual Staff",
-          "Flatscreen TV",
-          "Breakfast Buffet",
-          "Parking",
-          "Internet",
-          "Suites",
-          "Free Internet",
-          "Free parking",
-          "Wheelchair access",
-          "Restaurant",
-          "Bar/Lounge",
-          "Pets Allowed",
-          "Dry Cleaning",
-          "Banquet Room",
-          "Accessible rooms",
+          "Laundry Service",
+          "Air conditioning",
+          "Family Rooms",
           "Non-smoking hotel",
-          "Housekeeping",
+          "Parking",
           "Baggage Storage",
-          "Billiards",
-          "Bottled Water",
+          "Bath / Shower",
+          "BBQ Facilities",
+          "Car Hire",
+          "24-Hour Check-in",
           "Express Check-in / Check-out",
+          "Coffee Shop",
+          "Coffee / Tea Maker",
+          "Desk",
           "English",
-          "French",
-          "Kids' Meals",
-          "Newspaper",
-          "Outdoor Furniture",
-          "Parking Garage",
-          "Paid Private Parking On-site",
-          "Secured Parking",
-          "Shared Lounge / TV Area",
-          "Soundproof Rooms",
-          "Street Parking",
-          "Wine / Champagne"
+          "Hair Dryer",
+          "Iron",
+          "Seating Area",
+          "24-Hour Security",
+          "Taxi Service"
       ],
-      "parent_brand": "The Originals, Human Hotels & Resorts",
-      "brand": "The Originals",
       "category": {
           "name": "hotel",
           "localized_name": "Hotel"
@@ -355,7 +343,7 @@ app.get('/api/location/details', async (req, res) => {
           }
       ],
       "styles": [
-          "Classic",
+          "Budget",
           "Mid-range"
       ],
       "neighborhood_info": [],
@@ -363,31 +351,32 @@ app.get('/api/location/details', async (req, res) => {
           {
               "name": "business",
               "localized_name": "Business",
-              "value": "56"
+              "value": "4"
           },
           {
               "name": "couples",
               "localized_name": "Couples",
-              "value": "47"
+              "value": "4"
           },
           {
               "name": "solo",
               "localized_name": "Solo travel",
-              "value": "15"
+              "value": "3"
           },
           {
               "name": "family",
               "localized_name": "Family",
-              "value": "33"
+              "value": "6"
           },
           {
               "name": "friends",
               "localized_name": "Friends getaway",
-              "value": "9"
+              "value": "2"
           }
       ],
       "awards": []
   }
+
     // res.json(data); // Return the fetched JSON data to the client
     res.json(staticData); // Return the static JSON data to the client
 
@@ -410,12 +399,13 @@ app.get('/api/location/details', async (req, res) => {
       // To do when looking up the ancestor you can details of the city of where the hotel is {{base_url}}/location/255068/details?language=en&key
       // Static client details data (commented out the previous fetch)
       const staticData = {
-        "location_id": "187070",
-        "name": "France",
-        "description": "There's much more to France than Paris—from the fairy-tale châteaux of the Loire Valley to the lavender fields of Provence, and the French Riviera's celebrity-studded beaches. World-famous gastronomy and fine wines provide the perfect complement to the country's alpine views and architectural masterpieces.",
-        "web_url": "https://www.tripadvisor.com/Tourism-g187070-France-Vacations.html?m=66827",
+        "location_id": "255067",
+        "name": "Queensland",
+        "description": "Some of Queensland’s most remarkable sights require you to leave terra firma. Off its coast sits the Great Barrier Reef, the world's largest coral reef. Snorkel and scuba among 1500 resident fish species, or sail through the Whitsundays’ white-sand atolls. Back on dry land, you’ll find tropical escapes in the Daintree Rainforest to the north, rugged outback to the west and alfresco dining on the Gold Coast in the south. South East Queensland boasts mountain views, vineyards and ‘river city’ Brisbane.",
+        "web_url": "https://www.tripadvisor.com/Tourism-g255067-Queensland-Vacations.html?m=66827",
         "address_obj": {
-            "address_string": "France"
+          "country": "Australia",
+          "address_string": "Queensland Australia"
         },
         "ancestors": [
           {
@@ -424,23 +414,23 @@ app.get('/api/location/details', async (req, res) => {
             "location_id": "255055"
           }
         ],
-        "latitude": "48.864765",
-        "longitude": "2.343772",
-        "timezone": "Europe/Paris",
-        "see_all_photos": "https://www.tripadvisor.com/Tourism-g187070-m66827-France-Vacations.html#photos",
+        "latitude": "-19.881926",
+        "longitude": "146.79572",
+        "timezone": "Australia/Brisbane",
+        "see_all_photos": "https://www.tripadvisor.com/Tourism-g255067-m66827-Queensland-Vacations.html#photos",
         "category": {
-            "name": "geographic",
-            "localized_name": "Geographic"
+          "name": "geographic",
+          "localized_name": "Geographic"
         },
         "subcategory": [
-            {
-                "name": "country",
-                "localized_name": "Country"
-            }
+          {
+            "name": "state",
+            "localized_name": "State"
+          }
         ],
         "neighborhood_info": [],
         "awards": []
-    }
+      }
       // res.json(data); // Return the fetched JSON data to the client
       res.json(staticData); // Return the static JSON data to the client
   
@@ -700,55 +690,206 @@ app.get('/api/photos', async (req, res) => {
       // const data = await response.json();
       //To do get the photos of ancestors which is the City and country e.g ${base_url}/location/255068/photos?language=en
     // Static data
-    const staticData ={
-  "data": [
-
-    {
-      "id": 340474430,
-      "is_blessed": false,
-      "caption": "Vue de la Moselle",
-      "published_date": "2018-08-24T14:14:25.597Z",
-      "images": {
-          "thumbnail": {
-              "height": 50,
-              "width": 50,
-              "url": "https://media-cdn.tripadvisor.com/media/photo-t/14/4b/3a/3e/vue-de-la-moselle.jpg"
+    const staticData = {
+      "data": [
+          {
+              "id": 734792744,
+              "is_blessed": false,
+              "caption": "Harbor View Deluxe Room",
+              "published_date": "2024-04-05T20:45:54.582Z",
+              "images": {
+                  "thumbnail": {
+                      "height": 50,
+                      "width": 50,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-t/2b/cc/0c/28/harbor-view-deluxe-room.jpg"
+                  },
+                  "small": {
+                      "height": 150,
+                      "width": 150,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-l/2b/cc/0c/28/harbor-view-deluxe-room.jpg"
+                  },
+                  "medium": {
+                      "height": 167,
+                      "width": 250,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-f/2b/cc/0c/28/harbor-view-deluxe-room.jpg"
+                  },
+                  "large": {
+                      "height": 367,
+                      "width": 550,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-s/2b/cc/0c/28/harbor-view-deluxe-room.jpg"
+                  },
+                  "original": {
+                      "height": 682,
+                      "width": 1023,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-o/2b/cc/0c/28/harbor-view-deluxe-room.jpg"
+                  }
+              },
+              "album": "Room/Suite",
+              "source": {
+                  "name": "Management",
+                  "localized_name": "Management"
+              }
           },
-          "small": {
-              "height": 150,
-              "width": 150,
-              "url": "https://media-cdn.tripadvisor.com/media/photo-l/14/4b/3a/3e/vue-de-la-moselle.jpg"
+          {
+              "id": 563047881,
+              "is_blessed": false,
+              "caption": "",
+              "published_date": "2021-12-09T19:21:48.989Z",
+              "images": {
+                  "thumbnail": {
+                      "height": 50,
+                      "width": 50,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-t/21/8f/6d/c9/boston-harbor-hotel.jpg"
+                  },
+                  "small": {
+                      "height": 150,
+                      "width": 150,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-l/21/8f/6d/c9/boston-harbor-hotel.jpg"
+                  },
+                  "medium": {
+                      "height": 167,
+                      "width": 250,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-f/21/8f/6d/c9/boston-harbor-hotel.jpg"
+                  },
+                  "large": {
+                      "height": 367,
+                      "width": 550,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-s/21/8f/6d/c9/boston-harbor-hotel.jpg"
+                  },
+                  "original": {
+                      "height": 853,
+                      "width": 1280,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/21/8f/6d/c9/boston-harbor-hotel.jpg"
+                  }
+              },
+              "album": "Hotel & Grounds",
+              "source": {
+                  "name": "Management",
+                  "localized_name": "Management"
+              },
+              "user": {
+                  "username": "Management"
+              }
           },
-          "medium": {
-              "height": 167,
-              "width": 250,
-              "url": "https://media-cdn.tripadvisor.com/media/photo-f/14/4b/3a/3e/vue-de-la-moselle.jpg"
+          {
+              "id": 564181311,
+              "is_blessed": false,
+              "caption": "",
+              "published_date": "2021-12-16T17:58:16.23Z",
+              "images": {
+                  "thumbnail": {
+                      "height": 50,
+                      "width": 50,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-t/21/a0/b9/3f/boston-harbor-hotel.jpg"
+                  },
+                  "small": {
+                      "height": 150,
+                      "width": 150,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-l/21/a0/b9/3f/boston-harbor-hotel.jpg"
+                  },
+                  "medium": {
+                      "height": 137,
+                      "width": 250,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-f/21/a0/b9/3f/boston-harbor-hotel.jpg"
+                  },
+                  "large": {
+                      "height": 301,
+                      "width": 550,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-s/21/a0/b9/3f/boston-harbor-hotel.jpg"
+                  },
+                  "original": {
+                      "height": 702,
+                      "width": 1280,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/21/a0/b9/3f/boston-harbor-hotel.jpg"
+                  }
+              },
+              "album": "Room/Suite",
+              "source": {
+                  "name": "Management",
+                  "localized_name": "Management"
+              },
+              "user": {
+                  "username": "Management"
+              }
           },
-          "large": {
-              "height": 367,
-              "width": 550,
-              "url": "https://media-cdn.tripadvisor.com/media/photo-s/14/4b/3a/3e/vue-de-la-moselle.jpg"
+          {
+              "id": 273900720,
+              "is_blessed": false,
+              "caption": "Lobby at the Boston Harbor Hotel",
+              "published_date": "2017-08-18T14:48:20.294Z",
+              "images": {
+                  "thumbnail": {
+                      "height": 50,
+                      "width": 50,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-t/10/53/64/b0/lobby--v17159725.jpg"
+                  },
+                  "small": {
+                      "height": 150,
+                      "width": 150,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-l/10/53/64/b0/lobby--v17159725.jpg"
+                  },
+                  "medium": {
+                      "height": 205,
+                      "width": 250,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-f/10/53/64/b0/lobby--v17159725.jpg"
+                  },
+                  "large": {
+                      "height": 367,
+                      "width": 550,
+                      "url": "https://media-cdn.tripadvisor.com/media/oyster/550/10/53/64/b0/lobby--v17159725.jpg"
+                  },
+                  "original": {
+                      "height": 1733,
+                      "width": 2600,
+                      "url": "https://media-cdn.tripadvisor.com/media/oyster/2600/10/53/64/b0/lobby--v17159725.jpg"
+                  }
+              },
+              "album": "The Hotel",
+              "source": {
+                  "name": "Expert",
+                  "localized_name": "Expert"
+              }
           },
-          "original": {
-              "height": 1707,
-              "width": 2560,
-              "url": "https://media-cdn.tripadvisor.com/media/photo-c/2560x500/14/4b/3a/3e/vue-de-la-moselle.jpg"
+          {
+              "id": 273900714,
+              "is_blessed": false,
+              "caption": "Lobby at the Boston Harbor Hotel",
+              "published_date": "2017-08-18T14:48:19.551Z",
+              "images": {
+                  "thumbnail": {
+                      "height": 50,
+                      "width": 50,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-t/10/53/64/aa/lobby--v17159715.jpg"
+                  },
+                  "small": {
+                      "height": 150,
+                      "width": 150,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-l/10/53/64/aa/lobby--v17159715.jpg"
+                  },
+                  "medium": {
+                      "height": 205,
+                      "width": 250,
+                      "url": "https://media-cdn.tripadvisor.com/media/photo-f/10/53/64/aa/lobby--v17159715.jpg"
+                  },
+                  "large": {
+                      "height": 367,
+                      "width": 550,
+                      "url": "https://media-cdn.tripadvisor.com/media/oyster/550/10/53/64/aa/lobby--v17159715.jpg"
+                  },
+                  "original": {
+                      "height": 1733,
+                      "width": 2600,
+                      "url": "https://media-cdn.tripadvisor.com/media/oyster/2600/10/53/64/aa/lobby--v17159715.jpg"
+                  }
+              },
+              "album": "The Hotel",
+              "source": {
+                  "name": "Expert",
+                  "localized_name": "Expert"
+              }
           }
-      },
-      "album": "Other",
-      "source": {
-          "name": "Traveler",
-          "localized_name": "Traveler"
-      },
-      "user": {
-          "username": "JEAN_CLAUDEG564"
-      }
+      ]
   }
-
-   ]
-
-    } 
-
     // res.json(data); // Return the combined JSON data to the client
 
     // Instead, send only static data as the response
@@ -761,45 +902,6 @@ app.get('/api/photos', async (req, res) => {
 });
 
 
-
-//Create 
-app.post('/api/create_user', async (req, res) => {
-    try {
-      const postData = req.body; // Access the data sent from the client
-  
-      // Check if postData is valid
-      if (!postData) {
-        throw new Error('Invalid POST data');
-      }
-  
-      console.log(`Server:${process.env.NEXT_PUBLIC_DUFFEL_API_ENDPOINT}`)
-      // Forward the POST request to the external API using fetch
-      const response = await fetch(`${process.env.NEXT_PUBLIC_DUFFEL_API_ENDPOINT}/identity/customer/users`, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json', 
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_DUFFEL_API_KEY_ENV}`,
-          'Accept-Encoding': 'gzip',
-          'Duffel-Version': 'v1'
-        },
-        body: JSON.stringify(postData)
-      });
-  
-      if (!response.ok) {
-        throw new Error('Error forwarding request');
-      }
-  
-      const responseData = await response.json();
-      res.json(responseData);
-    } catch (error) {
-      console.error('Error forwarding request:', error.message);
-      res.status(500).json({ error: 'Error forwarding request' });
-    }
-  });
-
-
-
 //Use this if the Module fails This is the Manual way to the direct Endpoint using the default manual file
 app.post('/api/offer_requests', async (req, res) => {
   try {
@@ -810,14 +912,13 @@ app.post('/api/offer_requests', async (req, res) => {
       throw new Error('Invalid POST data');
     }
 
-    console.log(`Server:${process.env.NEXT_PUBLIC_DUFFEL_API_ENDPOINT}`)
     // Forward the POST request to the external API using fetch
-    const response = await fetch(`${process.env.NEXT_PUBLIC_DUFFEL_API_ENDPOINT}/air/offer_requests`, {
+    const response = await fetch(`${process.env.DUFFEL_API_ENDPOINT}/air/offer_requests`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json', 
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.NEXT_PUBLIC_DUFFEL_API_KEY_ENV}`,
+        'Authorization': `Bearer ${process.env.DUFFEL_API_KEY_ENV}`,
         'Accept-Encoding': 'gzip',
         'Duffel-Version': 'v1'
       },
@@ -835,119 +936,6 @@ app.post('/api/offer_requests', async (req, res) => {
     res.status(500).json({ error: 'Error forwarding request' });
   }
 });
-
-
-
-//Duffel Update passenger 
-app.patch('/api/update/passenger', async (req, res) => {
-    try {
-      const { offerId, passengerId, newData } = req.body;
-  
-      // Check if postData is valid
-      if (!offerId || !passengerId || !newData) {
-        throw new Error('Invalid PATCH data');
-      }
-  
-      // Make the PATCH request to the Duffel API
-      const response = await fetch(`https://api.duffel.com/air/offers/${offerId}/passengers/${passengerId}`, {
-        method: 'PATCH',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_DUFFEL_API_KEY_ENV}`,
-          'Accept-Encoding': 'gzip',
-          'Duffel-Version': 'v1',
-        },
-        body: JSON.stringify(newData),
-      });
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-  
-      const updatedPassenger = await response.json();
-  
-      console.log('Updated Passenger:', updatedPassenger); // Log the updated passenger data
-  
-      res.json(updatedPassenger);
-    } catch (error) {
-      console.error('Error updating passenger details:', error); // Log the error
-      res.status(500).json({ error: 'Error updating passenger details' });
-    }
-  });
-
-  app.get('/api/get_offer', async (req, res) => {
-    try {
-      const offerId = req.query.offerId; // Access the offerId from query parameters
-  
-      // Check if offerId is valid
-      if (!offerId) {
-        throw new Error('Invalid offerId');
-      }
-  
-      console.log(`Server: ${process.env.NEXT_PUBLIC_DUFFEL_API_ENDPOINT}`);
-  
-      // Forward the GET request to the external API using fetch
-      const response = await fetch(`${process.env.NEXT_PUBLIC_DUFFEL_API_ENDPOINT}/air/offers/${offerId}`, {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_DUFFEL_API_KEY_ENV}`,
-          'Accept-Encoding': 'gzip',
-          'Duffel-Version': 'v1'
-        },
-      });
-  
-      if (!response.ok) {
-        throw new Error('Error forwarding request');
-      }
-  
-      const responseData = await response.json();
-      res.json(responseData);
-    } catch (error) {
-      console.error('Error forwarding request:', error.message);
-      res.status(500).json({ error: 'Error forwarding request' });
-    }
-  });
-  
-  
-//Create Order  
-app.post('/api/create_order', async (req, res) => {
-    try {
-      const postData = req.body; // Access the data sent from the client
-  
-      // Check if postData is valid
-      if (!postData) {
-        throw new Error('Invalid POST data');
-      }
-  
-      console.log(`Server:${process.env.NEXT_PUBLIC_DUFFEL_API_ENDPOINT}`)
-      // Forward the POST request to the external API using fetch
-      const response = await fetch(`${process.env.NEXT_PUBLIC_DUFFEL_API_ENDPOINT}/air/orders`, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json', 
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_DUFFEL_API_KEY_ENV}`,
-          'Accept-Encoding': 'gzip',
-          'Duffel-Version': 'v1'
-        },
-        body: JSON.stringify(postData)
-      });
-  
-      if (!response.ok) {
-        throw new Error('Error forwarding request');
-      }
-  
-      const responseData = await response.json();
-      res.json(responseData);
-    } catch (error) {
-      console.error('Error forwarding request:', error.message);
-      res.status(500).json({ error: 'Error forwarding request' });
-    }
-  });
-
 
 
 // Request to retrieve an offer ID using the native Duffel import
@@ -973,12 +961,50 @@ app.post('/api/duffel/offer_requests', async (req, res) => {
 });
 
 
-
+//
+//Duffel Update passenger 
+app.patch('/api/update/passenger', async (req, res) => {
+    try {
+      const { offerId, offerPassengerId, newData } = req.body;
+  
+      // Check if postData is valid
+      if (!offerId || !offerPassengerId || !newData) {
+        throw new Error('Invalid PATCH data');
+      }
+  
+      // Make the PATCH request to the Duffel API
+      const response = await fetch(`https://api.duffel.com/air/offers/${offerId}/passengers/${offerPassengerId}`, {
+        method: 'PATCH',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.DUFFEL_API_KEY_ENV}`,
+          'Accept-Encoding': 'gzip',
+          'Duffel-Version': 'v1',
+        },
+        body: JSON.stringify(newData),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const updatedPassenger = await response.json();
+  
+      console.log('Updated Passenger:', updatedPassenger); // Log the updated passenger data
+  
+      res.json(updatedPassenger);
+    } catch (error) {
+      console.error('Error updating passenger details:', error); // Log the error
+      res.status(500).json({ error: 'Error updating passenger details' });
+    }
+  });
+  
 
 
 
 // Add the following import statement
-const googleApiKey = process.env.NEXT_PUBLIC_REACT_APP_GOOGLE_MAPS_API_KEY;
+const googleApiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
 // Inside your existing Express server setup...
 
