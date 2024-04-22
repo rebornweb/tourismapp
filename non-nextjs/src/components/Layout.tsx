@@ -10,7 +10,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <Box bg="background.light">
+      <Box bg="accent2.300">
         <Header />
         <Navigation />
       </Box>

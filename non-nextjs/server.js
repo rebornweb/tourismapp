@@ -7,6 +7,8 @@ const axios = require('axios');
 const { Duffel } = require('@duffel/api');
 const bodyParser = require('body-parser');
 
+
+
 const app = express();
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json()); // Middleware to parse JSON requests
@@ -900,7 +902,7 @@ app.get('/api/photos', async (req, res) => {
 });
 
 
-// This is the Manual way to the direct Endpoint using the default manual file
+//Use this if the Module fails This is the Manual way to the direct Endpoint using the default manual file
 app.post('/api/offer_requests', async (req, res) => {
   try {
     const postData = req.body; // Access the data sent from the client
@@ -911,10 +913,10 @@ app.post('/api/offer_requests', async (req, res) => {
     }
 
     // Forward the POST request to the external API using fetch
-    const response = await fetch('https://api.duffel.com/air/offer_requests', {
+    const response = await fetch(`${process.env.DUFFEL_API_ENDPOINT}/air/offer_requests`, {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
+        'Accept': 'application/json', 
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${process.env.DUFFEL_API_KEY_ENV}`,
         'Accept-Encoding': 'gzip',
@@ -934,6 +936,7 @@ app.post('/api/offer_requests', async (req, res) => {
     res.status(500).json({ error: 'Error forwarding request' });
   }
 });
+
 
 // Request to retrieve an offer ID using the native Duffel import
 app.post('/api/duffel/offer_requests', async (req, res) => {
@@ -957,6 +960,46 @@ app.post('/api/duffel/offer_requests', async (req, res) => {
   }
 });
 
+
+//
+//Duffel Update passenger 
+app.patch('/api/update/passenger', async (req, res) => {
+    try {
+      const { offerId, offerPassengerId, newData } = req.body;
+  
+      // Check if postData is valid
+      if (!offerId || !offerPassengerId || !newData) {
+        throw new Error('Invalid PATCH data');
+      }
+  
+      // Make the PATCH request to the Duffel API
+      const response = await fetch(`https://api.duffel.com/air/offers/${offerId}/passengers/${offerPassengerId}`, {
+        method: 'PATCH',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.DUFFEL_API_KEY_ENV}`,
+          'Accept-Encoding': 'gzip',
+          'Duffel-Version': 'v1',
+        },
+        body: JSON.stringify(newData),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const updatedPassenger = await response.json();
+  
+      console.log('Updated Passenger:', updatedPassenger); // Log the updated passenger data
+  
+      res.json(updatedPassenger);
+    } catch (error) {
+      console.error('Error updating passenger details:', error); // Log the error
+      res.status(500).json({ error: 'Error updating passenger details' });
+    }
+  });
+  
 
 
 

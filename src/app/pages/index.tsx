@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Heading, Text } from '@chakra-ui/react';
-import Layout from './Layout';
-import GoogleMaps from './Map'; // Import the GoogleMaps component
-import Places from './Places'; // Import the Hotel component
+import Layout from '../components/Layout';
+import GoogleMaps from '../components/Map'; // Import the GoogleMaps component
+import Places from '../components/Places'; // Import the Hotel component
 
 interface Location {
   lat: number;
@@ -11,6 +11,10 @@ interface Location {
 }
 
 const Home: React.FC = () => {
+
+  useEffect(() => {
+    document.title = 'Skysetters - Home';
+  }, []);
   // State to hold latitude, longitude, and locationId
   const [location, setLocation] = useState<Location>({ lat: 0, lng: 0, locationId: 0 }); // Initialize locationId
 
