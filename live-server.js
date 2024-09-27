@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.use(cors()); // Enable CORS for all routes
-app.use(express.json()); // Middleware to parse JSON requests
+app.use(express.json()); 
 app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 8080; // Define the port
