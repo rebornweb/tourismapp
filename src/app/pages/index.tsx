@@ -35,7 +35,7 @@ const Home: React.FC = () => {
       {/* The GoogleMaps component will call handleLocationChange when the location changes */}
       
       {/* Pass the location object as prop to the Places component */}
-      <Places location={location} />
+      <Places location={location} locationId={''} />
     </div>
   );
 };

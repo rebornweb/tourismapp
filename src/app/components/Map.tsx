@@ -111,7 +111,7 @@ const GoogleMaps: React.FC<GoogleMapsProps> =  ({ onLocationChange }) => {
     });
 
     // Add click event listener to the map to get latitude and longitude
-    map.addListener("click", async (e) => {
+    map.addListener("click", async (e: { latLng: any; }) => {
       const latLng = e.latLng;
       const lat = latLng.lat();
       const lng = latLng.lng();

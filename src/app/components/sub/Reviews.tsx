@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Heading, Text, Accordion, AccordionItem, AccordionButton, AccordionPanel,   AccordionIcon } from '@chakra-ui/react';
+import { Box, Heading, Text, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Image } from '@chakra-ui/react';
 
 interface ReviewsProps {
   locationId: string | null; // Assuming locationId is a string, adjust the type if necessary
 }
 
 const Reviews: React.FC<ReviewsProps> = ({ locationId }) => {
-  const localApiUrl = process.env.NEXT_PUBLIC_REACT_APP_LOCAL_API_URL;
+  const localApiUrl = `${process.env.NEXT_PUBLIC_HOST_DOMAIN_API}`;
 
   const [reviewsData, setReviewsData] = useState<any[]>([]); // State to store fetched reviews data
 
@@ -30,18 +30,24 @@ const Reviews: React.FC<ReviewsProps> = ({ locationId }) => {
     fetchReviewsFromBackend(); // Call fetchReviewsFromBackend function when component mounts
   }, [locationId]); // Depend on locationId changes
 
+  //Count reviews
+  let countReviews = reviewsData.length;
+
   return (
     <div>
       <Heading as="h3" size="md">Reviews</Heading>
+      <Text>Number of Reviews {countReviews}</Text>
       <Accordion  allowToggle>
         {/* Check if reviewsData is not empty before rendering */}
         {reviewsData && reviewsData.length > 0 ? (
           reviewsData.map((review: any, index: number) => (
             <AccordionItem key={index}>
+              
               <AccordionButton>
                 <Box as="span" flex='1' textAlign='left'>
                 
-                    <Text>Rating: {review.rating}</Text>
+                    <Text>Rating:<Image src={review.rating_image_url} /></Text>
+                    
                     <Text>Title: {review.title}</Text>
                   
                 </Box>

@@ -1,17 +1,22 @@
-'use-client'
+'use client'
+
 import React, { useState } from 'react';
-import { Button, Card, CardBody, CardFooter, CardHeader, Image, SimpleGrid } from '@chakra-ui/react';
+import Autocomplete from './Autocomplete';
+import iataCodes from '../utils/iataCodes';
+import { Box, Heading, Text, Image, SimpleGrid, Card, CardHeader, CardBody, CardFooter, Button, Flex, Input } from '@chakra-ui/react';
 import Link from 'next/link';
-import  iataCodes  from '../utils/iataCodes-small.js'; 
-//import {Autocomplete, AutocompleteItem} from "@nextui-org/react";
-import {  Autocomplete,  AutocompleteSection,  AutocompleteItem} from "@nextui-org/autocomplete";
 
 const OneWayOfferRequests: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [responseData, setResponseData] = useState<any>(null);
 
-  const localApiUrl = process.env.NEXT_PUBLIC_REACT_APP_LOCAL_API_URL;
+  const [selectedDate, setSelectedDate] = useState<string>('');
+  const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedDate(event.target.value);
+  };
+
+  const localApiUrl = `${process.env.NEXT_PUBLIC_HOST_DOMAIN_API}`
 
   const handlePostRequest = async () => {
     setLoading(true);
@@ -21,7 +26,7 @@ const OneWayOfferRequests: React.FC = () => {
           cabin_class: 'economy',
           slices: [
             {
-              departure_date: '2024-04-23',
+              departure_date: selectedDate,
               destination: selectedDestination,
               origin: selectedOrigin,
             },
@@ -29,13 +34,12 @@ const OneWayOfferRequests: React.FC = () => {
           passengers: [{ type: 'adult' }],
         },
       };
-          // Log the data being posted
-    console.log('Data being posted:', postData);
+      console.log('Data being posted:', postData);
 
       const requestOptions: RequestInit = {
         method: 'POST',
         headers: {
-          'Accept': 'application/json',
+          Accept: 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(postData),
@@ -49,8 +53,9 @@ const OneWayOfferRequests: React.FC = () => {
       }
 
       const responseData = await response.json();
+      console.log('One way flights data:', responseData);
       setResponseData(responseData);
-    } catch (error: unknown) {
+    } catch (error: any) {
       if (error instanceof Error) {
         setError('Error posting flight data: ' + error.message);
       } else {
@@ -61,89 +66,90 @@ const OneWayOfferRequests: React.FC = () => {
     }
   };
 
-
-  const [destinationInput, setDestinationInput] = useState('');
-  const [originInput, setOriginInput] = useState('');
-
   const [selectedDestination, setSelectedDestination] = useState('');
   const [selectedOrigin, setSelectedOrigin] = useState('');
-  
 
-  const handleDestinationSelect = (code: any) => {
-    setSelectedDestination(code);
-  };
-  
-  const handleOriginSelect = (code: any) => {
-    setSelectedOrigin(code);
-  };
-  
   return (
     <div>
+      <SimpleGrid columns={1} spacingX='2px' spacingY='2px'>
+        <Flex>
+          <Autocomplete
+            placeholder="Enter origin city"
+            options={iataCodes}
+            onSelect={(code: any) => setSelectedOrigin(code)}
+            extraLabel='From'
+          />
+          <Autocomplete
+            placeholder="Enter destination city"
+            options={iataCodes}
+            onSelect={(code: any) => setSelectedDestination(code)}
+            extraLabel='To'
+          />
+          <Box flex='2'>
+            <Text mb='8px'>Depart</Text>
+            <Input
+              placeholder='Select Date and Time'
+              size='md'
+              type='date'
+              flex='2'
+              htmlSize={5}
+              value={selectedDate}
+              onChange={handleDateChange}
+            />
+          </Box>
+          <Box flex='2'>
+            <Button
+              bg='primary.default'
+              _hover={{ bg: 'primary.100' }}
+              onClick={handlePostRequest}
+            >
+              Search Flights
+            </Button>
+          </Box>
+          {loading && <div>Loading...</div>}
+          {error && <div>Error: {error}</div>}
+        </Flex>
+      </SimpleGrid>
 
-     {/* Input fields for Destination and Origin */}
-     <Autocomplete defaultItems={iataCodes} label="Destination" placeholder="Search a city" onSelectionChange={handleDestinationSelect}>
-        {(iataCode) => (
-          <AutocompleteItem key={iataCode.code}>{iataCode.city}</AutocompleteItem>
-        )}
-      </Autocomplete>
-      <p className="text-default-500 text-small">Selected Destination: {selectedDestination}</p>
-      <Autocomplete defaultItems={iataCodes} label="Origin" placeholder="Search a city" onSelectionChange={handleOriginSelect}>
-        {(iataCode) => (
-          <AutocompleteItem key={iataCode.code}>{iataCode.city}</AutocompleteItem>
-        )}
-      </Autocomplete>
-      <p className="text-default-500 text-small">Selected Origin: {selectedOrigin}</p>
+      {responseData && responseData.data ? (
+        <div>
+          <h1>Flight Details</h1>
+          <p>Origin: {responseData?.data.slices[0].origin.name}</p>
+          <p>Destination: {responseData?.data.slices[0].destination.name}</p>
+          <p>Cabin Class: {responseData?.data.cabin_class}</p>
 
-      {/* Button to trigger the API call */}
-      <Button onClick={handlePostRequest}>Search Flights</Button>
-      {/* Loading and error handling */}
-      {loading && <div>Loading...</div>}
-      {error && <div>Error: {error}</div>}
-{/* Display flight details */}
-{responseData && responseData.data ? (
-  <div>
-    <h1>Flight Details</h1>
-    <p>Origin: {responseData?.data.slices[0].origin.name}</p>
-    <p>Destination: {responseData?.data.slices[0].destination.name}</p>
-    <p>Cabin Class: {responseData?.data.cabin_class}</p>
-    {/* Additional flight details can be displayed here */}
+          <h3>Offers</h3>
+          <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(400px, 1fr))'>
+            {responseData.data.offers.map((offer: any, index: any) => (
+              <Card key={index} variant='elevated'>
+                <CardHeader> Flight</CardHeader>
+                <CardBody>
+                  <p>Airline: {offer.owner.name}</p>
+                  <Image src={offer?.owner.logo_lockup_url} boxSize='150px' borderRadius='lg' />
+                  <p>Cabin Class: {responseData?.data.cabin_class}</p>
+                  <p>Baggage: 1 Carry-on</p>
+                  <p>Total Amount: {offer?.base_currency} {offer?.base_amount}</p>
+                  <p>OfferId: {offer?.id}</p>
+                  <p>Passenger Id: {offer?.passengers[0].id}</p>
+                  {offer?.owner.logo_lockup_url} 
 
-    <h3>Offers</h3>
-    <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(400px, 1fr))'>
-      {responseData.data.offers.map((offer : any, index : any) => (
-        <Card key={index} variant='elevated'>
-          <CardHeader> Flight</CardHeader>
-          <CardBody>
-            <p>Airline: {offer.owner.name}</p>
-            <Image src={offer?.owner.logo_lockup_url} boxSize='150px' borderRadius='lg' />
-            <p>Cabin Class: {responseData?.data.cabin_class}</p>
-            <p>Baggage: 1 Carry-on</p>
-            <p>Total Amount: {offer?.base_currency} {offer?.base_amount}</p>
-            <p>OfferId: {offer?.id}</p>
-            <p>Passenger Id: {offer?.passengers[0].id}</p>
-            
-
-            <Link href={{
-            pathname: '/flights/updateoffer',
-            query: {offerId: offer?.id, passengerId: offer?.passengers[0].id}
-          }} >
-        <Button variant='solid' colorScheme='primary'>Check Flight</Button>
-      </Link>
-            
-      
-          </CardBody>
-          <CardFooter>Have a nice trip</CardFooter>
-        </Card>
-      ))}
-    </SimpleGrid>
-  </div>
-) : (
-  <div>No flight details available</div>
-)}
-
+                  <Link href={{
+                    pathname: '/flights/summary',
+                    query: { offerId: offer?.id, passengerId: offer?.passengers[0].id, al: offer.owner.iata_code }
+                  }} >
+                    <Button variant='solid' colorScheme='primary'>Check Flight</Button>
+                  </Link>
+                </CardBody>
+                <CardFooter>Have a nice trip</CardFooter>
+              </Card>
+            ))}
+          </SimpleGrid>
+        </div>
+      ) : (
+        <div>No flight details available</div>
+      )}
     </div>
   );
 };
 
 export default OneWayOfferRequests;
-

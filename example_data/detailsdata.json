@@ -1,0 +1,196 @@
+{
+    "location_id": "627151",
+    "name": "Hotel Parisien",
+    "description": "Hotel Parisien is an excellent choice for travelers visiting Nice, offering a family-friendly environment alongside many helpful amenities designed to enhance your stay.\nFree wifi is offered to guests, and rooms at Hotel Parisien offer air conditioning, a refrigerator, and a desk.\nDuring your stay, take advantage of some of the amenities offered, including a 24 hour front desk, 24 hour check-in, and baggage storage. Guests of Hotel Parisien are also welcome to enjoy breakfast, located on site. For travelers arriving by car, street parking is available.\nClose to some of Nice's most popular landmarks, such as Place Massena (0.8 mi) and Cathedrale Sainte-Reparate (1.0 mi), Hotel Parisien is a great destination for tourists.\nWhile in Nice be sure to experience local lobster favorites at La Petite Maison, Le Comptoir du Marche, or Boccaccio.\nIf you are interested in exploring Nice, check out a history museum, such as Palais Lascaris.\nEnjoy your stay in Nice!\n",
+    "web_url": "https://www.tripadvisor.com/Hotel_Review-g187234-d627151-Reviews-Hotel_Parisien-Nice_French_Riviera_Cote_d_Azur_Provence_Alpes_Cote_d_Azur.html?m=66827",
+    "address_obj": {
+      "street1": "10 rue Vernier",
+      "city": "Nice",
+      "country": "France",
+      "postalcode": "06000",
+      "address_string": "10 rue Vernier, 06000 Nice France"
+    },
+    "ancestors": [
+      {
+        "level": "City",
+        "name": "Nice",
+        "location_id": "187234"
+      },
+      {
+        "level": "Region",
+        "name": "French Riviera - Cote d'Azur",
+        "location_id": "187216"
+      },
+      {
+        "level": "Region",
+        "name": "Provence-Alpes-Cote d'Azur",
+        "location_id": "187208"
+      },
+      {
+        "level": "Country",
+        "name": "France",
+        "location_id": "187070"
+      }
+    ],
+    "latitude": "43.70723",
+    "longitude": "7.261728",
+    "timezone": "Europe/Paris",
+    "write_review": "https://www.tripadvisor.com/UserReview-g187234-d627151-Hotel_Parisien-Nice_French_Riviera_Cote_d_Azur_Provence_Alpes_Cote_d_Azur.html?m=66827",
+    "ranking_data": {
+      "geo_location_id": "187234",
+      "ranking_string": "#43 of 219 hotels in Nice",
+      "geo_location_name": "Nice",
+      "ranking_out_of": "219",
+      "ranking": "43"
+    },
+    "rating": "4.0",
+    "rating_image_url": "https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.0-66827-5.svg",
+    "num_reviews": "353",
+    "review_rating_count": {
+      "1": "19",
+      "2": "8",
+      "3": "46",
+      "4": "121",
+      "5": "159"
+    },
+    "subratings": {
+      "0": {
+        "name": "rate_location",
+        "localized_name": "Location",
+        "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.0.svg",
+        "value": "4.0"
+      },
+      "1": {
+        "name": "rate_sleep",
+        "localized_name": "Sleep Quality",
+        "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.0.svg",
+        "value": "4.0"
+      },
+      "2": {
+        "name": "rate_room",
+        "localized_name": "Rooms",
+        "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.0.svg",
+        "value": "4.0"
+      },
+      "3": {
+        "name": "rate_service",
+        "localized_name": "Service",
+        "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.0.svg",
+        "value": "4.0"
+      },
+      "4": {
+        "name": "rate_value",
+        "localized_name": "Value",
+        "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.0.svg",
+        "value": "4.0"
+      },
+      "5": {
+        "name": "rate_cleanliness",
+        "localized_name": "Cleanliness",
+        "rating_image_url": "https://static.tacdn.com/img2/ratings/traveler/ss4.5.svg",
+        "value": "4.5"
+      }
+    },
+    "photo_count": "82",
+    "see_all_photos": "https://www.tripadvisor.com/Hotel_Review-g187234-d627151-m66827-Reviews-Hotel_Parisien-Nice_French_Riviera_Cote_d_Azur_Provence_Alpes_Cote_d_Azur.html#photos",
+    "price_level": "$$",
+    "amenities": [
+      "Internet",
+      "Free Internet",
+      "Free Wifi",
+      "Non-smoking rooms",
+      "Air conditioning",
+      "Multilingual Staff",
+      "Safe",
+      "Flatscreen TV",
+      "Housekeeping",
+      "Arabic",
+      "Baggage Storage",
+      "Bath / Shower",
+      "English",
+      "French",
+      "24-Hour Front Desk",
+      "Hair Dryer",
+      "Italian",
+      "Pets Allowed",
+      "Wifi",
+      "Non-smoking hotel",
+      "Breakfast Available",
+      "Breakfast in the Room",
+      "24-Hour Check-in",
+      "Desk",
+      "Paid Private Parking Nearby",
+      "Russian",
+      "Soundproof Rooms",
+      "Sun Umbrellas",
+      "Telephone",
+      "Wake Up Service / Alarm Clock",
+      "Beach Access"
+    ],
+    "category": {
+      "name": "hotel",
+      "localized_name": "Hotel"
+    },
+    "subcategory": [
+      {
+        "name": "hotel",
+        "localized_name": "Hotel"
+      }
+    ],
+    "styles": [
+      "Family",
+      "Quiet"
+    ],
+    "neighborhood_info": [],
+    "trip_types": [
+      {
+        "name": "business",
+        "localized_name": "Business",
+        "value": "24"
+      },
+      {
+        "name": "couples",
+        "localized_name": "Couples",
+        "value": "129"
+      },
+      {
+        "name": "solo",
+        "localized_name": "Solo travel",
+        "value": "31"
+      },
+      {
+        "name": "family",
+        "localized_name": "Family",
+        "value": "78"
+      },
+      {
+        "name": "friends",
+        "localized_name": "Friends getaway",
+        "value": "53"
+      }
+    ],
+    "awards": [
+      {
+        "award_type": "Travelers Choice",
+        "year": "2024",
+        "images": {
+          "tiny": "https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2024_L.png",
+          "small": "https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2024_L.png",
+          "large": "https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2024_L.png"
+        },
+        "categories": [],
+        "display_name": "Travelers Choice"
+      },
+      {
+        "award_type": "Travelers Choice",
+        "year": "2023",
+        "images": {
+          "tiny": "https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2023_L.png",
+          "small": "https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2023_L.png",
+          "large": "https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2023_L.png"
+        },
+        "categories": [],
+        "display_name": "Travelers Choice"
+      }
+    ]
+  }

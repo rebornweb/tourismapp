@@ -1,72 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import Photos from '../Photos';
+import React from 'react';
 import Details from './Details';
+import { useDetails } from './DetailsContext';
 
-interface Ancestor {
-  level: string;
-  name: string;
-  location_id: string;
-  photos: any[]; // Add a photos property to the Ancestor interface
+interface AncestorsProps {
+  locationId: string;
+
+
 }
 
-const Ancestors: React.FC<{ locationId: string }> = ({ locationId }) => {
-  const [ancestors, setAncestors] = useState<Ancestor[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+const Ancestors: React.FC<AncestorsProps> = ({ locationId }) => {
+  const { ancestors, isLoading, detailsData } = useDetails();
 
-  const localApiUrl = process.env.NEXT_PUBLIC_REACT_APP_LOCAL_API_URL;
-  const ancestorsUrl = `${localApiUrl}/location/details/ancestors?location_Id=${locationId}`;
 
-  useEffect(() => {
-    const fetchAncestors = async () => {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const response = await fetch(ancestorsUrl);
-        if (!response.ok) {
-          throw new Error(`Failed to fetch ancestors: ${response.statusText}`);
-        }
-        const data = await response.json();
-        console.log('Ancestors Data:', data); // Log the entire data object for debugging
-      
-        if (!Array.isArray(data.ancestors) || data.ancestors.length === 0) {
-          throw new Error('Ancestors data is empty or not an array.');
-        }
-      
-        const ancestorList: Ancestor[] = data.ancestors.map((ancestor: Ancestor) => ({
-          ...ancestor,
-          photos: [] // Initialize photos array
-        }));
-        setAncestors(ancestorList);
-      } catch (error: any) {
-        console.error('Error fetching ancestors:', error);
-        setError(`Error fetching ancestors: ${error.message}`);
-      } finally {
-        setLoading(false);
-      }
-      
-    };
-
-    fetchAncestors();
-  }, [ancestorsUrl, locationId]);
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  console.log('Ancestors in comp',ancestors);
+  // Access the single instance of ancestors directly
+  const ancestor = ancestors[0];
 
   return (
     <div>
-      <h2>Ancestors:</h2>
-      {/* This is the issue of the Link problem */}
-      <ul>
-        {ancestors.map((ancestor, index) => (
-          <li key={index}>
-            {ancestor.level}: {ancestor.name} (Location ID: {ancestor.location_id})
-            {/* Render the Photos component for each ancestor */}
-            <Details locationId={ancestor.location_id} />
-          </li>
-        ))}
-      </ul>
+    
+     {/* Create a link that will link to a Details more for ancestors but in hyperlinks no buttons  */} 
+     <p>
+      {ancestors.map((ancestor: any) => (
+        <div key='index'>
+  {ancestor.level} - {ancestor.name} - {ancestor.location_id} 
+</div>
+))}
+</p>
+
+      
+    
     </div>
   );
 };

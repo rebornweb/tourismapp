@@ -7,4 +7,5 @@ export default {
       NEXT_PUBLIC_DUFFEL_API_KEY_ENV: process.env.NEXT_PUBLIC_DUFFEL_API_KEY_ENV,
       // Add other environment variables as needed
     },
+
   };

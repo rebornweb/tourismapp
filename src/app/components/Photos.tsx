@@ -35,7 +35,7 @@ interface PhotosProps {
 
 const Photos: React.FC<PhotosProps> = ({ locationId }) => {
   const [slider, setSlider] = React.useState<Slider | null>(null)
-  const localApiUrl = process.env.NEXT_PUBLIC_REACT_APP_LOCAL_API_URL;
+  const localApiUrl = `${process.env.NEXT_PUBLIC_HOST_DOMAIN_API}`
   const [photosData, setPhotosData] = useState<any[]>([]); // State to store fetched photos data
   const [isLoading, setIsLoading] = useState<boolean>(true); // State to track loading status
 

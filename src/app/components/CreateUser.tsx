@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import { Heading } from '@chakra-ui/react'
+import { Heading, Input, Button } from '@chakra-ui/react'
 
 interface CreateUserProps{
 
@@ -15,7 +15,7 @@ const CreateUserForm: React.FC<CreateUserProps> = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
-  const localApiUrl = process.env.NEXT_PUBLIC_REACT_APP_LOCAL_API_URL;
+  const localApiUrl = `${process.env.NEXT_PUBLIC_HOST_DOMAIN_API}`;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevent default form submission behavior
@@ -74,24 +74,25 @@ const CreateUserForm: React.FC<CreateUserProps> = () => {
   */
   return (
     <div>
-      <Heading as='h4'>Create Customer User</Heading>
+      <Heading as='h5' size='md' >New Create User</Heading>
+     <br/>
       {success && <p>User created successfully!</p>}
       {error && <p>Error: {error}</p>}
       <form onSubmit={handleSubmit}>
       
         <label>
           Given Name:
-          <input type="text" value={givenName} onChange={(e) => setGivenName(e.target.value)} required />
+          <Input type="text" value={givenName} onChange={(e) => setGivenName(e.target.value)} required />
         </label>
         <label>
           Family Name:
-          <input type="text" value={familyName} onChange={(e) => setFamilyName(e.target.value)} required />
+          <Input type="text" value={familyName} onChange={(e) => setFamilyName(e.target.value)} required />
         </label>
         <label>
           Email:
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </label>
-        <button type="submit" disabled={loading}>Create User</button>
+        <Button type="submit" disabled={loading} variant='outline'>Create User</Button>
       </form>
     </div>
   );
